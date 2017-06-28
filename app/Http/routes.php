@@ -72,8 +72,8 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
         $router->group(['prefix' => 'patient'], function ($router) {
             $router->get('/', ['uses' => 'PatientController@index', 'as' => 'patient.index']);
             $router->post('/', ['uses' => 'PatientController@store', 'as' => 'patient.store']);
-            $router->get('{patient}/surgery-type/{surgeryType}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@existDiagnosis', 'as' => 'patient.exist.diagnosis']);
-            $router->post('{patient}/surgery-type/{surgeryType}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@updateDiagnosis', 'as' => 'patient.exist.diagnosis']);
+            $router->get('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@existDiagnosis', 'as' => 'patient.exist.diagnosis']);
+            $router->post('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@updateDiagnosis', 'as' => 'patient.exist.diagnosis']);
             $router->get('{patient}/add-diagnosis', ['uses' => 'PatientController@addDiagnosis', 'as' => 'patient.add.diagnosis']);
             $router->get('{patient}/add-anaesthetic', ['uses' => 'PatientController@addAnaesthetic', 'as' => 'patient.add.anaesthetic']);
             $router->post('{patient}/add-diagnosis', ['uses' => 'PatientController@storeDiagnosis', 'as' => 'patient.store.diagnosis']);

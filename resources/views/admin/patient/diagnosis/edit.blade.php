@@ -6,7 +6,7 @@
         <li class="active">Create</li>
     </ul>
 
-    {!! Form::model($diagnosis, ['url' => route('patient.exist.diagnosis', ['patient' => $patient->id, 'surgeryType' => $surgeryType->id, 'diagnosis' => $diagnosis->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($diagnosis, ['url' => route('patient.exist.diagnosis', ['patient' => $patient->id, 'diagnosis' => $diagnosis->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
     <div class="panel panel-default" ng-controller="diagnosisController">
         <div class="panel-heading clearfix">
             <span class="pull-left"><h4>Add Diagnosis Card</h4></span>
@@ -48,7 +48,6 @@
             $('.grid-9').addClass('col-md-12');
             $('.grid-3').addClass('hidden');
 
-            $scope.treatmentTemplateImageUrl = '{!! $image !!}';
             if($scope.treatmentTemplateImageUrl && $scope.treatmentTemplateImageUrl != '') {
                 $scope.treatmentTemplateImageUrl = "{!! route('admin.home.index') !!}" + '/resources/templates/'+$scope.treatmentTemplateImageUrl;
                 var grid = $('.grid-9').removeClass('col-md-12');
@@ -148,15 +147,15 @@
                 }
             };
 
-            $scope.selectedDiagnosisId = '{!! $diagnosis->surgery_type_id !!}';
-            $scope.cvs_pr = '{!! $examination->cvs_pr !!}';
-            $scope.review = '{!! $diagnosis->review !!}';
-            var followup = [{!! $followUp !!}][0];
-            for(var i=0; i < followup.length; i++) {
-                if(followup[i].drug && followup[i].dose && followup[i].frequency && followup[i].duration && followup[i].route) {
-                    $scope.patientNotes.push({drug: followup[i].drug, dose: followup[i].dose, frequency: followup[i].frequency, duration: followup[i].duration, route: followup[i].route});
-                }
-            }
+            {{--$scope.selectedDiagnosisId = '{!! $diagnosis->surgery_type_id !!}';--}}
+            {{--$scope.cvs_pr = '{!! $examination->cvs_pr !!}';--}}
+            {{--$scope.review = '{!! $diagnosis->review !!}';--}}
+            {{--var followup = [{!! $followUp !!}][0];--}}
+            {{--for(var i=0; i < followup.length; i++) {--}}
+                {{--if(followup[i].drug && followup[i].dose && followup[i].frequency && followup[i].duration && followup[i].route) {--}}
+                    {{--$scope.patientNotes.push({drug: followup[i].drug, dose: followup[i].dose, frequency: followup[i].frequency, duration: followup[i].duration, route: followup[i].route});--}}
+                {{--}--}}
+            {{--}--}}
         }]);
     </script>
 @endsection

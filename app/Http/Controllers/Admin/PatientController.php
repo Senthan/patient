@@ -62,7 +62,7 @@ class PatientController extends Controller
 //        ]);
         $diagnosisTypes = SurgeryType::all()->lists('name', 'id');
         if (request()->ajax()) {
-            $patient = Patient::get();
+            $patient = Patient::with('diagnosis')->get();
             $resource = new Collection($patient, new PatientTransformer());
             $manager = new Manager();
             $manager->setSerializer(new DataArraySerializer());
@@ -179,14 +179,6 @@ class PatientController extends Controller
         return redirect()->route('patient.index');
     }
 
-    public function addAnaesthetic(Patient $patient)
-    {
-        $consultants = Staff::where('designation_id', Designation::where('name', 'Surgeon')->first()->id)->get()->lists('short_name', 'id');
-//        $consultants = ['Select Consultant' ,'Dr.S.T.Sharma', 'Dr.S.GobiShankar', 'Dr.S.Rajendra', 'Dr.S.Raviraj', 'Dr.T.Ambalavanan'];
-        $anaesthetist = ['Select Anaesthetist' ,'Dr.S.T.Sharma'];
-        $anaesthetic = Anaesthetic::find($patient->anaesthetic_id);
-        return view('admin.patient.anaesthetic.create', compact('patient','anaesthetic', 'consultants', 'anaesthetist'));
-    }
 
     public function pdf(Patient $patient) {
         $diagnosis = Diagnosis::find($patient->diagnosis_id);
@@ -222,7 +214,7 @@ class PatientController extends Controller
         return redirect()->route('patient.index');
     }
 
-    public function existDiagnosis(Patient $patient, SurgeryType $surgeryType, Diagnosis $diagnosis) {
+    public function existDiagnosis(Patient $patient, Diagnosis $diagnosis) {
 //        $consultants = ['Consultant name' ,'Dr.S.T.Sharma', 'Dr.S.GobiShankar', 'Dr.S.Rajendra', 'Dr.S.Raviraj', 'Dr.T.Ambalavanan'];
         $consultants = (Designation::where('name', 'LIKE', '%Surgeon%')->first()) ? Staff::whereIn('designation_id', Designation::where('name', 'LIKE', '%Surgeon%')->lists('id')->toArray())->get()->lists('short_name', 'id') : [];
         $diagnosisTypeNames = SurgeryType::all();
@@ -233,12 +225,11 @@ class PatientController extends Controller
         $drugs = Drug::lists('name', 'id');
         $doses = Drug::with('dose')->get();
 
-        $image = $surgeryType->treatmentTemplate()->first() ? $surgeryType->treatmentTemplate()->first()->image : null;
-        return view('admin.patient.diagnosis.edit', compact('image', 'bioChemistry', 'microBiology', 'drugs','doses','followUp', 'patient', 'consultants','diagnosis', 'diagnosisTypes', 'diagnosisTypeNames', 'surgeryType', 'examination', 'bloodTest', 'investigationUltraSoundScan'));
+        return view('admin.patient.diagnosis.edit', compact( 'bioChemistry', 'microBiology', 'drugs','doses','followUp', 'patient', 'consultants','diagnosis', 'diagnosisTypes', 'diagnosisTypeNames', 'surgeryType', 'examination', 'bloodTest', 'investigationUltraSoundScan'));
 
     }
 
-    public function updateDiagnosis(AddDiagnosisStoreRequest $request, Patient $patient, SurgeryType $surgeryType, Diagnosis $diagnosis)
+    public function updateDiagnosis(AddDiagnosisStoreRequest $request, Patient $patient, Diagnosis $diagnosis)
     {
 
         $diagnosis->co_mobidities = $request->co_mobidities;
@@ -264,9 +255,6 @@ class PatientController extends Controller
 
         $patient->diagnosis = 'active';
         $patient->save();
-        PatientSurgeryType::where('patient_id', $patient->id)->where('surgery_type_id', $surgeryType->id)->where('diagnosis_id', $diagnosis->id)->delete();
-        $data[$request->surgery_type_id] = ['diagnosis_id' => $diagnosis->id];
-        $patient->surgeryType()->attach($data);
 
         return redirect()->route('patient.index');
     }

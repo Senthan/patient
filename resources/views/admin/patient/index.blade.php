@@ -101,14 +101,6 @@
                                 <div class="form-group">
                                     {!! Form::select('diagnosis_type', ['new_diagnosis' => 'Create new diagnosis', 'update_diagnosis' => 'Update existing diagnosis'], null, ['class' => 'form-control form-size', 'ng-model' => 'diagnosisType', 'ng-change' => 'diagnosisTypeChange();', 'placeholder' => 'Select Type']) !!}
                                 </div>
-                                <div class="form-group">
-                                    <select name="selectedSurgeryType" ng-model="selectedSurgeryType" class="form-control form-size" ng-show="enableAddDiagnosis" ng-change="surgeryTypeChange();">
-                                        <option value="">Select surgery type</option>
-                                        <option ng-repeat="selectedSurgeryType in selectedSurgeryTypes" value="@{{ selectedSurgeryType.id }}" >
-                                            @{{ selectedSurgeryType.name }}
-                                        </option>
-                                    </select>
-                                </div>
                             </div>
                         </div>
                         <div class="panel-footer">
@@ -201,12 +193,13 @@
                 }
                 if($scope.mySelections.length == 1) {
                     $scope.selected = $scope.mySelections[0];
-                    $scope.selectedSurgeryTypes = $scope.selected.surgeryType.data;
+                    console.log('scope.selected', $scope.selected);
                     $scope.show_url = $scope.moduleUrl + $scope.selected.id + '';
                     $scope.diagnosis_url = $scope.moduleUrl + $scope.selected.id + '/add-diagnosis';
-                    $scope.anaesthetic_url = $scope.moduleUrl + $scope.selected.id + '/add-anaesthetic';
                     $scope.delete_url = $scope.moduleUrl + $scope.selected.id + '/delete';
                     $scope.diagnosis_print_url = $scope.moduleUrl + $scope.selected.id + '/diagnosis-print';
+                    $scope.exist_diagnosis_url = $scope.moduleUrl + $scope.selected.id + '/existing-diagnosis/'+ $scope.selected.diagnosis.data[0].id;
+
                 }
                 else {
                     $scope.selected = null;
@@ -257,15 +250,8 @@
                     $scope.enableAddDiagnosis = true;
                 }
             };
-            $scope.enableUpdateDiagnosis = false;
-            $scope.surgeryTypeChange = function() {
-                $scope.enableUpdateDiagnosis = false;
-                if($scope.selectedSurgeryType) {
-                    $scope.selectedSurgery = _.where($scope.selectedSurgeryTypes, {id: parseInt($scope.selectedSurgeryType)})[0];
-                    $scope.enableUpdateDiagnosis = true;
-                    $scope.exist_diagnosis_url = $scope.moduleUrl + $scope.selected.id + '/surgery-type/'+ $scope.selectedSurgery.id + '/existing-diagnosis/'+ $scope.selectedSurgery['diagnosis_id'];
-                }
-            };
+            $scope.enableUpdateDiagnosis = true;
+
 
             $scope.printCard = function() {
                 $scope.selectedPatient = _.pluck($scope.mySelections, 'patient_uuid');

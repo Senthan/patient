@@ -366,5 +366,9 @@ class PatientController extends Controller
         return view('admin.patient.reports.diagnosis', compact('sugeryName','staff', 'designation', 'patient', 'diagnosis', 'history', 'examination', 'investigation', 'treatment', 'followUp'));
     }
 
+    public function updateExamination(Patient $patient)
+    {
+
+    }
 
 }

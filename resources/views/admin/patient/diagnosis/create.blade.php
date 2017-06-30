@@ -40,19 +40,35 @@
             });
 
             var clickElement = 0;
+            var arrayExamination = [[], [], [], [], [], [], [], [], []];
+            var  url = "{{ route('patient.update.examination', ['patient' => $patient->id]) }}";
 
-            $("tr").on("click", "td", function (event) {
+            $(".celled.table tr").on("click", "td", function (event) {
+                var col = $(this).parent().children().index($(this));
+                var row = $(this).parent().parent().children().index($(this).parent());
 
                 if ( $( this ).is( ":first-child" ) ) {
 
                 } else if($(this).hasClass('active')) {
                     $(this).removeClass('active');
                     clickElement = clickElement - 1;
+                    arrayExamination[row][col] = 0;
                 } else {
                     $(this).addClass('active');
                     clickElement = clickElement + 1;
+                    arrayExamination[row][col] = 1;
                 }
+                updateExamination(arrayExamination, url);
             });
+
+            function updateExamination(arrayExamination, url) {
+                $.ajax({
+
+                    type: "POST",
+                    url: url,
+                    data: {data :arrayExamination,  _token: "{{ csrf_token() }}"},
+                });
+            }
 
         });
 

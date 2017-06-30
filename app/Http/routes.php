@@ -88,6 +88,7 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
             $router->get('mail/{patients?}', ['uses' => 'PatientController@sendMail', 'as' => 'patient.mail']);
             $router->get('{patient}/manage', ['uses' => 'PatientController@manageProfile', 'as' => 'patient.manage']);
             $router->patch('{patient}/manage', ['uses' => 'PatientController@saveProfile', 'as' => 'patient.save.profile']);
+            $router->post('{patient}/update/examination', ['uses' => 'PatientController@updateExamination', 'as' => 'patient.update.examination']);
 
 
             // print diagonsis

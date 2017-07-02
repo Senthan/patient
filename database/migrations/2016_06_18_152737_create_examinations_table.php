@@ -14,15 +14,11 @@ class CreateExaminationsTable extends Migration
     {
         Schema::create('examinations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cvs_pr')->nullable()->default(null);
-            $table->string('cvs_bp')->nullable()->default(null);
-            $table->string('rs_spo2')->nullable()->default(null);
-            $table->string('rs_lung')->nullable()->default(null);
-            $table->string('abdomen_palpation')->nullable()->default(null);
-            $table->string('abdomen_auscultation')->nullable()->default(null);
-            $table->string('abdomen_genitalia')->nullable()->default(null);
-            $table->text('abdomen_dre')->nullable()->default(null);
-//            $table->integer('dre_id');
+            $table->string('row')->nullable()->default(null);
+            $table->string('type')->nullable()->default(null);
+            $table->string('col')->nullable()->default(null);
+            $table->string('value')->nullable()->default(null);
+            $table->unsignedInteger('patient_id');
             $table->timestamps();
         });
     }

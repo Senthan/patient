@@ -169,11 +169,6 @@ class PatientController extends Controller
         $data[$request->surgery_type_id] = ['diagnosis_id' => $diagnosis->id];
         $patient->surgeryType()->attach($data);
 
-//        $examination = new Examination();
-//        $examination->abdomen_dre = json_encode($request->abdomen_dre);
-//        $examination->save();
-
-
         $diagnosis->save();
 
         return redirect()->route('patient.index');
@@ -368,7 +363,22 @@ class PatientController extends Controller
 
     public function updateExamination(Patient $patient)
     {
-
+        $data = request()->all();
+        $createExamination = $patient->examination()->where('type', $data['data']['type'])->where('row', $data['data']['row'])->where('col', $data['data']['col'])->first();
+        if (isset($data['data'])) {
+            if ($createExamination) {
+                $createExamination->value = $data['data']['value'];
+                $createExamination->save();
+            } else {
+                $examination = new Examination();
+                $examination->patient_id = $patient->id;
+                $examination->row = $data['data']['row'];
+                $examination->col = $data['data']['col'];
+                $examination->value = $data['data']['value'];
+                $examination->type = $data['data']['type'];
+                $examination->save();
+            }
+        }
     }
 
 }

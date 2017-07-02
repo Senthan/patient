@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Diagnosis extends Model
 {
-    public function examination()
-    {
-        return $this->belongsTo(Examination::class);
-    }
 
     public function followUp()
     {

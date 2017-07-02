@@ -92,7 +92,7 @@
             <div class="panel-body">
                 <div class="ui green segment">
 
-                    <table class="ui celled table">
+                    <table class="ui celled table root-examination">
                         <thead>
                         <tr>
                             <th class="header">Root</th>
@@ -279,7 +279,7 @@
                     </table>
 
 
-                    <table class="ui celled table">
+                    <table class="ui celled table reflexes-examination">
                         <thead>
                             <tr><th colspan="1"></th>
                                 <th colspan="1"></th>

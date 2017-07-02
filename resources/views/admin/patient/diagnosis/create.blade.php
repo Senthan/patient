@@ -27,46 +27,73 @@
 <script>
     app.controller('diagnosisController', ['$scope', '$http', function ($scope, $http) {
         $(function () {
-            $('#clinic_day').datetimepicker({
-                format: 'YYYY-MM-DD HH:MM:ss'
-            });
-
-            $('#admission_date').datetimepicker({
-                format: 'YYYY-MM-DD'
-            });
-
-            $('#discharge_date').datetimepicker({
+        
+            $('#date').datetimepicker({
                 format: 'YYYY-MM-DD'
             });
 
             var clickElement = 0;
-            var arrayExamination = [[], [], [], [], [], [], [], [], []];
             var  url = "{{ route('patient.update.examination', ['patient' => $patient->id]) }}";
 
-            $(".celled.table tr").on("click", "td", function (event) {
+            $(".celled.table.root-examination tr").on("click", "td", function (event) {
                 var col = $(this).parent().children().index($(this));
                 var row = $(this).parent().parent().children().index($(this).parent());
 
+                var examination = {};
                 if ( $( this ).is( ":first-child" ) ) {
 
                 } else if($(this).hasClass('active')) {
                     $(this).removeClass('active');
                     clickElement = clickElement - 1;
-                    arrayExamination[row][col] = 0;
+                    examination.row = row;
+                    examination.col = col;
+                    examination.type = 'root_examination';
+                    examination.value = 0;
                 } else {
                     $(this).addClass('active');
                     clickElement = clickElement + 1;
-                    arrayExamination[row][col] = 1;
+                    examination.row = row;
+                    examination.col = col;
+                    examination.type = 'root_examination';
+                    examination.value = 1;
                 }
-                updateExamination(arrayExamination, url);
+                updateExamination(examination, url);
             });
 
-            function updateExamination(arrayExamination, url) {
+
+            $(".celled.table.reflexes-examination tr").on("click", "td", function (event) {
+                var col = $(this).parent().children().index($(this));
+                var row = $(this).parent().parent().children().index($(this).parent());
+
+                var examination = {};
+                if ( $( this ).is( ":first-child" ) || $( this ).is( ":nth-child(2)" ) ) {
+
+                } else if($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    clickElement = clickElement - 1;
+                    examination.row = row;
+                    examination.col = col;
+                    examination.type = 'reflexes_examination';
+                    examination.value = 0;
+                } else {
+                    $(this).addClass('active');
+                    clickElement = clickElement + 1;
+                    examination.row = row;
+                    examination.col = col;
+                    examination.type = 'reflexes_examination';
+                    examination.value = 1;
+                }
+                updateExamination(examination, url);
+            });
+
+
+
+            function updateExamination(examination, url) {
                 $.ajax({
 
                     type: "POST",
                     url: url,
-                    data: {data :arrayExamination,  _token: "{{ csrf_token() }}"},
+                    data: {data :examination,  _token: "{{ csrf_token() }}", type: 'create'},
                 });
             }
 

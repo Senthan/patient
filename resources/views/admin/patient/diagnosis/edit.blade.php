@@ -22,6 +22,18 @@
         </div>
     </div>
     {!! Form::close() !!}
+
+
+
+    <style>
+        #canvas {
+            border: 10px solid transparent;
+        }
+        .rectangle {
+            border: 1px solid #FF0000;
+            position: absolute;
+        }
+    </style>
 @endsection
 @section('script')
     <script>
@@ -31,6 +43,59 @@
                 $('#date').datetimepicker({
                     format: 'YYYY-MM-DD'
                 });
+
+                function initDraw(canvas) {
+                    var mouse = {
+                        x: 0,
+                        y: 0,
+                        startX: 0,
+                        startY: 0
+                    };
+                    function setMousePosition(e) {
+                        var ev = e || window.event; //Moz || IE
+                        if (ev.pageX) { //Moz
+                            mouse.x = ev.pageX + window.pageXOffset;
+                            mouse.y = ev.pageY + window.pageYOffset;
+                        } else if (ev.clientX) { //IE
+                            mouse.x = ev.clientX + document.body.scrollLeft;
+                            mouse.y = ev.clientY + document.body.scrollTop;
+                        }
+                    };
+
+                    var element = null;
+                    canvas.onmousemove = function (e) {
+                        setMousePosition(e);
+                        if (element !== null) {
+                            var pointY = e.pageY - $( this ).offset().top;
+                            element.style.width = Math.abs(mouse.x - mouse.startX) + 'px';
+                            element.style.height = Math.abs(mouse.y - mouse.startY) + 'px';
+                            element.style.left = (mouse.x - mouse.startX < 0) ? mouse.x + 'px' : mouse.startX + 'px';
+                            element.style.top = pointY + 'px';
+                        }
+                    }
+
+                    canvas.onclick = function (e) {
+                        if (element !== null) {
+                            element = null;
+                            canvas.style.cursor = "default";
+                            console.log("finsihed.");
+                        } else {
+                            console.log("begun.");
+                            mouse.startX = mouse.x;
+                            mouse.startY = mouse.y;
+                            element = document.createElement('div');
+                            element.className = 'rectangle'
+                            element.style.left = mouse.x + 'px';
+                            var pointY = e.pageY - $( this ).offset().top;
+                            element.style.top = pointY + 'px';
+                            console.log('mouse.y -  $("#canvas").height(', pointY ,e.pageY - $( this ).offset().top, mouse.y, $(this).offset(), $( this ).offset().top, $(this).position().top, e.pageY);
+                            canvas.appendChild(element)
+                            canvas.style.cursor = "crosshair";
+                        }
+                    }
+                }
+
+                initDraw(document.getElementById('canvas'));
 
                 var clickElement = 0;
                 var  url = "{{ route('patient.update.examination', ['patient' => $patient->id]) }}";

@@ -490,7 +490,7 @@
 
 <div class="ui two column grid">
     <div class="column">
-        <div class="ui fluid card">
+        <div class="ui fluid card" id="canvas">
             <div class="image">
                 <img src="{{ asset('assets/images/sensory.jpg') }}">
             </div>

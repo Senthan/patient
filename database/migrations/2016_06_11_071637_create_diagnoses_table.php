@@ -26,7 +26,7 @@ class CreateDiagnosesTable extends Migration
             $table->text('past_surgical_history')->nullable()->default(null);
             $table->integer('examination_id')->nullable()->default(null);
             $table->string('allergic_history')->nullable()->default(null);
-            $table->string('imaging')->nullable()->default(null);
+            $table->string('management_plan')->nullable()->default(null);
             $table->string('x_ray')->nullable()->default(null);
             $table->string('ct_scan')->nullable()->default(null);
             $table->string('miri_scan')->nullable()->default(null);

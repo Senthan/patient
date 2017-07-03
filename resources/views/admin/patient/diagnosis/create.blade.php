@@ -27,7 +27,7 @@
 <script>
     app.controller('diagnosisController', ['$scope', '$http', function ($scope, $http) {
         $(function () {
-        
+
             $('#date').datetimepicker({
                 format: 'YYYY-MM-DD'
             });

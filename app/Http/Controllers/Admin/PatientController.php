@@ -154,7 +154,7 @@ class PatientController extends Controller
         $diagnosis->presenting_complain = $request->presenting_complain;
         $diagnosis->past_surgical_history = $request->past_surgical_history;
         $diagnosis->allergic_history = $request->allergic_history;
-        $diagnosis->imaging = $request->imaging;
+        $diagnosis->management_plan = $request->management_plan;
         $diagnosis->x_ray = $request->x_ray;
         $diagnosis->ct_scan = $request->ct_scan;
         $diagnosis->miri_scan = $request->miri_scan;
@@ -215,12 +215,13 @@ class PatientController extends Controller
         $diagnosisTypeNames = SurgeryType::all();
         $diagnosisTypes = SurgeryType::with('treatmentTemplate')->get();
 
+        $examination = $patient->examination;
 
         $followUp = $diagnosis->followUp()->with('drug', 'dose')->get();
         $drugs = Drug::lists('name', 'id');
         $doses = Drug::with('dose')->get();
 
-        return view('admin.patient.diagnosis.edit', compact( 'bioChemistry', 'microBiology', 'drugs','doses','followUp', 'patient', 'consultants','diagnosis', 'diagnosisTypes', 'diagnosisTypeNames', 'surgeryType', 'examination', 'bloodTest', 'investigationUltraSoundScan'));
+        return view('admin.patient.diagnosis.edit', compact('examination', 'bioChemistry', 'microBiology', 'drugs','doses','followUp', 'patient', 'consultants','diagnosis', 'diagnosisTypes', 'diagnosisTypeNames', 'surgeryType', 'examination', 'bloodTest', 'investigationUltraSoundScan'));
 
     }
 

@@ -125,6 +125,11 @@ class PatientController extends Controller
 
     public function addDiagnosis(Patient $patient)
     {
+
+        if ($diagnosis = $patient->diagnosis()->first()) {
+            return redirect()->route('patient.exist.diagnosis', ['patient' => $patient, 'diagnosis' => $diagnosis]);
+        }
+
         $consultants = (Designation::where('name', 'LIKE', '%Surgeon%')->first()) ? Staff::whereIn('designation_id', Designation::where('name', 'LIKE', '%Surgeon%')->lists('id')->toArray())->get()->lists('short_name', 'id') : [];
 //        $consultants = ['Consultant Name' ,'Dr.S.T.Sharma', 'Dr.S.GobiShankar', 'Dr.S.Rajendra', 'Dr.S.Raviraj', 'Dr.T.Ambalavanan'];
         $diagnosis = Diagnosis::find($patient->diagnosis_id);
@@ -216,6 +221,7 @@ class PatientController extends Controller
         $diagnosisTypes = SurgeryType::with('treatmentTemplate')->get();
 
         $examination = $patient->examination;
+        $diagnosis->bath_0 = $patient->examination()->where('row', 10)->where('col', 1)->where('type', 'activities_examination')->first()->value;
 
         $followUp = $diagnosis->followUp()->with('drug', 'dose')->get();
         $drugs = Drug::lists('name', 'id');

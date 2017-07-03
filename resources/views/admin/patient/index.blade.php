@@ -14,12 +14,12 @@
             <a ng-show="selected" ng-href="@{{ delete_url }}" class="button ui big negative labeled icon a-load ">
                 <i class="icon trash"></i>Delete
             </a>
-            {{--<a ng-show="selected" ng-href="@{{ diagnosis_url  }}" class="button ui big positive labeled icon">--}}
+            <a ng-show="selected" ng-href="@{{ diagnosis_url  }}" class="button ui big positive labeled icon">
+                <i class="icon add"></i>Diagnosis Card
+            </a>
+            {{--<a ng-show="selected" ng-click="addDiagnosisCard();" class="button ui big positive labeled icon">--}}
                 {{--<i class="icon add"></i>addDiagnosisCard--}}
             {{--</a>--}}
-            <a ng-show="selected" ng-click="addDiagnosisCard();" class="button ui big positive labeled icon">
-                <i class="icon add"></i>addDiagnosisCard
-            </a>
             {{--<a ng-show="selected" ng-href="@{{ anaesthetic_url  }}" class="button ui big labeled icon a-load blue">--}}
                 {{--<i class="icon add"></i>addAnaesthetic--}}
             {{--</a>--}}
@@ -193,7 +193,6 @@
                 }
                 if($scope.mySelections.length == 1) {
                     $scope.selected = $scope.mySelections[0];
-                    console.log('scope.selected', $scope.selected);
                     $scope.show_url = $scope.moduleUrl + $scope.selected.id + '';
                     $scope.diagnosis_url = $scope.moduleUrl + $scope.selected.id + '/add-diagnosis';
                     $scope.delete_url = $scope.moduleUrl + $scope.selected.id + '/delete';

@@ -88,6 +88,42 @@
 
 
 
+                $(".table.activities-examination tr").on("click", "td", function (event) {
+                    var col = $(this).parent().children().index($(this));
+                    var row = $(this).parent().parent().children().index($(this).parent());
+
+                    var examination = {};
+                    if ( $( this ).is( ":first-child" ) || (row == 10)) {
+
+                    } else if($(this).hasClass('active')) {
+                        $(this).removeClass('active');
+                        clickElement = clickElement - 1;
+                        examination.row = row;
+                        examination.col = col;
+                        examination.type = 'activities_examination';
+                        examination.value = 0;
+                    } else {
+                        $(this).addClass('active');
+                        clickElement = clickElement + 1;
+                        examination.row = row;
+                        examination.col = col;
+                        examination.type = 'activities_examination';
+                        examination.value = 1;
+                    }
+                    updateExamination(examination, url);
+                });
+
+
+                $( "#bath_0" ).keydown(function() {
+                    var examination = {};
+                    examination.row = 10;
+                    examination.col = 1;
+                    examination.type = 'activities_examination';
+                    examination.value = $( "#bath_0" ).val();
+                    updateExamination(examination, url);
+                });
+
+
                 function updateExamination(examination, url) {
                     $.ajax({
 

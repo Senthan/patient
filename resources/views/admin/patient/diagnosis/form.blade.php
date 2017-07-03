@@ -384,7 +384,7 @@
             </div>
             <div class="panel-body">
                 <div class="ui blue segment">
-                    <table class="ui definition table">
+                    <table class="ui definition table activities-examination">
                         <thead>
                         <tr>
                             <th>Activities</th>
@@ -397,80 +397,79 @@
                         <tbody>
                         <tr>
                             <td>Bowels</td>
-                            <td>Incontinent / need enema</td>
-                            <td>Occasional</td>
-                            <td>Continent</td>
-                            <td></td>
+                            <td class="{!! $examination->where('row', 0)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Incontinent / need enema</td>
+                            <td class="{!! $examination->where('row', 0)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Occasional</td>
+                            <td class="{!! $examination->where('row', 0)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Continent</td>
+                            <td class="{!! $examination->where('row', 0)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Bladder</td>
-                            <td>Incontinent / catheterised</td>
-                            <td>Occasional</td>
-                            <td>Continent</td>
-                            <td></td>
+                            <td class="{!! $examination->where('row', 1)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Incontinent / catheterised</td>
+                            <td class="{!! $examination->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Occasional</td>
+                            <td class="{!! $examination->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Continent</td>
+                            <td class="{!! $examination->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Grooming</td>
-                            <td>Needs help</td>
-                            <td>Occasional</td>
-                            <td>Independent</td>
-                            <td></td>
+                            <td class="{!! $examination->where('row', 2)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Needs help</td>
+                            <td class="{!! $examination->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Occasional</td>
+                            <td class="{!! $examination->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independent</td>
+                            <td class="{!! $examination->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Toilet use</td>
-                            <td>Dependant</td>
-                            <td>Need some help</td>
-                            <td>Independent</td>
-                            <td></td>
+                            <td class="{!! $examination->where('row', 3)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Dependant</td>
+                            <td class="{!! $examination->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Need some help</td>
+                            <td class="{!! $examination->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independent</td>
+                            <td class="{!! $examination->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Feeding</td>
-                            <td>Unable</td>
-                            <td>Need help</td>
-                            <td>Independent</td>
-                            <td></td>
+                            <td class="{!! $examination->where('row', 4)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Unable</td>
+                            <td class="{!! $examination->where('row', 4)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Need help</td>
+                            <td class="{!! $examination->where('row', 4)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independent</td>
+                            <td class="{!! $examination->where('row', 4)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Transfer</td>
-                            <td>Unable / no sitting Balance</td>
-                            <td>Major help, can sit</td>
-                            <td>Minor help</td>
-                            <td>Indep</td>
+                            <td class="{!! $examination->where('row', 5)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Unable / no sitting Balance</td>
+                            <td class="{!! $examination->where('row', 5)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Major help, can sit</td>
+                            <td class="{!! $examination->where('row', 5)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Minor help</td>
+                            <td class="{!! $examination->where('row', 5)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Indep</td>
                         </tr>
                         <tr>
                             <td>Mobility</td>
-                            <td>Immobile</td>
-                            <td>Wheel chair independent</td>
-                            <td>walks with help</td>
-                            <td>Indep</td>
+                            <td class="{!! $examination->where('row', 6)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Immobile</td>
+                            <td class="{!! $examination->where('row', 6)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Wheel chair independent</td>
+                            <td class="{!! $examination->where('row', 6)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">walks with help</td>
+                            <td class="{!! $examination->where('row', 6)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Indep</td>
                         </tr>
                         <tr>
                             <td>Dressing</td>
-                            <td>Dependent</td>
-                            <td>Needs help</td>
-                            <td>Independentp</td>
-                            <td></td>
+                            <td class="{!! $examination->where('row', 7)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Dependent</td>
+                            <td class="{!! $examination->where('row', 7)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Needs help</td>
+                            <td class="{!! $examination->where('row', 7)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independentp</td>
+                            <td class="{!! $examination->where('row', 7)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Stairs</td>
-                            <td>Unable</td>
-                            <td>Needs help</td>
-                            <td>Independentp</td>
-                            <td></td>
+                            <td class="{!! $examination->where('row', 8)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Unable</td>
+                            <td class="{!! $examination->where('row', 8)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Needs help</td>
+                            <td class="{!! $examination->where('row', 8)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independentp</td>
+                            <td class="{!! $examination->where('row', 8)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Bathing</td>
-                            <td>Dependent</td>
-                            <td>Independentp</td>
-                            <td></td>
-                            <td></td>
+                            <td class="{!! $examination->where('row', 9)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Dependent</td>
+                            <td class="{!! $examination->where('row', 9)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independentp</td>
+                            <td class="{!! $examination->where('row', 9)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $examination->where('row', 9)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Bathal Index</td>
-                            <td><input type="text" name="bath_0"/></td>
-                            <td><input type="text" name="bath_1"/></td>
-                            <td><input type="text" name="bath_2"/></td>
-                            <td><input type="text" name="bath_3"/></td>
+                            <td colspan="4">
+                                {!! Form::text('bath_0', null, ['class' => 'form-control', 'placeholder' => '', 'style' => 'width: 100%;']) !!}
+                            </td>
                         </tr>
                         </tbody>
                     </table>

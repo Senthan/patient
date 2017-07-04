@@ -19,6 +19,8 @@ class CreateNonSurgicalsTable extends Migration
             $table->string('management')->nullable()->default(null);
             $table->date('date_of_admission')->nullable()->default(null);
             $table->date('date_of_discharge')->nullable()->default(null);
+            $table->enum('traneximic_acid', ['Yes', 'No'])->default('Yes')->nullable();
+            $table->enum('methlene_blue', ['Yes', 'No'])->default('Yes')->nullable();
             $table->timestamps();
         });
     }

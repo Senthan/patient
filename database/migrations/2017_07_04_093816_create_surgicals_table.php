@@ -14,6 +14,14 @@ class CreateSurgicalsTable extends Migration
     {
         Schema::create('surgicals', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('patient_id');
+            $table->string('surgery')->nullable()->default(null);
+            $table->string('operative_notes')->nullable()->default(null);
+            $table->string('complication')->nullable()->default(null);
+            $table->string('discharge_plan')->nullable()->default(null);
+            $table->date('date_of_admission')->nullable()->default(null);
+            $table->date('date_of_surgery')->nullable()->default(null);
+            $table->date('date_of_discharge')->nullable()->default(null);
             $table->timestamps();
         });
     }

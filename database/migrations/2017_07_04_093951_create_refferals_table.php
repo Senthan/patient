@@ -14,6 +14,10 @@ class CreateRefferalsTable extends Migration
     {
         Schema::create('refferals', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('patient_id');
+            $table->string('refferal')->nullable()->default(null);
+            $table->string('reffered_to')->nullable()->default(null);
+            $table->string('report')->nullable()->default(null);
             $table->timestamps();
         });
     }

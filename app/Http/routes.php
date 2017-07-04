@@ -75,6 +75,8 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
             $router->get('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@existDiagnosis', 'as' => 'patient.exist.diagnosis']);
             $router->post('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@updateDiagnosis', 'as' => 'patient.exist.diagnosis']);
             $router->get('{patient}/add-diagnosis', ['uses' => 'PatientController@addDiagnosis', 'as' => 'patient.add.diagnosis']);
+            $router->get('{patient}/add-non-surgical', ['uses' => 'PatientController@addNonSurgical', 'as' => 'patient.add.non.surgical']);
+            $router->post('{patient}/add-non-surgical', ['uses' => 'PatientController@saveNonSurgical', 'as' => 'patient.non.surgical']);
             $router->get('{patient}/add-anaesthetic', ['uses' => 'PatientController@addAnaesthetic', 'as' => 'patient.add.anaesthetic']);
             $router->post('{patient}/add-diagnosis', ['uses' => 'PatientController@storeDiagnosis', 'as' => 'patient.store.diagnosis']);
             $router->post('{patient}/add-anaesthetic', ['uses' => 'PatientController@storeAnaesthetic', 'as' => 'patient.store.anaesthetic']);

@@ -541,3 +541,14 @@
         <p class="help-block">{{ ($errors->has('other_imaging') ? $errors->first('other_imaging') : '') }}</p>
     </div>
 </div>
+
+<style>
+
+    #canvas {
+        border: 10px solid transparent;
+    }
+    .rectangle {
+        border: 1px solid #FF0000;
+        position: absolute;
+    }
+</style>

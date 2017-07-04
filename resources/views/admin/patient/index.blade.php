@@ -17,6 +17,9 @@
             <a ng-show="selected" ng-href="@{{ diagnosis_url  }}" class="button ui big positive labeled icon">
                 <i class="icon add"></i>Diagnosis Card
             </a>
+            <a ng-show="selected" ng-href="@{{ non_surgical_url  }}" class="button ui big positive labeled icon olive ">
+                <i class="icon add"></i>Add Non Surgical
+            </a>
             {{--<a ng-show="selected" ng-click="addDiagnosisCard();" class="button ui big positive labeled icon">--}}
                 {{--<i class="icon add"></i>addDiagnosisCard--}}
             {{--</a>--}}
@@ -195,6 +198,7 @@
                     $scope.selected = $scope.mySelections[0];
                     $scope.show_url = $scope.moduleUrl + $scope.selected.id + '';
                     $scope.diagnosis_url = $scope.moduleUrl + $scope.selected.id + '/add-diagnosis';
+                    $scope.non_surgical_url = $scope.moduleUrl + $scope.selected.id + '/add-non-surgical';
                     $scope.delete_url = $scope.moduleUrl + $scope.selected.id + '/delete';
                     $scope.diagnosis_print_url = $scope.moduleUrl + $scope.selected.id + '/diagnosis-print';
                     $scope.exist_diagnosis_url = $scope.moduleUrl + $scope.selected.id + '/existing-diagnosis/'+ $scope.selected.diagnosis.data[0].id;

@@ -17,6 +17,7 @@ use App\InvestigationHematology;
 use App\InvestigationMicroBiology;
 use App\InvestigationUltraSoundScan;
 use App\InvestigationUrineTest;
+use App\NonSurgical;
 use App\PathologyReport;
 use App\Patient;
 use App\PatientSurgeryType;
@@ -35,6 +36,7 @@ use App\Http\Requests\PatientStoreRequest;
 use App\Http\Requests\AddDiagnosisStoreRequest;
 use App\Http\Requests\PatientProfileUpdateRequest;
 use App\Http\Requests\PatientUUIDStoreRequest;
+use App\Http\Requests\NonSurgicalStoreRequest;
 
 
 use App\Transformers\PatientTransformer;
@@ -144,6 +146,25 @@ class PatientController extends Controller
         $diagnosisTypes = SurgeryType::with('treatmentTemplate')->get();
         return view('admin.patient.diagnosis.create', compact('drugs', 'doses', 'patient', 'consultants','diagnosis', 'diagnosisTypes', 'diagnosisTypeNames'));
     }
+
+    public function addNonSurgical(Patient $patient)
+    {
+        return view('admin.patient.non-surgical.create', compact('patient'));
+    }
+
+    public function saveNonSurgical(NonSurgicalStoreRequest $request, Patient $patient)
+    {
+        $nonSurgical = new NonSurgical();
+        $nonSurgical->patient_id = $patient->id;
+        $nonSurgical->date_of_admission = $request->date_of_admission;
+        $nonSurgical->date_of_discharge = $request->date_of_discharge;
+        $nonSurgical->indication_admission = $request->indication_admission;
+        $nonSurgical->management = $request->management;
+        $nonSurgical->save();
+
+        return redirect()->route('patient.index');
+    }
+
 
     public function storeDiagnosis(AddDiagnosisStoreRequest $request, Patient $patient)
     {

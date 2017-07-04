@@ -77,6 +77,14 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
             $router->get('{patient}/add-diagnosis', ['uses' => 'PatientController@addDiagnosis', 'as' => 'patient.add.diagnosis']);
             $router->get('{patient}/add-non-surgical', ['uses' => 'PatientController@addNonSurgical', 'as' => 'patient.add.non.surgical']);
             $router->post('{patient}/add-non-surgical', ['uses' => 'PatientController@saveNonSurgical', 'as' => 'patient.non.surgical']);
+
+            $router->get('{patient}/add-surgical', ['uses' => 'PatientController@addSurgical', 'as' => 'patient.add.surgical']);
+            $router->post('{patient}/add-surgical', ['uses' => 'PatientController@saveSurgical', 'as' => 'patient.surgical.store']);
+
+            $router->get('{patient}/refferal', ['uses' => 'PatientController@addRefferal', 'as' => 'patient.add.reffercal']);
+            $router->post('{patient}/refferal', ['uses' => 'PatientController@saveRefferal', 'as' => 'patient.reffercal.store']);
+
+
             $router->get('{patient}/add-anaesthetic', ['uses' => 'PatientController@addAnaesthetic', 'as' => 'patient.add.anaesthetic']);
             $router->post('{patient}/add-diagnosis', ['uses' => 'PatientController@storeDiagnosis', 'as' => 'patient.store.diagnosis']);
             $router->post('{patient}/add-anaesthetic', ['uses' => 'PatientController@storeAnaesthetic', 'as' => 'patient.store.anaesthetic']);

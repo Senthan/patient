@@ -22,8 +22,10 @@ use App\PathologyReport;
 use App\Patient;
 use App\PatientSurgeryType;
 use App\Profile;
+use App\Refferal;
 use App\Staff;
 use App\SurgeryType;
+use App\Surgical;
 use App\TreatmentTemplate;
 use Carbon\Carbon;
 use Hashids\Hashids;
@@ -37,6 +39,8 @@ use App\Http\Requests\AddDiagnosisStoreRequest;
 use App\Http\Requests\PatientProfileUpdateRequest;
 use App\Http\Requests\PatientUUIDStoreRequest;
 use App\Http\Requests\NonSurgicalStoreRequest;
+use App\Http\Requests\SurgicalStoreRequest;
+use App\Http\Requests\RefferalStoreRequest;
 
 
 use App\Transformers\PatientTransformer;
@@ -161,6 +165,45 @@ class PatientController extends Controller
         $nonSurgical->indication_admission = $request->indication_admission;
         $nonSurgical->management = $request->management;
         $nonSurgical->save();
+
+        return redirect()->route('patient.index');
+    }
+
+
+    public function addSurgical(Patient $patient)
+    {
+        return view('admin.patient.surgical.create', compact('patient'));
+    }
+
+    public function saveSurgical(SurgicalStoreRequest $request, Patient $patient)
+    {
+        $surgical = new Surgical();
+        $surgical->patient_id = $patient->id;
+        $surgical->date_of_admission = $request->date_of_admission;
+        $surgical->date_of_surgery = $request->date_of_surgery;
+        $surgical->date_of_discharge = $request->date_of_discharge;
+        $surgical->surgery = $request->surgery;
+        $surgical->operative_notes = $request->operative_notes;
+        $surgical->complication = $request->complication;
+        $surgical->discharge_plan = $request->discharge_plan;
+        $surgical->save();
+
+        return redirect()->route('patient.index');
+    }
+
+    public function addRefferal(Patient $patient)
+    {
+        return view('admin.patient.refferal.create', compact('patient'));
+    }
+
+    public function saveRefferal(RefferalStoreRequest $request, Patient $patient)
+    {
+        $refferal = new Refferal();
+        $refferal->patient_id = $patient->id;
+        $refferal->refferal = $request->refferal;
+        $refferal->reffered_to = $request->reffered_to;
+        $refferal->report = $request->report;
+        $refferal->save();
 
         return redirect()->route('patient.index');
     }

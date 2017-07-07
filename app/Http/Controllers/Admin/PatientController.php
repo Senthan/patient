@@ -79,21 +79,15 @@ class PatientController extends Controller
         return view('admin.patient.index', compact('diagnosisTypes'));
     }
 
+    public function create()
+    {
+        return view('admin.patient.create');
+    }
+
     public function store(PatientStoreRequest $request)
     {
-        $patient = isset($request['id']) && $request['id'] ? Patient::find($request['id']) : Patient::create([$request['field_name'] => $request['new_value']]);
-        if(isset($request['field_name']) && $request['field_name'] == 'surgeryType.data[0].name') {
-            $request['field_name'] = 'surgery_type_id';
-            $surgeryType = SurgeryType::where('name', $request['new_value'])->first();
-            $surgeryTypeId = isset($surgeryType) ? $surgeryType->id : 0;
-            $request['new_value'] = $surgeryTypeId;
-        }
-        $patient->update([$request['field_name'] => $request['new_value']]);
-        if(isset($request['field_name']) && isset($request['new_value']) && $request['field_name'] == 'status' && $request['new_value'] == 'Authorised') {
-
-        }
-        return 1;
-//        return redirect()->route('patient.index');
+        $patient = Patient::create($request->only(['patient_uuid', 'name', 'email', 'phone', 'nic_no', 'age', 'address']));
+        return redirect()->route('patient.index');
     }
 
     /**

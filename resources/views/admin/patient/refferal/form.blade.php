@@ -8,7 +8,7 @@
 </div>
 
 <div class="form-group {{ ($errors->has('reffered_to')) ? 'has-error' : '' }} required">
-    {!! Form::label('reffered_to', 'Reffered to', ['class' => 'col-md-2 control-label']) !!}
+    {!! Form::label('reffered_to', 'Reffered to / Done by', ['class' => 'col-md-2 control-label']) !!}
     <div class="col-md-10">
         {!! Form::text('reffered_to', null, ['class' => 'form-control', 'placeholder' => 'Reffered to / Done by']) !!}
         <p class="help-block">{{ ($errors->has('reffered_to') ? $errors->first('reffered_to') : '') }}</p>

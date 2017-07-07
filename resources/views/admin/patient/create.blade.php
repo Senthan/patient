@@ -5,21 +5,25 @@
         <li>{!! link_to_route('patient.index', 'patients') !!}</li>
         <li class="active">Create</li>
     </ul>
-    {!! Form::open(['url' => route('patient.index'), 'role' => 'form', 'class' => 'form-horizontal']) !!}
 
-    <div class="panel panel-default">
-        <div class="panel-heading clearfix">
-            <span class="pull-left"><h4>Create patient</h4></span>
-            <span class="pull-right">
-                @include('admin.patients.back-btn', ['text' => 'Back'])
-            </span>
+    <section class="content">
+        {!! Form::open(['url' => route('patient.store'), 'role' => 'form', 'class' => 'form-horizontal ui form']) !!}
+        <div class="ui segments" style="background-color: #f5f5f5; !important;">
+            <div class="ui segment clearfix">
+                <h2 class="pull-left">New patient</h2>
+                <div class="pull-right">
+                    <a class="ui small button" href="{{ route('patient.index') }}">Cancel</a>
+                </div>
+            </div>
+            <div class="ui green segment"  style="background-color: rgba(0, 0, 0, 0.22); !important;">
+                @include('admin.patient.form')
+            </div>
+            <div class="ui segment">
+                <button class="ui small button green" type="submit">Create</button>
+                <a class="ui small button" href="{{ route('patient.index') }}">Cancel</a>
+            </div>
         </div>
-        <div class="panel-body">
-            @include('admin.patients.form')
-        </div>
-        <div class="panel-footer text-right">
-            @include('admin.patient.submit-btn', ['text' => 'Create', 'class' => 'green'])
-        </div>
-    </div>
-    {!! Form::close() !!}
+        {!! Form::close() !!}
+    </section>
+
 @endsection

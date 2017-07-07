@@ -37,7 +37,7 @@
 <div class="form-group {{ ($errors->has('surgery')) ? 'has-error' : '' }} required">
     {!! Form::label('surgery', 'Surgery', ['class' => 'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::textarea('surgery', null, ['class' => 'form-control', 'placeholder' => 'Surgery']) !!}
+        {!! Form::textarea('surgery', null, ['class' => 'form-control', 'placeholder' => 'Surgery', 'rows' => '2']) !!}
         <p class="help-block">{{ ($errors->has('surgery') ? $errors->first('surgery') : '') }}</p>
     </div>
 </div>
@@ -73,7 +73,7 @@
 <div class="form-group {{ ($errors->has('complication')) ? 'has-error' : '' }} required">
     {!! Form::label('complication', 'Complication', ['class' => 'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::textarea('complication', null, ['class' => 'form-control', 'placeholder' => 'Complication']) !!}
+        {!! Form::textarea('complication', null, ['class' => 'form-control', 'placeholder' => 'Complication', 'rows' => '3']) !!}
         <p class="help-block">{{ ($errors->has('complication') ? $errors->first('complication') : '') }}</p>
     </div>
 </div>

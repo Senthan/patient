@@ -8,129 +8,47 @@
 <div ng-controller="PatientController">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <a ng-show="!selected" ng-click="addPatientCode()" class="button ui big positive labeled icon">
-                <i class="icon add"></i>Add Patient
+            <a ng-href="{{ route('patient.create') }}" class="button ui big positive labeled icon">
+                <i class="icon add"></i>Create
+            </a>
+            <a ng-show="selected" ng-href="@{{ diagnosis_url  }}" class="button ui big positive labeled icon">
+                <i class="icon add"></i>First clinic visit
+            </a>
+            <a ng-show="selected" ng-href="@{{ non_surgical_url  }}" class="button ui big labeled icon olive ">
+                <i class="icon add"></i>Non Surgical
+            </a>
+            <a ng-show="selected" ng-href="@{{ surgical_url  }}" class="button ui big labeled icon violet">
+                <i class="icon add"></i>Surgical
+            </a>
+            <a ng-show="selected" ng-href="@{{ refferal_url  }}" class="button ui big labeled icon pink">
+                <i class="icon add"></i>Refferal
+            </a>
+            <a ng-show="selected" ng-href="@{{ non_surgical_follow_up_url  }}" class="button ui big labeled icon pink">
+                <i class="icon add"></i>Non Surgical Follow up
+            </a>
+            <a ng-show="selected" ng-href="@{{ surgical_follow_up_url  }}" class="button ui big labeled icon pink">
+                <i class="icon add"></i>Surgical Follow up
+            </a>
+            <a ng-show="selected" ng-href="@{{ show_url }}" class="button ui big labeled icon a-load orange">
+                <i class="list layout icon"></i>Summary
             </a>
             <a ng-show="selected" ng-href="@{{ delete_url }}" class="button ui big negative labeled icon a-load ">
                 <i class="icon trash"></i>Delete
             </a>
-            <a ng-show="selected" ng-href="@{{ diagnosis_url  }}" class="button ui big positive labeled icon">
-                <i class="icon add"></i>Diagnosis Card
-            </a>
-            <a ng-show="selected" ng-href="@{{ non_surgical_url  }}" class="button ui big labeled icon olive ">
-                <i class="icon add"></i>Add Non Surgical
-            </a>
-            <a ng-show="selected" ng-href="@{{ surgical_url  }}" class="button ui big labeled icon violet">
-                <i class="icon add"></i>Add Surgical
-            </a>
-            <a ng-show="selected" ng-href="@{{ refferal_url  }}" class="button ui big labeled icon pink">
-                <i class="icon add"></i>Add Refferal
-            </a>
-            {{--<a ng-show="selected" ng-click="addDiagnosisCard();" class="button ui big positive labeled icon">--}}
-                {{--<i class="icon add"></i>addDiagnosisCard--}}
-            {{--</a>--}}
-            {{--<a ng-show="selected" ng-href="@{{ anaesthetic_url  }}" class="button ui big labeled icon a-load blue">--}}
-                {{--<i class="icon add"></i>addAnaesthetic--}}
-            {{--</a>--}}
-            <a ng-show="selected" ng-href="@{{ show_url }}/manage" class="button ui big labeled icon a-load teal"><i class="user icon"></i>Manage Profile</a>
-            <a ng-show="selected" ng-href="@{{ show_url }}" class="button ui big labeled icon a-load orange">
-                <i class="list layout icon"></i>Full Details
-            </a>
-            {{--<a target="_blank" ng-show="mySelections.length" ng-href="@{{ print_url }}" class="button ui big labeled icon a-load white">--}}
-                {{--<i class="icon print"></i>Patients Grid Print--}}
-            {{--</a>--}}
-            {{--<a target="_blank" ng-show="selected" ng-href="@{{ diagnosis_print_url }}" class="button ui big labeled icon a-load white">--}}
-                {{--<i class="icon print"></i>Patient diagnosis Print--}}
-            {{--</a>--}}
-            {{--<a ng-href="@{{ mail_url }}" ng-show="mySelections.length"  class="button ui big labeled icon a-load white">--}}
-                {{--<i class="icon mail"></i>Mail--}}
-            {{--</a>--}}
         </div>
         <div class="panel-body">
-            @if (session('message'))
-                <div class="alert alert-success alert-dismissable">
-                    <a class="panel-close close" data-dismiss="alert">×</a>
-                    <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                    {{ session('message') }}
-                </div>
-            @endif
-
-            <div>
-                <div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid-move-columns class="grid"></div>
-            </div>
-        </div>
-    </div>
-    <div class="modal-wrapper">
-        <div class="modal fade" id="add-patient-code-modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        {!! Form::open(['url' => route('patient.uuid'), 'role' => 'form', 'class' => 'form-horizontal']) !!}
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3>Create Unique Id for patient</h3>
-                            </div>
-                            <div class="panel-body">
-                                @if (count($errors) > 0)
-                                    <div class="alert alert-danger">
-                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                <div class="form-group">
-                                    {!! Form::text('nic_no', null, ['class' => 'form-control form-size', 'placeholder' => 'Enter Unique No']) !!}
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="panel-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="button ui big positive labeled icon">Add</button>
-                        </div>
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal-wrapper">
-        <div class="modal fade" id="select-surgery-type-modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3>Select surgery type on patient</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="form-group">
-                                    {!! Form::select('diagnosis_type', ['new_diagnosis' => 'Create new diagnosis', 'update_diagnosis' => 'Update existing diagnosis'], null, ['class' => 'form-control form-size', 'ng-model' => 'diagnosisType', 'ng-change' => 'diagnosisTypeChange();', 'placeholder' => 'Select Type']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-footer">
-                            <a type="button" class="btn btn-default" data-dismiss="modal">Cancel</a>
-                            <a ng-show="!enableAddDiagnosis" ng-href="@{{ diagnosis_url  }}" type="button" class="button ui big blue labeled icon">OK</a>
-                            <a ng-show="enableAddDiagnosis && enableUpdateDiagnosis" ng-href="@{{ exist_diagnosis_url  }}" type="button" class="button ui big orange labeled icon">Update</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid-move-columns class="grid"></div>
         </div>
     </div>
 </div>
 @endsection
 @section('script')
     <script>
-        $(function () {
-           $('#date_of_birth').datetimepicker({
-                format: 'YYYY-MM-DD'
-            });
+        $(document).ready(function () {
+            $('.ui.dropdown')
+                .dropdown();
         });
+
         app.controller('PatientController', ['$scope', '$http', function ($scope, $http) {
             $scope.moduleUrl = "{{ route('patient.index') }}/"
             var surgeryTypes = [];
@@ -143,7 +61,7 @@
 
             $scope.patients = [];
             var columnDefs = [
-                { displayName: 'Patient ID', field: 'patient_uuid', enableCellEdit: false, minWidth: 100, width: 130},
+                { displayName: 'OSC No', field: 'patient_uuid', enableCellEdit: false, minWidth: 100, width: 130},
                 { displayName: 'Name', field: 'name', minWidth: 150, width: 150},
                 { displayName: 'Age', field: 'age', minWidth: 60, width: 60},
                 { displayName: 'Sex', field: 'sex', editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -195,103 +113,26 @@
             });
             $scope.setSelection = function(gridApi) {
                 $scope.mySelections = gridApi.selection.getSelectedRows();
-                if($scope.mySelections.length > 0) {
-                    $scope.selectedPatient = _.pluck($scope.mySelections, 'patient_uuid');
-                    $scope.print_url = "{{ route('patient.print.card') }}/"+$scope.selectedPatient;
-                    $scope.mail_url = "{{ route('patient.mail') }}/"+$scope.selectedPatient;
-                }
+
                 if($scope.mySelections.length == 1) {
                     $scope.selected = $scope.mySelections[0];
                     $scope.show_url = $scope.moduleUrl + $scope.selected.id + '';
+                    $scope.edit_url = $scope.moduleUrl + $scope.selected.id + '/edit';
                     $scope.diagnosis_url = $scope.moduleUrl + $scope.selected.id + '/add-diagnosis';
                     $scope.non_surgical_url = $scope.moduleUrl + $scope.selected.id + '/add-non-surgical';
                     $scope.surgical_url = $scope.moduleUrl + $scope.selected.id + '/add-surgical';
                     $scope.refferal_url = $scope.moduleUrl + $scope.selected.id + '/refferal';
                     $scope.delete_url = $scope.moduleUrl + $scope.selected.id + '/delete';
-                    $scope.diagnosis_print_url = $scope.moduleUrl + $scope.selected.id + '/diagnosis-print';
-                    $scope.exist_diagnosis_url = $scope.moduleUrl + $scope.selected.id + '/existing-diagnosis/'+ $scope.selected.diagnosis.data[0].id;
-
+                    $scope.non_surgical_follow_up_url = $scope.moduleUrl + $scope.selected.id + '/non-surgical-followup';
+                    $scope.surgical_follow_up_url = $scope.moduleUrl + $scope.selected.id + '/surgical-followup';
+                    if ($scope.selected.diagnosis && $scope.selected.diagnosis.data.length) {
+                        $scope.exist_diagnosis_url = $scope.moduleUrl + $scope.selected.id + '/existing-diagnosis/'+ $scope.selected.diagnosis.data[0].id;
+                    }
                 }
                 else {
                     $scope.selected = null;
                 }
             };
-            gridOptions.multiSelect = true;
-            $scope.addData = function() {
-                $('#add-patient-code-modal').modal('hide');
-                var data = {};
-                data.id = null;
-                data.field_name = 'name';
-                data.new_value = 'New Patient Name';
-                $http.post($scope.moduleUrl + '?ajax=true', data).success(function (response) {
-                    window.location.reload(true);
-                });
-            };
-            $scope.addAnaesthetic = function() {
-                myModal.open();
-            };
-
-            $scope.addPatientCode = function() {
-                $('#add-patient-code-modal').modal('show');
-            };
-
-            var nicNoError = '{!! $errors->has('nic_no')  !!}';
-            var typeError = '{!! $errors->has('type')  !!}';
-
-            (nicNoError || typeError) ? $('#add-patient-code-modal').modal('show') : $('#add-patient-code-modal').modal('hide')
-            $scope.disableNic = false;
-            $scope.showNic = false;
-            $scope.typeChange = function() {
-                if($scope.type == 'nic_no') {
-                    $scope.disableNic = false;
-                    $scope.showNic = true;
-                }
-                if($scope.type == 'nic_no_have_not') {
-                    $scope.disableNic = true;
-                    $scope.showNic = true;
-                }
-            };
-            $scope.addDiagnosisCard = function() {
-                $('#select-surgery-type-modal').modal('show');
-            };
-            $scope.enableAddDiagnosis = false;
-            $scope.diagnosisTypeChange = function() {
-                $scope.enableAddDiagnosis = false;
-                if($scope.diagnosisType == 'update_diagnosis') {
-                    $scope.enableAddDiagnosis = true;
-                }
-            };
-            $scope.enableUpdateDiagnosis = true;
-
-
-            $scope.printCard = function() {
-                $scope.selectedPatient = _.pluck($scope.mySelections, 'patient_uuid');
-                $scope.print_url = "{{ route('patient.print.card') }}/";
-                var data = {};
-                data.patients = $scope.selectedPatient;
-                $http.post($scope.printCardUrl + '?ajax=true', data).success(function (response) {
-
-                });
-            };
-            $scope.sendMail = function() {
-                swal({
-                    title: "Are you sure?",
-                    text: "If you send patient from list to mail you can't add back.",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Yes, do it!",
-                    cancelButtonText: "No, cancel please!",
-                    closeOnConfirm: true,
-                    closeOnCancel: true
-                }, function (isConfirm) {
-                    if (isConfirm) {
-
-                    }
-                });
-            };
-
-
         }]);
     </script>
 @endsection

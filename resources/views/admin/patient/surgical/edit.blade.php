@@ -18,7 +18,7 @@
             @include('admin.patient.surgical.form')
         </div>
         <div class="panel-footer text-right">
-            @include('admin.patient.submit-btn', ['text' => 'Update Surgical', 'class' => 'blue'])
+            @include('admin.patient.submit-btn', ['text' => 'Edit', 'class' => 'blue'])
         </div>
     </div>
     {!! Form::close() !!}

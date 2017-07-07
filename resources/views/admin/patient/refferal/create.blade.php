@@ -9,7 +9,7 @@
     {!! Form::open(['url' => route('patient.reffercal.store', ['patient' => $patient->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
-            <span class="pull-left"><h4>Add Reffercal</h4></span>
+            <span class="pull-left"><h4>Refferals / Special Investigations </h4></span>
             <span class="pull-right">
                 @include('admin.patient.back-btn', ['text' => 'Back'])
             </span>
@@ -18,7 +18,7 @@
             @include('admin.patient.refferal.form')
         </div>
         <div class="panel-footer text-right">
-            @include('admin.patient.submit-btn', ['text' => 'Add Reffercal', 'class' => 'green'])
+            @include('admin.patient.submit-btn', ['text' => 'Save', 'class' => 'green'])
         </div>
     </div>
     {!! Form::close() !!}

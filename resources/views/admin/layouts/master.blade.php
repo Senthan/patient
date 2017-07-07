@@ -40,6 +40,7 @@
     @endif
     <script src="{{ asset('components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('components/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('components/semantic/dist/semantic.min.js') }}"></script>
     <script src="{{ asset('components/angular/angular.js') }}"></script>
     <script src="{{ asset('components/angular-touch/angular-touch.js') }}"></script>
     <script src="{{ asset('components/angular-animate/angular-animate.js') }}"></script>

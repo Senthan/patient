@@ -1,97 +1,56 @@
+<style>
+    label {
+        font-size: 15px !important;
+    }
+</style>
 
+<div class="field">
+    <label>Date</label><div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        {!! Form::text('date') !!}
+    </div>
+    <p class="help-block">{!! ($errors->has('date') ? $errors->first('date') : '') !!}</p>
+</div>
 
-<div class="form-group {{ ($errors->has('date')) ? 'has-error' : '' }} required">
-    {!! Form::label('date', 'Date', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-4">
-        <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-            {!! Form::text('date', null, ['class' => 'form-control', 'placeholder' => 'Date']) !!}
+<div class="field">
+    <label>Post up</label>
+    <div class="input-group">
+        <div class="col-md-4">
+            <div class="ui action input">
+                <input type="text" placeholder="Days...">
+                <button class="ui button">Days</button>
+            </div>
         </div>
-        <p class="help-block">{{ ($errors->has('date') ? $errors->first('date') : '') }}</p>
+        <div class="col-md-4">
+            <div class="ui action input">
+                <input type="text" placeholder="Weeks...">
+                <button class="ui button">Weeks</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="ui action input">
+                <input type="text" placeholder="Month...">
+                <button class="ui button">Months</button>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="form-group {{ ($errors->has('refferred_from')) ? 'has-error' : '' }} required">
-    {!! Form::label('refferred_from', 'Refferred from', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::text('refferred_from', null, ['class' => 'form-control', 'placeholder' => 'Refferred From']) !!}
-        <p class="help-block">{{ ($errors->has('refferred_from') ? $errors->first('refferred_from') : '') }}</p>
-    </div>
-</div>
+<div class="form-group {!! ($errors->has('height')) ? 'has-error' : '' !!} required">
 
-<div class="form-group {!! ($errors->has('consultant')) ? 'has-error' : '' !!} required">
-    {!! Form::label('consultant', 'Consultant', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::select('staff_id', $consultants, null, ['class' => 'form-control']) !!}
-        <p class="help-block">{!! ($errors->has('consultant') ? $errors->first('consultant') : '') !!}</p>
-    </div>
 </div>
 
 
-<div class="form-group {{ ($errors->has('co_mobidities')) ? 'has-error' : '' }} required">
-    {!! Form::label('co_mobidities', 'CO - Mobidities', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::textarea('co_mobidities', null, ['class' => 'form-control', 'placeholder' => 'CO - Mobidities']) !!}
-        <p class="help-block">{{ ($errors->has('co_mobidities') ? $errors->first('co_mobidities') : '') }}</p>
-    </div>
+<div class="field">
+    <label>Complain</label>
+    {!! Form::textarea('complain', null, ['rows' => '3']) !!}
+    <p class="help-block">{!! ($errors->has('complain') ? $errors->first('complain') : '') !!}</p>
 </div>
 
-<div class="form-group {{ ($errors->has('drugs_on')) ? 'has-error' : '' }} required">
-    {!! Form::label('drugs_on', 'Drugs On', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::textarea('drugs_on', null, ['class' => 'form-control', 'placeholder' => 'Drugs On']) !!}
-        <p class="help-block">{{ ($errors->has('drugs_on') ? $errors->first('drugs_on') : '') }}</p>
-    </div>
-</div>
-
-<div class="form-group {{ ($errors->has('height')) ? 'has-error' : '' }} required">
-    {!! Form::label('height', 'Height', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::text('height', null, ['class' => 'form-control', 'placeholder' => 'Height']) !!}
-        <p class="help-block">{{ ($errors->has('height') ? $errors->first('height') : '') }}</p>
-    </div>
-</div>
-
-<div class="form-group {{ ($errors->has('drugs_on')) ? 'has-error' : '' }} required">
-    {!! Form::label('weight', 'Weight', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::text('weight', null, ['class' => 'form-control', 'placeholder' => 'Weight']) !!}
-        <p class="help-block">{{ ($errors->has('weight') ? $errors->first('weight') : '') }}</p>
-    </div>
-</div>
-
-<div class="form-group {{ ($errors->has('bmi')) ? 'has-error' : '' }} required">
-    {!! Form::label('bmi', 'BMI', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::text('bmi', null, ['class' => 'form-control', 'placeholder' => 'BMI']) !!}
-        <p class="help-block">{{ ($errors->has('bmi') ? $errors->first('bmi') : '') }}</p>
-    </div>
-</div>
-
-<div class="form-group {{ ($errors->has('presenting_complain')) ? 'has-error' : '' }} required">
-    {!! Form::label('presenting_complain', 'Presenting Complain', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::textarea('presenting_complain', null, ['class' => 'form-control', 'placeholder' => 'Presenting Complain']) !!}
-        <p class="help-block">{{ ($errors->has('presenting_complain') ? $errors->first('presenting_complain') : '') }}</p>
-    </div>
-</div>
-
-
-<div class="form-group {{ ($errors->has('past_surgical_history')) ? 'has-error' : '' }} required">
-    {!! Form::label('past_surgical_history', 'Past Surgical History', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::textarea('past_surgical_history', null, ['class' => 'form-control', 'placeholder' => 'Past Surgical History', 'rows' => '3']) !!}
-        <p class="help-block">{{ ($errors->has('past_surgical_history') ? $errors->first('past_surgical_history') : '') }}</p>
-    </div>
-</div>
-
-
-<div class="form-group {{ ($errors->has('allergic_history')) ? 'has-error' : '' }} required">
-    {!! Form::label('allergic_history', 'Allergic History', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::textarea('allergic_history', null, ['class' => 'form-control', 'placeholder' => 'Allergic History', 'rows' => '3']) !!}
-        <p class="help-block">{{ ($errors->has('allergic_history') ? $errors->first('allergic_history') : '') }}</p>
-    </div>
+<div class="field">
+    <label>Examination</label>
+    {!! Form::textarea('examination', null, ['rows' => '3']) !!}
+    <p class="help-block">{!! ($errors->has('examination') ? $errors->first('examination') : '') !!}</p>
 </div>
 
 <div class="form-group {{ ($errors->has('history')) ? 'has-error' : '' }} required">
@@ -293,10 +252,10 @@
 
                     <table class="ui celled table reflexes-examination">
                         <thead>
-                            <tr><th colspan="1"></th>
-                                <th colspan="1"></th>
-                                <th colspan="5">Grading</th>
-                            </tr>
+                        <tr><th colspan="1"></th>
+                            <th colspan="1"></th>
+                            <th colspan="5">Grading</th>
+                        </tr>
                         </thead>
                         <tbody>
                         <tr>
@@ -380,7 +339,7 @@
 
                 </div>
 
-             </div>
+            </div>
         </div>
     </div>
 </div>
@@ -551,94 +510,15 @@
     </div>
 </div>
 
-<div class="form-group {{ ($errors->has('history')) ? 'has-error' : '' }} required">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading clearfix">
-                <h3>IMAGING</h3>
-            </div>
-            <div class="panel-body">
-
-                <div class="form-group {{ ($errors->has('x_ray')) ? 'has-error' : '' }} required">
-                    {!! Form::label('x_ray', 'X-RAY', ['class' => 'col-md-2 control-label']) !!}
-                    <div class="col-md-10">
-                        {!! Form::textarea('x_ray', null, ['class' => 'form-control', 'placeholder' => 'X-RAY', 'rows' => '3']) !!}
-                        <p class="help-block">{{ ($errors->has('x_ray') ? $errors->first('x_ray') : '') }}</p>
-                    </div>
-                </div>
-
-
-                <div class="form-group {{ ($errors->has('ct_scan')) ? 'has-error' : '' }} required">
-                    {!! Form::label('ct_scan', 'CT SCAN', ['class' => 'col-md-2 control-label']) !!}
-                    <div class="col-md-10">
-                        {!! Form::textarea('ct_scan', null, ['class' => 'form-control', 'placeholder' => 'CT SCAN', 'rows' => '3']) !!}
-                        <p class="help-block">{{ ($errors->has('ct_scan') ? $errors->first('ct_scan') : '') }}</p>
-                    </div>
-                </div>
-
-
-                <div class="form-group {{ ($errors->has('miri_scan')) ? 'has-error' : '' }} required">
-                    {!! Form::label('miri_scan', 'MRI SCAN', ['class' => 'col-md-2 control-label']) !!}
-                    <div class="col-md-10">
-                        {!! Form::textarea('miri_scan', null, ['class' => 'form-control', 'placeholder' => 'MRI SCAN', 'rows' => '3']) !!}
-                        <p class="help-block">{{ ($errors->has('miri_scan') ? $errors->first('miri_scan') : '') }}</p>
-                    </div>
-                </div>
-
-                <div class="form-group {{ ($errors->has('other_imaging')) ? 'has-error' : '' }} required">
-                    {!! Form::label('other_imaging', 'OTHER IMAGING', ['class' => 'col-md-2 control-label']) !!}
-                    <div class="col-md-10">
-                        {!! Form::textarea('other_imaging', null, ['class' => 'form-control', 'placeholder' => 'OTHER IMAGING', 'rows' => '3']) !!}
-                        <p class="help-block">{{ ($errors->has('other_imaging') ? $errors->first('other_imaging') : '') }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group {{ ($errors->has('diagnosis')) ? 'has-error' : '' }} required">
-    {!! Form::label('diagnosis', 'Diagnosis', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::textarea('diagnosis', null, ['class' => 'form-control', 'placeholder' => 'Diagnosis', 'rows' => '1']) !!}
-        <p class="help-block">{{ ($errors->has('diagnosis') ? $errors->first('diagnosis') : '') }}</p>
-    </div>
+<div class="field">
+    <label>Investigation</label>
+    {!! Form::textarea('investigation', null, ['rows' => '3']) !!}
+    <p class="help-block">{!! ($errors->has('investigation') ? $errors->first('investigation') : '') !!}</p>
 </div>
 
 
-<div class="form-group {{ ($errors->has('surgical_management')) ? 'has-error' : '' }} required">
-    {!! Form::label('surgical_management', 'Surgical Management', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::textarea('surgical_management', null, ['class' => 'form-control', 'placeholder' => 'Surgical Management', 'rows' => '3']) !!}
-        <p class="help-block">{{ ($errors->has('surgical_management') ? $errors->first('surgical_management') : '') }}</p>
-    </div>
+<div class="field">
+    <label>Management</label>
+    {!! Form::textarea('management', null, ['rows' => '3']) !!}
+    <p class="help-block">{!! ($errors->has('management') ? $errors->first('management') : '') !!}</p>
 </div>
-
-<div class="form-group {{ ($errors->has('non_surgical_management')) ? 'has-error' : '' }} required">
-    {!! Form::label('non_surgical_management', 'Non Surgical Management', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::textarea('non_surgical_management', null, ['class' => 'form-control', 'placeholder' => 'Non Surgical Management']) !!}
-        <p class="help-block">{{ ($errors->has('non_surgical_management') ? $errors->first('non_surgical_management') : '') }}</p>
-    </div>
-</div>
-
-
-<div class="form-group {{ ($errors->has('drugs_given')) ? 'has-error' : '' }} required">
-    {!! Form::label('drugs_given', 'Drugs given', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::textarea('drugs_given', null, ['class' => 'form-control', 'placeholder' => 'Drugs given', 'rows' => '3']) !!}
-        <p class="help-block">{{ ($errors->has('drugs_given') ? $errors->first('drugs_given') : '') }}</p>
-    </div>
-</div>
-
-
-<style>
-
-    #canvas {
-        border: 10px solid transparent;
-    }
-    .rectangle {
-        border: 1px solid #FF0000;
-        position: absolute;
-    }
-</style>

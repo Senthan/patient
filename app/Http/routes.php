@@ -18,17 +18,60 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
     $router->group(['middleware' => 'auth'], function ($router) {
         $router->get('/', ['uses' => 'HomeController@index', 'as' => 'admin.home.index']);
 
-//         user management
-//        $router->group(['prefix' => 'user'], function ($router) {
-//            $router->get('/', ['uses' => 'UserController@index', 'as' => 'user.index']);
-//            $router->get('create', ['uses' => 'UserController@create', 'as' => 'user.create']);
-//            $router->post('/', ['uses' => 'UserController@store', 'as' => 'user.store']);
-//            $router->get('{user}/edit', ['uses' => 'UserController@edit', 'as' => 'user.edit']);
-//            $router->patch('{user}', ['uses' => 'UserController@update', 'as' => 'user.update']);
-//            $router->get('{user}/delete', ['uses' => 'UserController@delete', 'as' => 'user.delete']);
-//            $router->delete('{user}', ['uses' => 'UserController@destroy', 'as' => 'user.destroy']);
-//            $router->get('{user}', ['uses' => 'UserController@show', 'as' => 'staff.show']);
-//        });
+//         patient management
+        $router->group(['prefix' => 'patient'], function ($router) {
+            $router->get('/', ['uses' => 'PatientController@index', 'as' => 'patient.index']);
+            $router->get('create', ['uses' => 'PatientController@create', 'as' => 'patient.create']);
+            $router->post('/', ['uses' => 'PatientController@store', 'as' => 'patient.store']);
+            $router->get('{user}/edit', ['uses' => 'PatientController@edit', 'as' => 'patient.edit']);
+            $router->patch('{user}', ['uses' => 'PatientController@update', 'as' => 'patient.update']);
+            $router->get('{user}/delete', ['uses' => 'PatientController@delete', 'as' => 'patient.delete']);
+            $router->delete('{user}', ['uses' => 'PatientController@destroy', 'as' => 'patient.destroy']);
+            $router->get('{user}', ['uses' => 'PatientController@show', 'as' => 'patient.show']);
+            $router->get('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@existDiagnosis', 'as' => 'patient.exist.diagnosis']);
+            $router->post('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@updateDiagnosis', 'as' => 'patient.exist.diagnosis']);
+            $router->get('{patient}/add-diagnosis', ['uses' => 'PatientController@addDiagnosis', 'as' => 'patient.add.diagnosis']);
+            $router->post('{patient}/add-diagnosis', ['uses' => 'PatientController@storeDiagnosis', 'as' => 'patient.store.diagnosis']);
+            $router->post('{patient}/update/examination', ['uses' => 'PatientController@updateExamination', 'as' => 'patient.update.examination']);
+
+
+            $router->get('{patient}/add-non-surgical', ['uses' => 'PatientController@addNonSurgical', 'as' => 'patient.add.non.surgical']);
+            $router->post('{patient}/add-non-surgical', ['uses' => 'PatientController@saveNonSurgical', 'as' => 'patient.non.surgical']);
+
+            $router->get('{patient}/add-surgical', ['uses' => 'PatientController@addSurgical', 'as' => 'patient.add.surgical']);
+            $router->post('{patient}/add-surgical', ['uses' => 'PatientController@saveSurgical', 'as' => 'patient.surgical.store']);
+
+            $router->get('{patient}/refferal', ['uses' => 'PatientController@addRefferal', 'as' => 'patient.add.reffercal']);
+            $router->post('{patient}/refferal', ['uses' => 'PatientController@saveRefferal', 'as' => 'patient.reffercal.store']);
+
+
+
+        });
+
+
+//        surgical follow up management
+        $router->group(['prefix' => 'patient/{patient}/surgical-followup'], function ($router) {
+            $router->get('/', ['uses' => 'SurgicalFollowupController@index', 'as' => 'surgical.followup.index']);
+            $router->get('create', ['uses' => 'SurgicalFollowupController@create', 'as' => 'surgical.followup.create']);
+            $router->post('/', ['uses' => 'SurgicalFollowupController@store', 'as' => 'surgical.followup.store']);
+            $router->get('{surgicalFollowup}/edit', ['uses' => 'SurgicalFollowupController@edit', 'as' => 'surgical.followup.edit']);
+            $router->patch('{surgicalFollowup}', ['uses' => 'SurgicalFollowupController@update', 'as' => 'surgical.followup.update']);
+            $router->get('{surgicalFollowup}/delete', ['uses' => 'SurgicalFollowupController@delete', 'as' => 'surgical.followup.delete']);
+            $router->delete('{surgicalFollowup}', ['uses' => 'SurgicalFollowupController@destroy', 'as' => 'surgical.followup.destroy']);
+        });
+
+
+
+//        non surgical follow up management
+        $router->group(['prefix' => 'patient/{patient}/non-surgical-followup'], function ($router) {
+            $router->get('/', ['uses' => 'NonSurgicalFollowupController@index', 'as' => 'non.surgical.followup.index']);
+            $router->get('create', ['uses' => 'NonSurgicalFollowupController@create', 'as' => 'non.surgical.followup.create']);
+            $router->post('/', ['uses' => 'NonSurgicalFollowupController@store', 'as' => 'non.surgical.followup.store']);
+            $router->get('{nonSurgicalFollowup}/edit', ['uses' => 'NonSurgicalFollowupController@edit', 'as' => 'non.surgical.followup.edit']);
+            $router->patch('{nonSurgicalFollowup}', ['uses' => 'NonSurgicalFollowupController@update', 'as' => 'non.surgical.followup.update']);
+            $router->get('{nonSurgicalFollowup}/delete', ['uses' => 'NonSurgicalFollowupController@delete', 'as' => 'non.surgical.followup.delete']);
+            $router->delete('{nonSurgicalFollowup}', ['uses' => 'NonSurgicalFollowupController@destroy', 'as' => 'non.surgical.followup.destroy']);
+        });
 
 
 //        drug management
@@ -67,45 +110,52 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
             $router->get('search/{q?}', ['uses' => 'StaffController@search', 'as' => 'staff.search']);
         });
 
-
-        // patient management
-        $router->group(['prefix' => 'patient'], function ($router) {
-            $router->get('/', ['uses' => 'PatientController@index', 'as' => 'patient.index']);
-            $router->post('/', ['uses' => 'PatientController@store', 'as' => 'patient.store']);
-            $router->get('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@existDiagnosis', 'as' => 'patient.exist.diagnosis']);
-            $router->post('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@updateDiagnosis', 'as' => 'patient.exist.diagnosis']);
-            $router->get('{patient}/add-diagnosis', ['uses' => 'PatientController@addDiagnosis', 'as' => 'patient.add.diagnosis']);
-            $router->get('{patient}/add-non-surgical', ['uses' => 'PatientController@addNonSurgical', 'as' => 'patient.add.non.surgical']);
-            $router->post('{patient}/add-non-surgical', ['uses' => 'PatientController@saveNonSurgical', 'as' => 'patient.non.surgical']);
-
-            $router->get('{patient}/add-surgical', ['uses' => 'PatientController@addSurgical', 'as' => 'patient.add.surgical']);
-            $router->post('{patient}/add-surgical', ['uses' => 'PatientController@saveSurgical', 'as' => 'patient.surgical.store']);
-
-            $router->get('{patient}/refferal', ['uses' => 'PatientController@addRefferal', 'as' => 'patient.add.reffercal']);
-            $router->post('{patient}/refferal', ['uses' => 'PatientController@saveRefferal', 'as' => 'patient.reffercal.store']);
-
-
-            $router->get('{patient}/add-anaesthetic', ['uses' => 'PatientController@addAnaesthetic', 'as' => 'patient.add.anaesthetic']);
-            $router->post('{patient}/add-diagnosis', ['uses' => 'PatientController@storeDiagnosis', 'as' => 'patient.store.diagnosis']);
-            $router->post('{patient}/add-anaesthetic', ['uses' => 'PatientController@storeAnaesthetic', 'as' => 'patient.store.anaesthetic']);
-            $router->get('{patient}/pdf', ['uses' => 'PatientController@pdf', 'as' => 'patient.pdf']);
-            $router->post('patient/UUID', ['uses' => 'PatientController@uuid', 'as' => 'patient.uuid']);
-            $router->get('{patient}/delete', ['uses' => 'PatientController@delete', 'as' => 'patient.delete']);
-            $router->delete('{patient}', ['uses' => 'PatientController@destroy', 'as' => 'patient.destroy']);
-            $router->get('{patient}', ['uses' => 'PatientController@show', 'as' => 'patient.show']);
-
-            $router->get('patient/card/{patients?}', ['uses' => 'PatientController@printCard', 'as' => 'patient.print.card']);
-            $router->get('mail/{patients?}', ['uses' => 'PatientController@sendMail', 'as' => 'patient.mail']);
-            $router->get('{patient}/manage', ['uses' => 'PatientController@manageProfile', 'as' => 'patient.manage']);
-            $router->patch('{patient}/manage', ['uses' => 'PatientController@saveProfile', 'as' => 'patient.save.profile']);
-            $router->post('{patient}/update/examination', ['uses' => 'PatientController@updateExamination', 'as' => 'patient.update.examination']);
-
-
-            // print diagonsis
-            $router->get('{patient}/diagnosis-print', ['uses' => 'PatientController@printDiagnosis', 'as' => 'patient.print.diagnosis']);
-
-
+        // non surgical management
+        $router->group(['prefix' => 'non-surgical'], function ($router) {
+            $router->get('/', ['uses' => 'NonSurgicalController@index', 'as' => 'non.surgical.index']);
+            $router->get('/create', ['uses' => 'NonSurgicalController@create', 'as' => 'non.surgical.create']);
+            $router->post('/', ['uses' => 'NonSurgicalController@store', 'as' => 'non.surgical.store']);
         });
+
+
+//        // patient management
+//        $router->group(['prefix' => 'patient'], function ($router) {
+//            $router->get('/', ['uses' => 'PatientController@index', 'as' => 'patient.index']);
+//            $router->post('/', ['uses' => 'PatientController@store', 'as' => 'patient.store']);
+//            $router->get('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@existDiagnosis', 'as' => 'patient.exist.diagnosis']);
+//            $router->post('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@updateDiagnosis', 'as' => 'patient.exist.diagnosis']);
+//            $router->get('{patient}/add-diagnosis', ['uses' => 'PatientController@addDiagnosis', 'as' => 'patient.add.diagnosis']);
+//            $router->get('{patient}/add-non-surgical', ['uses' => 'PatientController@addNonSurgical', 'as' => 'patient.add.non.surgical']);
+//            $router->post('{patient}/add-non-surgical', ['uses' => 'PatientController@saveNonSurgical', 'as' => 'patient.non.surgical']);
+//
+//            $router->get('{patient}/add-surgical', ['uses' => 'PatientController@addSurgical', 'as' => 'patient.add.surgical']);
+//            $router->post('{patient}/add-surgical', ['uses' => 'PatientController@saveSurgical', 'as' => 'patient.surgical.store']);
+//
+//            $router->get('{patient}/refferal', ['uses' => 'PatientController@addRefferal', 'as' => 'patient.add.reffercal']);
+//            $router->post('{patient}/refferal', ['uses' => 'PatientController@saveRefferal', 'as' => 'patient.reffercal.store']);
+//
+//
+//            $router->get('{patient}/add-anaesthetic', ['uses' => 'PatientController@addAnaesthetic', 'as' => 'patient.add.anaesthetic']);
+//            $router->post('{patient}/add-diagnosis', ['uses' => 'PatientController@storeDiagnosis', 'as' => 'patient.store.diagnosis']);
+//            $router->post('{patient}/add-anaesthetic', ['uses' => 'PatientController@storeAnaesthetic', 'as' => 'patient.store.anaesthetic']);
+//            $router->get('{patient}/pdf', ['uses' => 'PatientController@pdf', 'as' => 'patient.pdf']);
+//            $router->post('patient/UUID', ['uses' => 'PatientController@uuid', 'as' => 'patient.uuid']);
+//            $router->get('{patient}/delete', ['uses' => 'PatientController@delete', 'as' => 'patient.delete']);
+//            $router->delete('{patient}', ['uses' => 'PatientController@destroy', 'as' => 'patient.destroy']);
+//            $router->get('{patient}', ['uses' => 'PatientController@show', 'as' => 'patient.show']);
+//
+//            $router->get('patient/card/{patients?}', ['uses' => 'PatientController@printCard', 'as' => 'patient.print.card']);
+//            $router->get('mail/{patients?}', ['uses' => 'PatientController@sendMail', 'as' => 'patient.mail']);
+//            $router->get('{patient}/manage', ['uses' => 'PatientController@manageProfile', 'as' => 'patient.manage']);
+//            $router->patch('{patient}/manage', ['uses' => 'PatientController@saveProfile', 'as' => 'patient.save.profile']);
+//            $router->post('{patient}/update/examination', ['uses' => 'PatientController@updateExamination', 'as' => 'patient.update.examination']);
+//
+//
+//            // print diagonsis
+//            $router->get('{patient}/diagnosis-print', ['uses' => 'PatientController@printDiagnosis', 'as' => 'patient.print.diagnosis']);
+//
+//
+//        });
 
 
 

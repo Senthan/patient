@@ -6,7 +6,7 @@
         <li class="active">Create</li>
     </ul>
 
-    {!! Form::open(['url' => route('patient.reffercal.store', ['patient' => $patient->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
+    {!! Form::open(['url' => route('refferal.store', ['patient' => $patient->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
             <span class="pull-left"><h4>Refferals / Special Investigations </h4></span>

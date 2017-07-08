@@ -1,31 +1,31 @@
 @extends('admin.layouts.master')
 @section('content')
-    <section class="content" ng-controller="FollowUpController">
+    <section class="content" ng-controller="SurgicalController">
         <div class="ui segments">
             <div class="ui segment">
-                <a href="{{ route('non.surgical.create', ['patient' => $patient]) }}" class="ui small green labeled icon button"><i class="plus icon"></i> Create</a>
+                <a href="{{ route('surgical.followup.create', ['patient' => $patient]) }}" class="ui small green labeled icon button"><i class="plus icon"></i> Create</a>
                 <a data-ng-show="selected" ng-href="@{{ edit_url }}" class="ui small primary labeled icon button"><i class="write icon"></i> Edit</a>
                 <a data-ng-show="selected" ng-href="@{{ delete_url }}" class="ui small red labeled icon button"><i class="minus icon"></i> Delete</a>
             </div>
             <div class="ui black segment">
                 <table class="ui compact celled definition table">
                     <thead class="full-width">
-                    <tr>
-                        <th>Date of Admission</th>
-                        <th>Date of Discharge</th>
-                        <th>Indication Admission</th>
-                        <th>Investigation</th>
-                        <th>Management</th>
-                    </tr>
+                        <tr>
+                            <th>Date</th>
+                            <th>Complain</th>
+                            <th>Examination</th>
+                            <th>Investigation</th>
+                            <th>Management</th>
+                        </tr>
                     </thead>
                     <tbody ng-cloak>
-                    <tr ng-repeat="followup in nonSurgicalFollowup track by $index" ng-click="setSelected();" ng-class="{'bg-info lt': followup.id === selected.id}">
-                        <td>@{{ followup.date_of_admission }}</td>
-                        <td>@{{ followup.date_of_discharge }}</td>
-                        <td>@{{ followup.indication_admission }}</td>
-                        <td>@{{ followup.investigation }}</td>
-                        <td>@{{ followup.management }}</td>
-                    </tr>
+                        <tr ng-repeat="surgical in surgicals track by $index" ng-click="setSelected();" ng-class="{'bg-info lt': followup.id === selected.id}">
+                            <td>@{{ surgical.date }}</td>
+                            <td>@{{ surgical.complain }}</td>
+                            <td>@{{ surgical.examination }}</td>
+                            <td>@{{ surgical.investigation }}</td>
+                            <td>@{{ surgical.management }}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -34,8 +34,8 @@
 @endsection
 @section('script')
     <script>
-        app.controller('FollowUpController', ['$scope', '$http', function ($scope, $http) {
-            $scope.moduleUrl = "{{ route('non.surgical.index', ['patient' => $patient]) }}";
+        app.controller('SurgicalController', ['$scope', '$http', function ($scope, $http) {
+            $scope.moduleUrl = "{{ route('surgical.index', ['patient' => $patient]) }}";
 
             $scope.setSelected = function() {
                 if($scope.selected && $scope.selected.id == this.followup.id) {
@@ -49,7 +49,7 @@
             };
 
             $http.get($scope.moduleUrl + '?ajax=true').then(function (response) {
-                $scope.nonSurgicalFollowup = response.data;
+                $scope.surgicals = response.data;
             });
 
         }]);

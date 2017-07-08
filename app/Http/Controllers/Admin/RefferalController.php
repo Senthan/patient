@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\NonSurgical;
 use App\Patient;
+use App\Refferal;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\NonSurgicalStoreRequest;
-class NonSurgicalController extends Controller
+use App\Http\Requests\RefferalStoreRequest;
+class RefferalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,11 +20,11 @@ class NonSurgicalController extends Controller
     public function index(Patient $patient)
     {
         if (request()->ajax()) {
-            $nonSurgical = NonSurgical::get()->values();
-            return response()->json($nonSurgical);
+            $refferal = Refferal::get()->values();
+            return response()->json($refferal);
         }
 
-        return view('admin.patient.non-surgical.index', compact('patient'));
+        return view('admin.patient.refferal.index', compact('patient'));
     }
 
     /**
@@ -35,28 +35,20 @@ class NonSurgicalController extends Controller
 
     public function create(Patient $patient)
     {
-        return view('admin.patient.non-surgical.create', compact('patient'));
+        return view('admin.patient.refferal.create', compact('patient'));
     }
 
-    public function store(NonSurgicalStoreRequest $request, Patient $patient)
+    public function store(RefferalStoreRequest $request, Patient $patient)
     {
-        $nonSurgical = new NonSurgical();
-        $nonSurgical->patient_id = $patient->id;
-        $nonSurgical->date_of_admission = $request->date_of_admission;
-        $nonSurgical->date_of_discharge = $request->date_of_discharge;
-        $nonSurgical->indication_admission = $request->indication_admission;
-        $nonSurgical->management = $request->management;
-        $nonSurgical->save();
+        $refferal = new Refferal();
+        $refferal->patient_id = $patient->id;
+        $refferal->refferal = $request->refferal;
+        $refferal->reffered_to = $request->reffered_to;
+        $refferal->report = $request->report;
+        $refferal->save();
 
-        return redirect()->route('non.surgical.index', ['patient' => $patient]);
+        return redirect()->route('refferal.index', ['patient' => $patient]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
 
 
     /**
@@ -65,7 +57,7 @@ class NonSurgicalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show($id)
     {
         //
     }

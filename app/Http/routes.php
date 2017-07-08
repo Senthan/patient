@@ -61,6 +61,18 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
         });
 
 
+//        surgical management
+        $router->group(['prefix' => 'patient/{patient}/surgical'], function ($router) {
+            $router->get('/', ['uses' => 'SurgicalController@index', 'as' => 'surgical.index']);
+            $router->get('create', ['uses' => 'SurgicalController@create', 'as' => 'surgical.create']);
+            $router->post('/', ['uses' => 'SurgicalController@store', 'as' => 'surgical.store']);
+            $router->get('{surgical}/edit', ['uses' => 'SurgicalController@edit', 'as' => 'surgical.edit']);
+            $router->patch('{surgical}', ['uses' => 'SurgicalController@update', 'as' => 'surgical.update']);
+            $router->get('{surgical}/delete', ['uses' => 'SurgicalController@delete', 'as' => 'surgical.delete']);
+            $router->delete('{surgical}', ['uses' => 'SurgicalController@destroy', 'as' => 'surgical.destroy']);
+        });
+
+
 
 //        non surgical follow up management
         $router->group(['prefix' => 'patient/{patient}/non-surgical-followup'], function ($router) {
@@ -72,6 +84,32 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
             $router->get('{nonSurgicalFollowup}/delete', ['uses' => 'NonSurgicalFollowupController@delete', 'as' => 'non.surgical.followup.delete']);
             $router->delete('{nonSurgicalFollowup}', ['uses' => 'NonSurgicalFollowupController@destroy', 'as' => 'non.surgical.followup.destroy']);
         });
+
+
+//        non surgical management
+        $router->group(['prefix' => 'patient/{patient}/non-surgical'], function ($router) {
+            $router->get('/', ['uses' => 'NonSurgicalController@index', 'as' => 'non.surgical.index']);
+            $router->get('create', ['uses' => 'NonSurgicalController@create', 'as' => 'non.surgical.create']);
+            $router->post('/', ['uses' => 'NonSurgicalController@store', 'as' => 'non.surgical.store']);
+            $router->get('{nonSurgical}/edit', ['uses' => 'NonSurgicalController@edit', 'as' => 'non.surgical.edit']);
+            $router->patch('{nonSurgical}', ['uses' => 'NonSurgicalController@update', 'as' => 'non.surgical.update']);
+            $router->get('{nonSurgical}/delete', ['uses' => 'NonSurgicalController@delete', 'as' => 'non.surgical.delete']);
+            $router->delete('{nonSurgical}', ['uses' => 'NonSurgicalController@destroy', 'as' => 'non.surgical.destroy']);
+        });
+
+
+
+//        refferal management
+        $router->group(['prefix' => 'patient/{patient}/refferal'], function ($router) {
+            $router->get('/', ['uses' => 'RefferalController@index', 'as' => 'refferal.index']);
+            $router->get('create', ['uses' => 'RefferalController@create', 'as' => 'refferal.create']);
+            $router->post('/', ['uses' => 'RefferalController@store', 'as' => 'refferal.store']);
+            $router->get('{refferal}/edit', ['uses' => 'RefferalController@edit', 'as' => 'refferal.edit']);
+            $router->patch('{refferal}', ['uses' => 'RefferalController@update', 'as' => 'refferal.update']);
+            $router->get('{refferal}/delete', ['uses' => 'RefferalController@delete', 'as' => 'refferal.delete']);
+            $router->delete('{refferal}', ['uses' => 'RefferalController@destroy', 'as' => 'refferal.destroy']);
+        });
+
 
 
 //        drug management
@@ -108,13 +146,6 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
             $router->delete('{staff}', ['uses' => 'StaffController@destroy', 'as' => 'staff.destroy']);
             $router->get('{staff}', ['uses' => 'StaffController@show', 'as' => 'staff.show']);
             $router->get('search/{q?}', ['uses' => 'StaffController@search', 'as' => 'staff.search']);
-        });
-
-        // non surgical management
-        $router->group(['prefix' => 'non-surgical'], function ($router) {
-            $router->get('/', ['uses' => 'NonSurgicalController@index', 'as' => 'non.surgical.index']);
-            $router->get('/create', ['uses' => 'NonSurgicalController@create', 'as' => 'non.surgical.create']);
-            $router->post('/', ['uses' => 'NonSurgicalController@store', 'as' => 'non.surgical.store']);
         });
 
 

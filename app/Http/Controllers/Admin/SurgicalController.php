@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\NonSurgical;
 use App\Patient;
+use App\Surgical;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\NonSurgicalStoreRequest;
-class NonSurgicalController extends Controller
+use App\Http\Requests\SurgicalStoreRequest;
+class SurgicalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,11 +20,11 @@ class NonSurgicalController extends Controller
     public function index(Patient $patient)
     {
         if (request()->ajax()) {
-            $nonSurgical = NonSurgical::get()->values();
+            $nonSurgical = Surgical::get()->values();
             return response()->json($nonSurgical);
         }
 
-        return view('admin.patient.non-surgical.index', compact('patient'));
+        return view('admin.patient.surgical.index', compact('patient'));
     }
 
     /**
@@ -35,28 +35,23 @@ class NonSurgicalController extends Controller
 
     public function create(Patient $patient)
     {
-        return view('admin.patient.non-surgical.create', compact('patient'));
+        return view('admin.patient.surgical.create', compact('patient'));
     }
 
-    public function store(NonSurgicalStoreRequest $request, Patient $patient)
+    public function store(SurgicalStoreRequest $request, Patient $patient)
     {
-        $nonSurgical = new NonSurgical();
-        $nonSurgical->patient_id = $patient->id;
-        $nonSurgical->date_of_admission = $request->date_of_admission;
-        $nonSurgical->date_of_discharge = $request->date_of_discharge;
-        $nonSurgical->indication_admission = $request->indication_admission;
-        $nonSurgical->management = $request->management;
-        $nonSurgical->save();
+        $surgical = new Surgical();
+        $surgical->patient_id = $patient->id;
+        $surgical->date_of_admission = $request->date_of_admission;
+        $surgical->date_of_surgery = $request->date_of_surgery;
+        $surgical->date_of_discharge = $request->date_of_discharge;
+        $surgical->surgery = $request->surgery;
+        $surgical->complication = $request->complication;
+        $surgical->discharge_plan = $request->discharge_plan;
+        $surgical->save();
 
-        return redirect()->route('non.surgical.index', ['patient' => $patient]);
+        return redirect()->route('surgical.index', ['patient' => $patient]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
 
 
     /**
@@ -65,7 +60,7 @@ class NonSurgicalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show($id)
     {
         //
     }

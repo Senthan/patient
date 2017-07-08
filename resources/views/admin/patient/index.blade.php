@@ -119,8 +119,8 @@
                     $scope.show_url = $scope.moduleUrl + $scope.selected.id + '';
                     $scope.edit_url = $scope.moduleUrl + $scope.selected.id + '/edit';
                     $scope.diagnosis_url = $scope.moduleUrl + $scope.selected.id + '/add-diagnosis';
-                    $scope.non_surgical_url = $scope.moduleUrl + $scope.selected.id + '/add-non-surgical';
-                    $scope.surgical_url = $scope.moduleUrl + $scope.selected.id + '/add-surgical';
+                    $scope.non_surgical_url = $scope.moduleUrl + $scope.selected.id + '/non-surgical';
+                    $scope.surgical_url = $scope.moduleUrl + $scope.selected.id + '/surgical';
                     $scope.refferal_url = $scope.moduleUrl + $scope.selected.id + '/refferal';
                     $scope.delete_url = $scope.moduleUrl + $scope.selected.id + '/delete';
                     $scope.non_surgical_follow_up_url = $scope.moduleUrl + $scope.selected.id + '/non-surgical-followup';

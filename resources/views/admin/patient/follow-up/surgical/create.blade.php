@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="ui green segment">
-                    @include('admin.patient.follow-up.form')
+                    @include('admin.patient.follow-up.surgical.form')
                 </div>
                 <div class="ui segment">
                     <button class="ui small button green" type="submit">Create</button>

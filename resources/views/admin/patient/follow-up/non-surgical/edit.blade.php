@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
     <section class="content">
-        {!! Form::model($restaurant, ['url' => route('non.surgical.followup.update', ['restaurant' => $restaurant]), 'role' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'PATCH']) !!}
+        {!! Form::model($nonSurgicalFollowup, ['url' => route('non.surgical.followup.update', ['nonSurgicalFollowup' => $nonSurgicalFollowup]), 'role' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'PATCH']) !!}
 
             <div class="ui segments">
                 <div class="ui segment clearfix">
@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="ui green segment">
-                    @include('admin.followup.non-surgical.form')
+                    @include('admin.patient.follow-up.non-surgical.form')
                 </div>
                 <div class="ui segment">
                     <button class="ui small button blue" type="submit">Update</button>

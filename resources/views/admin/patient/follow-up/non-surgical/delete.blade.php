@@ -6,17 +6,17 @@
     <div class="row clearfix">
         <div class="ui segments">
             <div class="ui green segment">
-                {!! Form::model($restaurant, ['url' => route('restaurant.destroy', ['restaurant' => $restaurant]), 'role' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'DELETE']) !!}
+                {!! Form::model($nonSurgicalFollowup, ['url' => route('non.surgical.followup.destroy', ['nonSurgicalFollowup' => $nonSurgicalFollowup]), 'role' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'DELETE']) !!}
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a class="ui button" href="{{ route('restaurant.index') }}">Restaurant?</a>
+                        <a class="ui button" href="{{ route('non.surgical.followup.index') }}">SurgicalFollowup?</a>
                     </div>
                     <div class="panel-body">
-                        <p>Do you really want to delete this ({{ $restaurant->name }}) restaurant?</p>
+                        <p>Do you really want to delete this ({{ $nonSurgicalFollowup->date }}) SurgicalFollowup?</p>
                     </div>
                     <div class="panel-footer">
                         <button class="ui button red" type="submit">Delete</button>
-                        <a class="ui button" href="{{ route('restaurant.index') }}">Cancel</a>
+                        <a class="ui button" href="{{ route('non.surgical.followup.index') }}">Cancel</a>
                     </div>
                 </div>
                 {!! Form::close() !!}

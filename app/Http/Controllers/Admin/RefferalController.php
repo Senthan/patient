@@ -68,9 +68,9 @@ class RefferalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Patient $patient, Refferal $refferal)
     {
-        //
+        return view('admin.patient.refferal.edit', compact('patient', 'refferal'));
     }
 
     /**
@@ -80,19 +80,26 @@ class RefferalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Patient $patient, Refferal $refferal)
     {
-        //
+        $refferal->patient_id = $patient->id;
+        $refferal->refferal = $request->refferal;
+        $refferal->reffered_to = $request->reffered_to;
+        $refferal->report = $request->report;
+        $refferal->save();
+
+        return redirect()->route('refferal.index', ['patient' => $patient]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function delete(Patient $patient, Refferal $refferal)
     {
-        //
+        return view('admin.patient.refferal.delete', compact('patient', 'refferal'));
+    }
+
+    public function destroy(Patient $patient, Refferal $refferal)
+    {
+        $refferal->delete();
+        return redirect()->route('refferal.index', ['patient' => $patient])->with('message', 'Refferal was successfully deleted!');
+
     }
 }

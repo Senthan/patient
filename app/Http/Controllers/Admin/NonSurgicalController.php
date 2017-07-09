@@ -109,7 +109,7 @@ class NonSurgicalController extends Controller
     public function delete(Patient $patient, NonSurgical $nonSurgical)
     {
         return view('admin.patient.non-surgical.delete', compact('patient', 'nonSurgical'));
-    } 
+    }
 
     public function destroy(Patient $patient, NonSurgical $nonSurgical)
     {

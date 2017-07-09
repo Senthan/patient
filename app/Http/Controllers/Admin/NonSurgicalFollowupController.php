@@ -74,9 +74,9 @@ class NonSurgicalFollowupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Patient $patient, NonSurgicalFollowup $nonSurgicalFollowup)
     {
-        //
+        return view('admin.patient.follow-up.non-surgical.edit', compact('patient', 'nonSurgicalFollowup'));
     }
 
     /**
@@ -86,19 +86,27 @@ class NonSurgicalFollowupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Patient $patient, NonSurgicalFollowup $nonSurgicalFollowup)
     {
-        //
+        $nonSurgicalFollowup->patient_id = $patient->id;
+        $nonSurgicalFollowup->date = $request->date;
+        $nonSurgicalFollowup->complain = $request->complain;
+        $nonSurgicalFollowup->examination = $request->examination;
+        $nonSurgicalFollowup->investigation = $request->investigation;
+        $nonSurgicalFollowup->management = $request->management;
+        $nonSurgicalFollowup->save();
+
+        return redirect()->route('non.surgical.followup.index', ['patient' => $patient]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function delete(Patient $patient, NonSurgicalFollowup $nonSurgicalFollowup)
     {
-        //
+        return view('admin.patient.follow-up.non-surgical.delete', compact('patient', 'nonSurgicalFollowup'));
+    }
+
+    public function destroy(Patient $patient, NonSurgicalFollowup $nonSurgicalFollowup)
+    {
+        $nonSurgicalFollowup->delete();
+        return redirect()->route('non.surgical.index', ['patient' => $patient])->with('message', 'nonSurgicalFollowup was successfully deleted!');
     }
 }

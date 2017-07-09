@@ -2,7 +2,12 @@
 <div class="form-group {{ ($errors->has('patient_uuid')) ? 'has-error' : '' }}">
     {!! Form::label('patient_uuid', 'OSC No', ['class' => 'col-sm-2 control-label','style' => 'font-size: 18px;']) !!}
     <div class="col-sm-4">
-        {!! Form::text('patient_uuid', null, ['class' => 'form-control', 'placeholder' => 'Unique No','style' => 'font-size: 15px;']) !!}
+        <div class="ui right labeled input">
+            <div class="ui label">OC</div>
+            {!! Form::text('patient_uuid', null, ['placeholder' => 'Unique No','style' => 'font-size: 15px;']) !!}
+            <div class="ui label">S</div>
+        </div>
+
         <p class="help-block">{{ ($errors->has('patient_uuid') ? $errors->first('patient_uuid') : '') }}</p>
     </div>
 </div>

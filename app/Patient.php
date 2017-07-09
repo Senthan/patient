@@ -22,4 +22,8 @@ class Patient extends Model
     {
         return $this->hasOne(Examination::class);
     }
+    public function setPatientUuidAttribute($value)
+    {
+        $this->attributes['patient_uuid'] = 'OC' . str_finish($value, 'S');
+    }
 }

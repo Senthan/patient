@@ -9,7 +9,7 @@
     {!! Form::model($nonSurgical, ['url' => route('non.surgical.update', ['patient' => $patient->id, 'nonSurgical' => $nonSurgical->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
-            <span class="pull-left"><h4>Update Non Surgical</h4></span>
+            <span class="pull-left"><h4>Update {!! $patient->patient_uuid !!} Non Surgical</h4></span>
             <span class="pull-right">
                 @include('admin.patient.back-btn', ['text' => 'Back'])
             </span>

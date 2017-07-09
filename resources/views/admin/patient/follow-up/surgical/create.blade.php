@@ -4,7 +4,7 @@
         {!! Form::open(['url' => route('surgical.followup.store', ['patient' => $patient]), 'role' => 'form', 'class' => 'form-horizontal ui form']) !!}
             <div class="ui segments">
                 <div class="ui segment clearfix">
-                    <h2 class="pull-left">Create Surgical Followup</h2>
+                    <h2 class="pull-left">Create {!! $patient->patient_uuid !!} Surgical Followup</h2>
                     <div class="pull-right">
                         <a class="ui small button" href="{{ route('surgical.followup.index', ['patient' => $patient]) }}">followup</a>
                     </div>

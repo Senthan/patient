@@ -3,7 +3,8 @@
     <ul class="breadcrumb">
         <li>{!! link_to_route('admin.home.index', 'Home') !!}</li>
         <li>{!! link_to_route('patient.index', 'patients') !!}</li>
-        <li class="active">Create</li>
+        <li>{!! $patient->patient_uuid !!}</li>
+        <li class="active">Diagnosis</li>
     </ul>
 
     {!! Form::model($diagnosis, ['url' => route('patient.add.diagnosis', ['patient' => $patient->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}

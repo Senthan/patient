@@ -9,7 +9,7 @@
     {!! Form::open(['url' => route('patient.non.surgical', ['patient' => $patient->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
-            <span class="pull-left"><h4>Add Non Surgical</h4></span>
+            <span class="pull-left"><h4>Add {!! $patient->patient_uuid !!} Non Surgical</h4></span>
             <span class="pull-right">
                 @include('admin.patient.back-btn', ['text' => 'Back'])
             </span>

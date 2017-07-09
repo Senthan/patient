@@ -12,7 +12,7 @@
                         <a class="ui button" href="{{ route('surgical.followup.index', ['patient' => $patient]) }}">SurgicalFollowup?</a>
                     </div>
                     <div class="panel-body">
-                        <p>Do you really want to delete this ({{ $surgicalFollowup->date }}) SurgicalFollowup?</p>
+                        <p>Do you really want to delete this ({{ $surgicalFollowup->date }}) {!! $patient->patient_uuid !!} SurgicalFollowup?</p>
                     </div>
                     <div class="panel-footer">
                         <button class="ui button red" type="submit">Delete</button>

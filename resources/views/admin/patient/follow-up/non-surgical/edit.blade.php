@@ -5,7 +5,7 @@
 
             <div class="ui segments">
                 <div class="ui segment clearfix">
-                    <h2 class="pull-left">Edit non surgical followup</h2>
+                    <h2 class="pull-left">Edit {!! $patient->patient_uuid !!} non surgical followup</h2>
                     <div class="pull-right">
                         <a class="ui small button" href="{{ route('non.surgical.followup.index', ['patient' => $patient]) }}">Create non surgical followup</a>
                     </div>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="block-header">
-        <h1>Delete surgical followup</h1>
+        <h1>Delete {!! $patient->patient_uuid !!} surgical followup</h1>
     </div>
     <div class="row clearfix">
         <div class="ui segments">

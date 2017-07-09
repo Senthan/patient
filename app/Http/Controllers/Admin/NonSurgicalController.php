@@ -76,9 +76,9 @@ class NonSurgicalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Patient $patient, NonSurgical $nonSurgical)
     {
-        //
+        return view('admin.patient.non-surgical.edit', compact('patient', 'nonSurgical'));
     }
 
     /**
@@ -88,9 +88,16 @@ class NonSurgicalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Patient $patient, NonSurgical $nonSurgical)
     {
-        //
+        $nonSurgical->patient_id = $patient->id;
+        $nonSurgical->date_of_admission = $request->date_of_admission;
+        $nonSurgical->date_of_discharge = $request->date_of_discharge;
+        $nonSurgical->indication_admission = $request->indication_admission;
+        $nonSurgical->management = $request->management;
+        $nonSurgical->save();
+
+        return redirect()->route('non.surgical.index', ['patient' => $patient]);
     }
 
     /**
@@ -99,8 +106,14 @@ class NonSurgicalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete(Patient $patient, NonSurgical $nonSurgical)
     {
-        //
+        return view('admin.patient.non-surgical.delete', compact('patient', 'nonSurgical'));
+    } 
+
+    public function destroy(Patient $patient, NonSurgical $nonSurgical)
+    {
+        $nonSurgical->delete();
+        return redirect()->route('non.surgical.index', ['patient' => $patient])->with('message', 'Surgical was successfully deleted!');
     }
 }

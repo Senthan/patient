@@ -6,7 +6,7 @@
         <li class="active">Create</li>
     </ul>
 
-    {!! Form::open(['url' => route('patient.surgical.store', ['patient' => $patient->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
+    {!! Form::open(['url' => route('surgical.store', ['patient' => $patient->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
             <span class="pull-left"><h4>Add Surgical</h4></span>

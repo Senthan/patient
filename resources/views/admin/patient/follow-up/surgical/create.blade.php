@@ -6,7 +6,7 @@
                 <div class="ui segment clearfix">
                     <h2 class="pull-left">Create Surgical Followup</h2>
                     <div class="pull-right">
-                        <a class="ui small button" href="{{ route('surgical.followup.create', ['patient' => $patient]) }}">followup</a>
+                        <a class="ui small button" href="{{ route('surgical.followup.index', ['patient' => $patient]) }}">followup</a>
                     </div>
                 </div>
                 <div class="ui green segment">

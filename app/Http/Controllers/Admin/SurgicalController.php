@@ -60,7 +60,7 @@ class SurgicalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Patient $patient, Surgical $surgical)
     {
         //
     }
@@ -71,9 +71,9 @@ class SurgicalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Patient $patient, Surgical $surgical)
     {
-        //
+        return view('admin.patient.surgical.edit', compact('patient', 'surgical'));
     }
 
     /**
@@ -83,9 +83,23 @@ class SurgicalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Patient $patient, Surgical $surgical)
     {
-        //
+        $surgical->patient_id = $patient->id;
+        $surgical->date_of_admission = $request->date_of_admission;
+        $surgical->date_of_surgery = $request->date_of_surgery;
+        $surgical->date_of_discharge = $request->date_of_discharge;
+        $surgical->surgery = $request->surgery;
+        $surgical->complication = $request->complication;
+        $surgical->discharge_plan = $request->discharge_plan;
+        $surgical->save();
+
+        return redirect()->route('surgical.index', ['patient' => $patient]);
+    }
+
+    public function delete(Patient $patient, Surgical $surgical)
+    {
+        return view('admin.patient.surgical.delete', compact('patient', 'surgical'));
     }
 
     /**
@@ -94,8 +108,9 @@ class SurgicalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Patient $patient, Surgical $surgical)
     {
-        //
+        $surgical->delete();
+        return redirect()->route('surgical.index', ['patient' => $patient])->with('message', 'Surgical was successfully deleted!');
     }
 }

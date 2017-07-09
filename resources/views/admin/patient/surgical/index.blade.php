@@ -3,7 +3,7 @@
     <section class="content" ng-controller="SurgicalController">
         <div class="ui segments">
             <div class="ui segment">
-                <a href="{{ route('surgical.followup.create', ['patient' => $patient]) }}" class="ui small green labeled icon button"><i class="plus icon"></i> Create</a>
+                <a href="{{ route('surgical.create', ['patient' => $patient]) }}" class="ui small green labeled icon button"><i class="plus icon"></i> Create</a>
                 <a data-ng-show="selected" ng-href="@{{ edit_url }}" class="ui small primary labeled icon button"><i class="write icon"></i> Edit</a>
                 <a data-ng-show="selected" ng-href="@{{ delete_url }}" class="ui small red labeled icon button"><i class="minus icon"></i> Delete</a>
             </div>
@@ -11,20 +11,22 @@
                 <table class="ui compact celled definition table">
                     <thead class="full-width">
                         <tr>
-                            <th>Date</th>
-                            <th>Complain</th>
-                            <th>Examination</th>
-                            <th>Investigation</th>
-                            <th>Management</th>
+                            <th>date_of_admission</th>
+                            <th>date_of_discharge</th>
+                            <th>date_of_surgery</th>
+                            <th>discharge_plan</th>
+                            <th>complication</th>
+                            <th>operative_notes</th>
                         </tr>
                     </thead>
                     <tbody ng-cloak>
-                        <tr ng-repeat="surgical in surgicals track by $index" ng-click="setSelected();" ng-class="{'bg-info lt': followup.id === selected.id}">
-                            <td>@{{ surgical.date }}</td>
-                            <td>@{{ surgical.complain }}</td>
-                            <td>@{{ surgical.examination }}</td>
-                            <td>@{{ surgical.investigation }}</td>
-                            <td>@{{ surgical.management }}</td>
+                        <tr ng-repeat="surgical in surgicals track by $index" ng-click="setSelected();" ng-class="{'bg-info lt': surgical.id === selected.id}">
+                            <td>@{{ surgical.date_of_admission }}</td>
+                            <td>@{{ surgical.date_of_discharge }}</td>
+                            <td>@{{ surgical.date_of_surgery }}</td>
+                            <td>@{{ surgical.discharge_plan }}</td>
+                            <td>@{{ surgical.complication }}</td>
+                            <td>@{{ surgical.operative_notes }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -38,10 +40,10 @@
             $scope.moduleUrl = "{{ route('surgical.index', ['patient' => $patient]) }}";
 
             $scope.setSelected = function() {
-                if($scope.selected && $scope.selected.id == this.followup.id) {
+                if($scope.selected && $scope.selected.id == this.surgical.id) {
                     $scope.selected = null;
                 } else {
-                    $scope.selected = this.followup;
+                    $scope.selected = this.surgical;
                     $scope.edit_url = $scope.moduleUrl + '/' + $scope.selected.id + '/edit';
                     $scope.delete_url = $scope.moduleUrl + '/' + $scope.selected.id + '/delete';
                     $scope.show_url = $scope.moduleUrl + '/' + $scope.selected.id;

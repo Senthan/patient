@@ -38,6 +38,7 @@
             $scope.moduleUrl = "{{ route('non.surgical.index', ['patient' => $patient]) }}";
 
             $scope.setSelected = function() {
+                console.log('this', this);
                 if($scope.selected && $scope.selected.id == this.followup.id) {
                     $scope.selected = null;
                 } else {

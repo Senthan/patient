@@ -6,7 +6,7 @@
         <li class="active">Create</li>
     </ul>
 
-    {!! Form::model($surgical, ['url' => route('patient.surgical.update', ['patient' => $patient->id, 'surgical' => $surgical->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($surgical, ['url' => route('surgical.update', ['patient' => $patient->id, 'surgical' => $surgical->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
             <span class="pull-left"><h4>Update Surgical</h4></span>

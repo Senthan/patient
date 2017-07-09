@@ -45,17 +45,17 @@ class SurgicalFollowupController extends Controller
      */
     public function store(SurgicalFollowupStoreRequest $request, Patient $patient)
     {
-        $nonSurgicalFollowup = new SurgicalFollowup();
-        $nonSurgicalFollowup->patient_id = $patient->id;
-        $nonSurgicalFollowup->date = $request->date;
-        $nonSurgicalFollowup->complain = $request->complain;
-        $nonSurgicalFollowup->examination = $request->examination;
-        $nonSurgicalFollowup->investigation = $request->investigation;
-        $nonSurgicalFollowup->management = $request->management;
-        $nonSurgicalFollowup->post_up_days = $request->post_up_days;
-        $nonSurgicalFollowup->post_up_weeks = $request->post_up_weeks;
-        $nonSurgicalFollowup->post_up_months = $request->post_up_months;
-        $nonSurgicalFollowup->save();
+        $surgicalFollowup = new SurgicalFollowup();
+        $surgicalFollowup->patient_id = $patient->id;
+        $surgicalFollowup->date = $request->date;
+        $surgicalFollowup->complain = $request->complain;
+        $surgicalFollowup->examination = $request->examination;
+        $surgicalFollowup->investigation = $request->investigation;
+        $surgicalFollowup->management = $request->management;
+        $surgicalFollowup->post_up_days = $request->post_up_days;
+        $surgicalFollowup->post_up_weeks = $request->post_up_weeks;
+        $surgicalFollowup->post_up_months = $request->post_up_months;
+        $surgicalFollowup->save();
 
         return redirect()->route('surgical.followup.index', ['patient' => $patient]);
     }
@@ -66,7 +66,7 @@ class SurgicalFollowupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Patient $patient, SurgicalFollowup $surgicalFollowup)
     {
         //
     }
@@ -77,9 +77,10 @@ class SurgicalFollowupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Patient $patient, SurgicalFollowup $surgicalFollowup)
     {
-        //
+        $examination = $patient->examination;
+        return view('admin.patient.follow-up.surgical.edit', compact('patient', 'surgicalFollowup', 'examination'));
     }
 
     /**
@@ -89,9 +90,25 @@ class SurgicalFollowupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Patient $patient, SurgicalFollowup $surgicalFollowup)
     {
-        //
+        $surgicalFollowup->patient_id = $patient->id;
+        $surgicalFollowup->date = $request->date;
+        $surgicalFollowup->complain = $request->complain;
+        $surgicalFollowup->examination = $request->examination;
+        $surgicalFollowup->investigation = $request->investigation;
+        $surgicalFollowup->management = $request->management;
+        $surgicalFollowup->post_up_days = $request->post_up_days;
+        $surgicalFollowup->post_up_weeks = $request->post_up_weeks;
+        $surgicalFollowup->post_up_months = $request->post_up_months;
+        $surgicalFollowup->save();
+
+        return redirect()->route('surgical.followup.index', ['patient' => $patient]);
+    }
+
+    public function delete(Patient $patient, SurgicalFollowup $surgicalFollowup)
+    {
+        return view('admin.patient.follow-up.surgical.delete', compact('patient', 'surgicalFollowup'));
     }
 
     /**
@@ -100,8 +117,9 @@ class SurgicalFollowupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Patient $patient, SurgicalFollowup $surgicalFollowup)
     {
-        //
+        $surgicalFollowup->delete();
+        return redirect()->route('surgical.followup.index', ['patient' => $patient])->with('message', 'Surgical was successfully deleted!');
     }
 }

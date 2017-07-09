@@ -40,7 +40,6 @@
     "semantic-ui-label": "^2.1.7",
     "semantic-ui-menu": "^2.1.7",
     "semantic-ui-sidebar": "^2.1.7",
-    "semantic": "semantic-ui#^2.1.8",
     "ng-grid": "1.3.2",
     "underscore": "1.8.3",
     "ezdz": "0.5.1",
@@ -50,6 +49,7 @@
     "fullcalendar-scheduler": "^1.3.2",
     "Chart.js": "chartjs#^2.1.3",
     "nestable": "*",
-    "orgchart": "^1.0.6"
+    "orgchart": "^1.0.6",
+    "semantic": "semantic-ui#^2.2.10"
   }
 }

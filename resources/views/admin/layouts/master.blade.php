@@ -67,8 +67,8 @@
     <script src="{{ asset('components/fullcalendar/dist/fullcalendar.min.js') }}"></script>
     <script src="{{ asset('components/fullcalendar-scheduler/dist/scheduler.min.js') }}"></script>
     <script src="{{ asset('components/sweetalert/dist/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('components/semantic/dist/semantic.min.js') }}"></script>
     <script src="{{ asset('components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('components\semantic\dist\semantic.js') }}"></script>
     <script>
         var dateTimePicker;
         var DatePicker;

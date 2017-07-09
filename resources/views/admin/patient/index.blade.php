@@ -4,7 +4,6 @@
         <li><a href="{{ route('admin.home.index') }}">Home</a></li>
         <li class="active">Patients</li>
     </ul>
-
 <div ng-controller="PatientController">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -14,27 +13,33 @@
             <a ng-show="selected" ng-href="@{{ diagnosis_url  }}" class="button ui big positive labeled icon">
                 <i class="icon add"></i>First clinic visit
             </a>
-            <a ng-show="selected" ng-href="@{{ non_surgical_url  }}" class="button ui big labeled icon olive ">
-                <i class="icon add"></i>Non Surgical
-            </a>
-            <a ng-show="selected" ng-href="@{{ surgical_url  }}" class="button ui big labeled icon violet">
-                <i class="icon add"></i>Surgical
-            </a>
+            <div ng-show="selected" class="button ui big labeled icon olive dropdown">
+                <div class="text">Admission</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" ng-href="@{{ non_surgical_url  }}">Non Surgical</a>
+                    <a class="item" ng-href="@{{ surgical_url  }}">Surgical</a>
+                </div>
+            </div>
             <a ng-show="selected" ng-href="@{{ refferal_url  }}" class="button ui big labeled icon pink">
                 <i class="icon add"></i>Refferal
             </a>
-            <a ng-show="selected" ng-href="@{{ non_surgical_follow_up_url  }}" class="button ui big labeled icon pink">
-                <i class="icon add"></i>Non Surgical Follow up
-            </a>
-            <a ng-show="selected" ng-href="@{{ surgical_follow_up_url  }}" class="button ui big labeled icon pink">
-                <i class="icon add"></i>Surgical Follow up
-            </a>
+            <div ng-show="selected" class="button ui big labeled icon violet dropdown">
+                <div class="text">Follow up</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" ng-href="@{{ non_surgical_follow_up_url  }}">Non Surgical Follow up</a>
+                    <a class="item" ng-href="@{{ surgical_follow_up_url  }}">Surgical Follow up</a>
+                </div>
+            </div>
+
             <a ng-show="selected" ng-href="@{{ show_url }}" class="button ui big labeled icon a-load orange">
                 <i class="list layout icon"></i>Summary
             </a>
             <a ng-show="selected" ng-href="@{{ delete_url }}" class="button ui big negative labeled icon a-load ">
                 <i class="icon trash"></i>Delete
             </a>
+
         </div>
         <div class="panel-body">
             <div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid-move-columns class="grid"></div>

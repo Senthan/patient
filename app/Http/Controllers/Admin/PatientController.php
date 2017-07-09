@@ -279,7 +279,8 @@ class PatientController extends Controller
         $diagnosisTypes = SurgeryType::with('treatmentTemplate')->get();
 
         $examination = $patient->examination;
-        $diagnosis->bath_0 = $patient->examination()->where('row', 10)->where('col', 1)->where('type', 'activities_examination')->first()->value;
+        $bath0 = $patient->examination()->where('row', 10)->where('col', 1)->where('type', 'activities_examination')->first();
+        $diagnosis->bath_0 = $bath0 ? $bath0->value : '';
 
         $followUp = $diagnosis->followUp()->with('drug', 'dose')->get();
         $drugs = Drug::lists('name', 'id');

@@ -580,6 +580,9 @@
 
 
                 </div>
+
+                @if(count($patient->surgical))
+
                 <div class="ui segment blue clearfix g">
 
                     <table class="ui celled table">
@@ -614,6 +617,9 @@
 
                 </div>
 
+
+                @endif
+                @if(count($patient->surgicalFollowup))
                 <div class="ui segment pink clearfix g">
 
                     <table class="ui celled table">
@@ -1134,6 +1140,10 @@
 
 
                 </div>
+
+                @endif
+
+                @if(count($patient->nonSurgical))
                 <div class="ui segment orange clearfix">
 
                     <table class="ui celled table">
@@ -1164,6 +1174,8 @@
 
                 </div>
 
+                @endif
+                @if(count($patient->nonSurgicalFollowup))
                 <div class="ui segment violet clearfix">
 
                     <table class="ui celled table">
@@ -1195,7 +1207,8 @@
                     </table>
 
                 </div>
-
+                @endif
+                @if(count($patient->refferal))
                 <div class="ui segment olive clearfix">
 
                     <table class="ui celled table">
@@ -1223,6 +1236,7 @@
                     </table>
 
                 </div>
+                @endif
             </div>
         </section>
     </div>

@@ -228,6 +228,34 @@
                     </table>
 
                 </div>
+
+                <div class="ui segment olive clearfix">
+
+                    <table class="ui celled table">
+                        <thead>
+                        <tr>
+                            <th colspan="7">
+                                Refferal
+                            </th>
+                        </tr>
+                        <tr>
+                            <th> Refferal </th>
+                            <th> Reffered to </th>
+                            <th> Report </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($patient->refferal as $refferal)
+                        <tr>
+                            <td> {!! $refferal->refferal or '' !!}</td>
+                            <td> {!! $refferal->reffered_to or '' !!}</td>
+                            <td> {!! $refferal->report or '' !!}</td>
+                        </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
         </section>
     </div>

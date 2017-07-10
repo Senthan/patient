@@ -43,6 +43,11 @@ class Patient extends Model
         return $this->hasMany(NonSurgicalFollowup::class);
     }
 
+    public function refferal()
+    {
+        return $this->hasMany(Refferal::class);
+    }
+
     public function setPatientUuidAttribute($value)
     {
         $this->attributes['patient_uuid'] = 'OC' . str_finish($value, 'S');

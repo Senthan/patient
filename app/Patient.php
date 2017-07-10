@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
-    protected $fillable = ['patient_uuid', 'serial_no', 'name', 'age', 'sex', 'ward', 'B_H_T', 'description', 'status', 'operation_theater', 'admission_type', 'date'];
+    protected $fillable = ['patient_uuid', 'serial_no', 'name', 'age', 'sex', 'ward', 'B_H_T', 'description', 'status', 'operation_theater', 'admission_type', 'date', 'address'];
 
     public function surgeryType()
     {
@@ -22,6 +22,27 @@ class Patient extends Model
     {
         return $this->hasOne(Examination::class);
     }
+
+    public function surgical()
+    {
+        return $this->hasMany(Surgical::class);
+    }
+
+    public function surgicalFollowup()
+    {
+        return $this->hasMany(SurgicalFollowup::class);
+    }
+
+    public function nonSurgical()
+    {
+        return $this->hasMany(NonSurgical::class);
+    }
+
+    public function nonSurgicalFollowup()
+    {
+        return $this->hasMany(NonSurgicalFollowup::class);
+    }
+
     public function setPatientUuidAttribute($value)
     {
         $this->attributes['patient_uuid'] = 'OC' . str_finish($value, 'S');

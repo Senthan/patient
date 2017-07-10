@@ -28,6 +28,7 @@ class CreatePatientsTable extends Migration
             $table->enum('status',['Authorised', 'Not Authorised'])->nullable()->default('Not Authorised'); // review is not verified
             $table->enum('diagnosis',['Active', 'Inactive'])->nullable()->default('Inactive'); // review is not verified
             $table->text('description');
+            $table->text('address')->nullable();
             $table->integer('anaesthetic_id');
             $table->integer('examination_id');
             $table->integer('profile_id');

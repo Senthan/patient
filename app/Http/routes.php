@@ -23,11 +23,11 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
             $router->get('/', ['uses' => 'PatientController@index', 'as' => 'patient.index']);
             $router->get('create', ['uses' => 'PatientController@create', 'as' => 'patient.create']);
             $router->post('/', ['uses' => 'PatientController@store', 'as' => 'patient.store']);
-            $router->get('{user}/edit', ['uses' => 'PatientController@edit', 'as' => 'patient.edit']);
-            $router->patch('{user}', ['uses' => 'PatientController@update', 'as' => 'patient.update']);
-            $router->get('{user}/delete', ['uses' => 'PatientController@delete', 'as' => 'patient.delete']);
-            $router->delete('{user}', ['uses' => 'PatientController@destroy', 'as' => 'patient.destroy']);
-            $router->get('{user}', ['uses' => 'PatientController@show', 'as' => 'patient.show']);
+            $router->get('{patient}/edit', ['uses' => 'PatientController@edit', 'as' => 'patient.edit']);
+            $router->patch('{patient}', ['uses' => 'PatientController@update', 'as' => 'patient.update']);
+            $router->get('{patient}/delete', ['uses' => 'PatientController@delete', 'as' => 'patient.delete']);
+            $router->delete('{patient}', ['uses' => 'PatientController@destroy', 'as' => 'patient.destroy']);
+            $router->get('{patient}', ['uses' => 'PatientController@show', 'as' => 'patient.show']);
             $router->get('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@existDiagnosis', 'as' => 'patient.exist.diagnosis']);
             $router->post('{patient}/existing-diagnosis/{diagnosis}', ['uses' => 'PatientController@updateDiagnosis', 'as' => 'patient.exist.diagnosis']);
             $router->get('{patient}/add-diagnosis', ['uses' => 'PatientController@addDiagnosis', 'as' => 'patient.add.diagnosis']);

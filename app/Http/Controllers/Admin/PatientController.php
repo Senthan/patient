@@ -120,7 +120,8 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        return view('admin.patient.show', compact('patient'));
+        $examination = $patient->examination;
+        return view('admin.patient.show', compact('patient', 'examination'));
     }
 
     public function addDiagnosis(Patient $patient)

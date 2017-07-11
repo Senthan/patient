@@ -4,15 +4,18 @@
     }
 </style>
 
-<div class="field">
-    <label>Date</label>
+
+<div class="form-group {{ ($errors->has('date')) ? 'has-error' : '' }} required">
+    {!! Form::label('date', 'Date', ['class' => 'col-md-3 control-label']) !!}
+    <div class="col-md-6">
         <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             {!! Form::text('date', null, ['class' => 'form-control', 'placeholder' => 'Date']) !!}
         </div>
+        <p class="help-block">{{ ($errors->has('date') ? $errors->first('date') : '') }}</p>
     </div>
-    <p class="help-block">{!! ($errors->has('date') ? $errors->first('date') : '') !!}</p>
 </div>
+
 
 <div class="field">
     <label>Post up</label>

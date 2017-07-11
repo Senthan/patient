@@ -305,7 +305,6 @@ class PatientController extends Controller
         $diagnosis->presenting_complain = $request->presenting_complain;
         $diagnosis->past_surgical_history = $request->past_surgical_history;
         $diagnosis->allergic_history = $request->allergic_history;
-        $diagnosis->imaging = $request->imaging;
         $diagnosis->x_ray = $request->x_ray;
         $diagnosis->ct_scan = $request->ct_scan;
         $diagnosis->miri_scan = $request->miri_scan;

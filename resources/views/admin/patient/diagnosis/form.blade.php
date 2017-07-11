@@ -608,7 +608,7 @@
                         <tr>
                             <td>Bathal Index</td>
                             <td colspan="4">
-                                {!! Form::text('bath_0', null, ['class' => 'form-control', 'placeholder' => '', 'style' => 'width: 100%;']) !!}
+                                {!! Form::text('bath_0', null, ['class' => 'form-control', 'placeholder' => '', 'style' => 'width: 100%;', 'id' => 'bath_0', "onkeyup" => "keyupFunction()"]) !!}
                             </td>
                         </tr>
                         </tbody>

@@ -26,6 +26,28 @@
 @endsection
 @section('script')
     <script>
+
+        var  url = "{{ route('patient.update.examination', ['patient' => $patient->id]) }}";
+
+        function keyupFunction() {
+            var bath0 = document.getElementById("bath_0");
+            var examination = {};
+            examination.row = 10;
+            examination.col = 1;
+            examination.type = 'activities_examination';
+            examination.value = document.getElementById("bath_0").value;
+            updateExamination(examination, url);
+        }
+
+        function updateExamination(examination, url) {
+            $.ajax({
+
+                type: "POST",
+                url: url,
+                data: {data :examination,  _token: "{{ csrf_token() }}", type: 'create'},
+            });
+        }
+
         app.controller('diagnosisController', ['$scope', '$http', function ($scope, $http) {
             $(function () {
 
@@ -34,7 +56,6 @@
                 });
 
                 var clickElement = 0;
-                var  url = "{{ route('patient.update.examination', ['patient' => $patient->id]) }}";
 
                 $(".celled.table.pain-scale tr").on("click", "td", function (event) {
                     var col = $(this).parent().children().index($(this));
@@ -161,26 +182,6 @@
                     }
                     updateExamination(examination, url);
                 });
-
-
-                $( "#bath_0" ).keydown(function() {
-                    var examination = {};
-                    examination.row = 10;
-                    examination.col = 1;
-                    examination.type = 'activities_examination';
-                    examination.value = $( "#bath_0" ).val();
-                    updateExamination(examination, url);
-                });
-
-
-                function updateExamination(examination, url) {
-                    $.ajax({
-
-                        type: "POST",
-                        url: url,
-                        data: {data :examination,  _token: "{{ csrf_token() }}", type: 'create'},
-                    });
-                }
 
             });
             var doses = {!! $doses !!};

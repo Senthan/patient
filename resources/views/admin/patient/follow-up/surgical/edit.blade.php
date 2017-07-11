@@ -1,5 +1,15 @@
 @extends('admin.layouts.master')
 @section('content')
+
+    <ul class="breadcrumb">
+        <li>{!! link_to_route('admin.home.index', 'Home') !!}</li>
+        <li>{!! link_to_route('patient.index', 'Patient Management') !!}</li>
+        <li>{!! $patient->patient_uuid !!}</li>
+        <li>{!! link_to_route('surgical.followup.index', 'Surgical Followup Management', ['patient' => $patient->id]) !!}</li>
+        <li class="active">Edit</li>
+    </ul>
+
+
     <section class="content">
         {!! Form::model($surgicalFollowup, ['url' => route('surgical.followup.update', ['patient' => $patient, 'surgicalFollowup' => $surgicalFollowup]), 'role' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'PATCH']) !!}
 

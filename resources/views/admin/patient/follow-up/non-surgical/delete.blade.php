@@ -1,5 +1,16 @@
 @extends('admin.layouts.master')
 @section('content')
+
+
+    <ul class="breadcrumb">
+        <li>{!! link_to_route('admin.home.index', 'Home') !!}</li>
+        <li>{!! link_to_route('patient.index', 'Patient Management') !!}</li>
+        <li>{!! $patient->patient_uuid !!}</li>
+        <li>{!! link_to_route('non.surgical.followup.index', 'Non Surgical Followup Management', ['patient' => $patient->id]) !!}</li>
+        <li class="active">Delete</li>
+    </ul>
+
+
     <div class="block-header">
         <h1>Delete Non Surgical Followup</h1>
     </div>

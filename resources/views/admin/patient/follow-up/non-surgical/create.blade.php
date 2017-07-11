@@ -1,5 +1,14 @@
 @extends('admin.layouts.master')
 @section('content')
+
+    <ul class="breadcrumb">
+        <li>{!! link_to_route('admin.home.index', 'Home') !!}</li>
+        <li>{!! link_to_route('patient.index', 'Patient Management') !!}</li>
+        <li>{!! $patient->patient_uuid !!}</li>
+        <li>{!! link_to_route('non.surgical.followup.index', 'Non Surgical Followup Management', ['patient' => $patient->id]) !!}</li>
+        <li class="active">Create</li>
+    </ul>
+
     <section class="content">
         {!! Form::open(['url' => route('non.surgical.followup.store', ['patient' => $patient]), 'role' => 'form', 'class' => 'form-horizontal ui form']) !!}
             <div class="ui segments">

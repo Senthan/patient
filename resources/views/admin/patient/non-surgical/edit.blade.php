@@ -8,7 +8,7 @@
         <li class="active">Create</li>
     </ul>
 
-    {!! Form::model($nonSurgical, ['url' => route('non.surgical.update', ['patient' => $patient->id, 'nonSurgical' => $nonSurgical->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($nonSurgical, ['url' => route('non.surgical.update', ['patient' => $patient->id, 'nonSurgical' => $nonSurgical->id]),  'role' => 'form', 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
             <span class="pull-left"><h4>Update {!! $patient->patient_uuid !!} Non Surgical</h4></span>

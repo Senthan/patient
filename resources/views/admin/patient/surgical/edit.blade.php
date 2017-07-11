@@ -8,7 +8,7 @@
         <li class="active">Create</li>
     </ul>
 
-    {!! Form::model($surgical, ['url' => route('surgical.update', ['patient' => $patient->id, 'surgical' => $surgical->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($surgical, ['url' => route('surgical.update', ['patient' => $patient->id, 'surgical' => $surgical->id]),  'role' => 'form', 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
             <span class="pull-left"><h4>Update Surgical</h4></span>
@@ -20,7 +20,7 @@
             @include('admin.patient.surgical.form')
         </div>
         <div class="panel-footer text-right">
-            @include('admin.patient.submit-btn', ['text' => 'Edit', 'class' => 'blue'])
+            @include('admin.patient.submit-btn', ['text' => 'Update', 'class' => 'blue'])
         </div>
     </div>
     {!! Form::close() !!}

@@ -8,7 +8,7 @@
         <li class="active">Create</li>
     </ul>
 
-    {!! Form::model($refferal, ['url' => route('refferal.update', ['patient' => $patient->id, 'refferal' => $refferal->id]),  'role' => 'form', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($refferal, ['url' => route('refferal.update', ['patient' => $patient->id, 'refferal' => $refferal->id]),  'role' => 'form', 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
             <span class="pull-left"><h4>Update Reffercal</h4></span>

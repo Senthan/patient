@@ -54,7 +54,7 @@
     <div class="col-sm-6 group-space">
         <div class="input-group">
                     <span class="input-group-addon">
-                        <input type="checkbox" aria-label="Checkbox for following text input">
+                        <input name="traneximic" {!! isset($surgical) && $surgical->traneximic == 'on' ? 'checked' : '' !!} type="checkbox" aria-label="Checkbox for following text input">
                     </span>
             <input type="text" readonly value="Traneximic acid" class="form-control" aria-label="Text input with checkbox">
         </div>
@@ -63,7 +63,7 @@
     <div class="col-sm-6 group-space">
         <div class="input-group">
                 <span class="input-group-addon">
-                    <input type="checkbox" aria-label="Checkbox for following text input">
+                    <input name="methlene" type="checkbox" {!! isset($surgical) && $surgical->methlene == 'on' ? 'checked' : '' !!} aria-label="Checkbox for following text input">
                 </span>
             <input type="text" readonly value="Methlene blue" class="form-control" aria-label="Text input with checkbox">
         </div>

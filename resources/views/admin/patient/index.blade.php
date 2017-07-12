@@ -42,7 +42,7 @@
 
         </div>
         <div class="panel-body">
-            <div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid-move-columns class="grid"></div>
+            <div ui-grid="gridOptions" ui-grid-exporter ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid-move-columns class="grid"></div>
         </div>
     </div>
 </div>
@@ -89,6 +89,7 @@
             gridOptions.enableGridMenu = true;
             gridOptions.enableColumnResizing = true;
             gridOptions.enableSelectAll = true;
+            gridOptions.exporterMenuCsv = true;
 
             gridOptions.onRegisterApi = function (gridApi) {
                 $scope.gridApi = gridApi;

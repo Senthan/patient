@@ -121,7 +121,10 @@ class PatientController extends Controller
     public function show(Patient $patient)
     {
         $examination = $patient->examination;
-        return view('admin.patient.show', compact('patient', 'examination'));
+
+        $bath0 = $patient->examination()->where('row', 10)->where('col', 1)->where('type', 'activities_examination')->first();
+        $bath_0 = $bath0 ? $bath0->value : '-----';
+        return view('admin.patient.show', compact('patient', 'examination', 'bath_0'));
     }
 
     public function addDiagnosis(Patient $patient)
@@ -281,7 +284,7 @@ class PatientController extends Controller
 
         $examination = $patient->examination;
         $bath0 = $patient->examination()->where('row', 10)->where('col', 1)->where('type', 'activities_examination')->first();
-        $diagnosis->bath_0 = $bath0 ? $bath0->value : '';
+        $diagnosis->bath_0 = $bath0 ? $bath0->value : '-----';
 
         $followUp = $diagnosis->followUp()->with('drug', 'dose')->get();
         $drugs = Drug::lists('name', 'id');
@@ -293,7 +296,6 @@ class PatientController extends Controller
 
     public function updateDiagnosis(AddDiagnosisStoreRequest $request, Patient $patient, Diagnosis $diagnosis)
     {
-
         $diagnosis->co_mobidities = $request->co_mobidities;
         $diagnosis->drugs_on = $request->drugs_on;
         $diagnosis->height = $request->height;

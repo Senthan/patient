@@ -674,19 +674,33 @@
 </div>
 
 
-<div class="form-group {{ ($errors->has('surgical_management')) ? 'has-error' : '' }} required">
-    {!! Form::label('surgical_management', 'Surgical Management', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::textarea('surgical_management', null, ['class' => 'form-control', 'placeholder' => 'Surgical Management', 'rows' => '3']) !!}
-        <p class="help-block">{{ ($errors->has('surgical_management') ? $errors->first('surgical_management') : '') }}</p>
-    </div>
-</div>
 
-<div class="form-group {{ ($errors->has('non_surgical_management')) ? 'has-error' : '' }} required">
-    {!! Form::label('non_surgical_management', 'Non Surgical Management', ['class' => 'col-md-2 control-label']) !!}
-    <div class="col-md-10">
-        {!! Form::textarea('non_surgical_management', null, ['class' => 'form-control', 'placeholder' => 'Non Surgical Management']) !!}
-        <p class="help-block">{{ ($errors->has('non_surgical_management') ? $errors->first('non_surgical_management') : '') }}</p>
+<div class="form-group {{ ($errors->has('history')) ? 'has-error' : '' }} required">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h3>Management</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group {{ ($errors->has('surgical_management')) ? 'has-error' : '' }} required">
+                    {!! Form::label('surgical_management', 'Surgical Management', ['class' => 'col-md-2 control-label']) !!}
+                    <div class="col-md-10">
+                        {!! Form::textarea('surgical_management', null, ['class' => 'form-control', 'placeholder' => 'Surgical Management', 'rows' => '3']) !!}
+                        <p class="help-block">{{ ($errors->has('surgical_management') ? $errors->first('surgical_management') : '') }}</p>
+                    </div>
+                </div>
+
+                <div class="form-group {{ ($errors->has('non_surgical_management')) ? 'has-error' : '' }} required">
+                    {!! Form::label('non_surgical_management', 'Non Surgical Management', ['class' => 'col-md-2 control-label']) !!}
+                    <div class="col-md-10">
+                        {!! Form::textarea('non_surgical_management', null, ['class' => 'form-control', 'placeholder' => 'Non Surgical Management']) !!}
+                        <p class="help-block">{{ ($errors->has('non_surgical_management') ? $errors->first('non_surgical_management') : '') }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 

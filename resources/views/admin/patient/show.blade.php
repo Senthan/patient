@@ -36,7 +36,6 @@
                     </table>
                 </div>
                 <div class="ui green segment">
-
                     <table class="ui celled table">
                         <thead>
                         <tr>
@@ -45,56 +44,49 @@
                             </th>
                         </tr>
                         <tr>
-                            <th> Co Mobidities </th>
-                            <th> Drugs_on </th>
                             <th> Height </th>
                             <th> Weight </th>
                             <th> BMI </th>
-                            <th> Refferred from </th>
-                            <th> Presenting complain </th>
+
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td> {!! $patient->diagnosis()->first()->co_mobidities or '' !!}</td>
-                            <td> {!! $patient->diagnosis()->first()->drugs_on or '' !!}</td>
+                            <tr>
+
                             <td> {!! $patient->diagnosis()->first()->height or '' !!}</td>
                             <td> {!! $patient->diagnosis()->first()->weight or '' !!}</td>
                             <td> {!! $patient->diagnosis()->first()->bmi or '' !!}</td>
-                            <td> {!! $patient->diagnosis()->first()->refferred_from or '' !!}</td>
-                            <td> {!! $patient->diagnosis()->first()->presenting_complain or '' !!}</td>
-                        </tr>
+
+                           </tr>
                         </tbody>
                     </table>
-                    <table class="ui celled table">
-                        <thead>
-                        <tr>
-                            <th colspan="7">
-                                First clinic visit
-                            </th>
-                        </tr>
-                        <tr>
-                            <th> Past surgicalhistory </th>
-                            <th> Allergic history </th>
-                            <th> Management plan </th>
-                            <th> X ray </th>
-                            <th> CT scan </th>
-                            <th> Miri scan </th>
-                            <th> Other imaging </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td> {!! $patient->diagnosis()->first()->past_surgical_history or '' !!}</td>
-                            <td> {!! $patient->diagnosis()->first()->allergic_history or '' !!}</td>
-                            <td> {!! $patient->diagnosis()->first()->management_plan or '' !!}</td>
-                            <td> {!! $patient->diagnosis()->first()->x_ray or '' !!}</td>
-                            <td> {!! $patient->diagnosis()->first()->ct_scan or '' !!}</td>
-                            <td> {!! $patient->diagnosis()->first()->miri_scan or '' !!}</td>
-                            <td> {!! $patient->diagnosis()->first()->other_imaging or '' !!}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+                    <div class="ui piled segments">
+                        <div class="ui segment">
+                            <h4 class="ui header">Co Mobidities</h4>
+                            <p>{!! $patient->diagnosis()->first()->co_mobidities or '-----' !!}</p>
+                        </div>
+                        <div class="ui segment">
+                            <h4 class="ui header">Drugs on</h4>
+                            <p>{!! $patient->diagnosis()->first()->drugs_on or '-----' !!}</p>
+                        </div>
+                        <div class="ui segment">
+                            <h4 class="ui header">Refferred from</h4>
+                            <p>{!! $patient->diagnosis()->first()->refferred_from or '-----' !!}</p>
+                        </div>
+                        <div class="ui segment">
+                            <h4 class="ui header">Presenting complain</h4>
+                            <p>{!! $patient->diagnosis()->first()->presenting_complain or '-----' !!}</p>
+                        </div>
+                        <div class="ui segment">
+                            <h4 class="ui header">Past surgical history</h4>
+                            <p>{!! $patient->diagnosis()->first()->past_surgical_history or '-----' !!}</p>
+                        </div>
+                        <div class="ui segment">
+                            <h4 class="ui header">Allergic history</h4>
+                            <p>{!! $patient->diagnosis()->first()->allergic_history or '-----' !!}</p>
+                        </div>
+                    </div>
 
                     <table class="ui celled table">
                         <thead>
@@ -483,7 +475,7 @@
                         </thead>
                     </table>
 
-                    <table class="ui definition table activities-examination">
+                    <table class="ui celled table">
                         <thead>
                         <tr>
                             <th colspan="7">
@@ -491,170 +483,225 @@
                             </th>
                         </tr>
                         <tr>
-                            <th>Activities</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>2</th>
-                            <th>3</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Bowels</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Incontinent / need enema</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Occasional</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Continent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Bladder</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Incontinent / catheterised</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Occasional</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Continent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Grooming</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Needs help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Occasional</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Toilet use</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Dependant</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Need some help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Feeding</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Unable</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Need help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Transfer</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Unable / no sitting Balance</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Major help, can sit</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Minor help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Indep</td>
-                        </tr>
-                        <tr>
-                            <td>Mobility</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Immobile</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Wheel chair independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">walks with help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Indep</td>
-                        </tr>
-                        <tr>
-                            <td>Dressing</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Dependent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Needs help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independentp</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Stairs</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Unable</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Needs help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independentp</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Bathing</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 1)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Dependent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 2)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}">Independentp</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 3)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 4)->where('value', 1)->where('type', 'activities_examination')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
                             <td>Bathal Index</td>
                             <td colspan="4">
-                                {!! Form::text('bath_0', null, ['class' => 'form-control', 'placeholder' => '', 'style' => 'width: 100%;']) !!}
+                                {!! $bath_0 or '-----' !!}
                             </td>
                         </tr>
                         </tbody>
                     </table>
 
+                    <div class="ui segments">
+                        <div class="ui segment">
+                            <h3 class="ui header">Imaging</h3>
+                        </div>
+                    <div class="ui segments">
+
+                        <div class="ui segment">
+                            <h4 class="ui header">X ray</h4>
+                            <p>{!! $patient->diagnosis()->first()->x_ray or '-----' !!}</p>
+                        </div>
+                        <div class="ui segment">
+                            <h4 class="ui header">CT scan</h4>
+                            <p>{!! $patient->diagnosis()->first()->ct_scan or '-----' !!}</p>
+                        </div>
+                        <div class="ui segment">
+                            <h4 class="ui header">MRI scan</h4>
+                            <p>{!! $patient->diagnosis()->first()->miri_scan or '-----' !!}</p>
+                        </div>
+                        <div class="ui segment">
+                            <h4 class="ui header">Other imaging</h4>
+                            <p>{!! $patient->diagnosis()->first()->other_imaging or '-----' !!}</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ui segments">
+                        <div class="ui segment">
+                            <h3 class="ui header">Management</h3>
+                        </div>
+                        <div class="ui segments">
+                            <div class="ui segment">
+                                <h4 class="ui header">Surgical management</h4>
+                                <p>{!! $patient->diagnosis()->first()->surgical_management or '-----' !!}</p>
+                            </div>
+                            <div class="ui segment">
+                                <h4 class="ui header">Non surgical management</h4>
+                                <p>{!! $patient->diagnosis()->first()->non_surgical_management or '-----' !!}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui segment">
+                        <h4 class="ui header">Drugs given</h4>
+                        <p>{!! $patient->diagnosis()->first()->drugs_given or '-----' !!}</p>
+                    </div>
 
                 </div>
 
-                @if(count($patient->surgical))
 
-                <div class="ui segment blue clearfix g">
+                <div class="ui segment olive clearfix">
 
                     <table class="ui celled table">
                         <thead>
                         <tr>
                             <th colspan="7">
-                                Surgical
+                                Refferal
                             </th>
                         </tr>
                         <tr>
-                            <th> Date of admission </th>
-                            <th> Date of surgery </th>
-                            <th> Date of discharge </th>
-                            <th> Surgery </th>
-                            <th> Complication </th>
-                            <th> Discharge plan </th>
+                            <th> Refferal </th>
+                            <th> Reffered to </th>
+                            <th> Report </th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($patient->surgical as $surgical)
-                        <tr>
-                            <td> {!! $surgical->date_of_admission or '' !!}</td>
-                            <td> {!! $surgical->date_of_surgery or '' !!}</td>
-                            <td> {!! $surgical->date_of_discharge or '' !!}</td>
-                            <td> {!! $surgical->surgery or '' !!}</td>
-                            <td> {!! $surgical->complication or '' !!}</td>
-                            <td> {!! $surgical->discharge_plan or '' !!}</td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-
-                </div>
-
-
-                @endif
-                @if(count($patient->surgicalFollowup))
-                <div class="ui segment pink clearfix g">
-
-                    <table class="ui celled table">
-                        <thead>
-                        <tr>
-                            <th colspan="7">
-                                Surgical Followup
-                            </th>
-                        </tr>
-                        <tr>
-                            <th> Date </th>
-                            <th> Complain </th>
-                            <th> Examination </th>
-                            <th> Investigation </th>
-                            <th> Management </th>
-                            <th> Post up days </th>
-                            <th> Post up weeks </th>
-                            <th> Post up months </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($patient->surgicalFollowup as $surgicalFollowup)
+                        @foreach($patient->refferal as $refferal)
                             <tr>
-                                <td> {!! $surgicalFollowup->date or '' !!}</td>
-                                <td> {!! $surgicalFollowup->complain or '' !!}</td>
-                                <td> {!! $surgicalFollowup->examination or '' !!}</td>
-                                <td> {!! $surgicalFollowup->investigation or '' !!}</td>
-                                <td> {!! $surgicalFollowup->management or '' !!}</td>
-                                <td> {!! $surgicalFollowup->post_up_days or '' !!}</td>
-                                <td> {!! $surgicalFollowup->post_up_weeks or '' !!}</td>
-                                <td> {!! $surgicalFollowup->post_up_months or '' !!}</td>
+                                <td> {!! $refferal->refferal or '' !!}</td>
+                                <td> {!! $refferal->reffered_to or '' !!}</td>
+                                <td> {!! $refferal->report or '' !!}</td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
+
+                </div>
+
+                <div class="ui segment blue clearfix g">
+
+
+
+                    <div class="ui segments">
+                        <div class="ui segment">
+                            <h3 class="ui header">Surgical Admission</h3>
+                        </div>
+                        @foreach($patient->surgical as $surgical)
+                        <div class="ui segments">
+                            <div class="ui segment">
+                                <h4> Date of admission </h4>
+                                <p> {!! $surgical->date_of_admission or '' !!}</p>
+                            </div>
+                            <div class="ui segment">
+                                <h4> Date of surgery </h4>
+                                <p> {!! $surgical->date_of_surgery or '' !!}</p>
+                            </div>
+                            <div class="ui segment">
+                                <h4> Date of discharge </h4>
+                                <p> {!! $surgical->date_of_discharge or '' !!}</p>
+                            </div>
+                            <div class="ui segment">
+                                <h4> Surgery </h4>
+                                <p> {!! $surgical->surgery or '' !!}</p>
+                            </div>
+                            <div class="ui segment">
+                                <h4> Complication </h4>
+                                <p> {!! $surgical->complication or '' !!}</p>
+                            </div>
+                            <div class="ui segment">
+                                <h4> Discharge plan </h4>
+                                <p> {!! $surgical->discharge_plan or '' !!}</p>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="ui segment orange clearfix">
+                    <div class="ui segments">
+                        <div class="ui segment">
+                            <h3 class="ui header">Non Surgical Admission</h3>
+                        </div>
+                        @foreach($patient->nonSurgical as $nonSurgical)
+                        <div class="ui segments">
+                            <div class="ui segment">
+                                <h4 class="ui header"> Date of admission </h4>
+                                <p> {!! $nonSurgical->date_of_admission or '-----' !!}</p>
+                            </div>
+                            <div class="ui segment">
+                                <h4 class="ui header"> Date of discharge </h4>
+                                <p> {!! $nonSurgical->date_of_discharge or '-----' !!}</p>
+                            </div>
+                            <div class="ui segment">
+                                <h4 class="ui header"> Indication for admission </h4>
+                                <p> {!! $nonSurgical->indication_admission or '-----' !!}</p>
+                            </div>
+                            <div class="ui segment">
+                                <h4 class="ui header"> Management </h4>
+                                <p> {!! $nonSurgical->management or '-----' !!}</p>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="ui segment violet clearfix">
+                    <div class="ui segments">
+                        <div class="ui segment">
+                            <h3 class="ui header">Non Surgical Followup</h3>
+                        </div>
+                        @foreach($patient->nonSurgicalFollowup as $nonSurgicalFollowup)
+                            <div class="ui segments">
+                                <div class="ui segment">
+                                    <h4 class="ui header"> Date</h4>
+                                    <p> {!! $surgicalFollowup->date or '-----' !!}</p>
+                                </div>
+                                <div class="ui segment">
+                                    <h4 class="ui header"> Complain</h4>
+                                    <p> {!! $surgicalFollowup->complain or '-----' !!}</p>
+                                </div>
+                                <div class="ui segment">
+                                    <h4 class="ui header"> Examination</h4>
+                                    <p> {!! $surgicalFollowup->examination or '-----' !!}</p>
+                                </div>
+                                <div class="ui segment">
+                                    <h4 class="ui header"> Investigation</h4>
+                                    <p> {!! $surgicalFollowup->investigation or '-----' !!}</p>
+                                </div>
+                                <div class="ui segment">
+                                    <h4 class="ui header"> Management</h4>
+                                    <p> {!! $surgicalFollowup->management or '-----' !!}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="ui segment pink clearfix">
+                    <div class="ui segments">
+                        <div class="ui segment">
+                            <h3 class="ui header">Surgical Followup</h3>
+                        </div>
+                        @foreach($patient->surgicalFollowup as $surgicalFollowup)
+                            <div class="ui segments">
+                                <div class="ui segment">
+                                    <h4 class="ui header"> Date</h4>
+                                    <p> {!! $surgicalFollowup->date or '-----' !!}</p>
+                                </div>
+                                <div class="ui segment">
+                                    <h4 class="ui header"> Post op</h4>
+                                    <p> {!! $surgicalFollowup->post_up_days ? $surgicalFollowup->post_up_days . ' days' : $surgicalFollowup->post_up_weeks ? $surgicalFollowup->post_up_weeks . 'weeks' : $surgicalFollowup->post_up_months .' months' !!}</p>
+                                </div>
+                                <div class="ui segment">
+                                    <h4 class="ui header"> Complain</h4>
+                                    <p>{!! $surgicalFollowup->complain or '' !!}</p>
+                                </div>
+                                <div class="ui segment">
+                                    <h4 class="ui header"> Examination</h4>
+                                    <p>{!! $surgicalFollowup->examination or '' !!}</p>
+                                </div>
+                                <div class="ui segment">
+                                    <h4 class="ui header"> Investigation</h4>
+                                    <p>{!! $surgicalFollowup->investigation or '' !!}</p>
+                                </div>
+                                <div class="ui segment">
+                                    <h4 class="ui header"> Management</h4>
+                                    <p> {!! $surgicalFollowup->management or '-----' !!}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
 
                     <table class="ui celled table">
                         <thead>
@@ -1043,7 +1090,7 @@
                         </thead>
                     </table>
 
-                    <table class="ui definition table activities-examination">
+                    <table class="ui celled table">
                         <thead>
                         <tr>
                             <th colspan="7">
@@ -1051,192 +1098,14 @@
                             </th>
                         </tr>
                         <tr>
-                            <th>Activities</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>2</th>
-                            <th>3</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Bowels</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Incontinent / need enema</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Occasional</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Continent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Bladder</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Incontinent / catheterised</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Occasional</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Continent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Grooming</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Needs help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Occasional</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Toilet use</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Dependant</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Need some help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Feeding</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Unable</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Need help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Transfer</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Unable / no sitting Balance</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Major help, can sit</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Minor help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Indep</td>
-                        </tr>
-                        <tr>
-                            <td>Mobility</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Immobile</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Wheel chair independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">walks with help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Indep</td>
-                        </tr>
-                        <tr>
-                            <td>Dressing</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Dependent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Needs help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independentp</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Stairs</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Unable</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Needs help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independentp</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td>Bathing</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Dependent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independentp</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
                             <td>Bathal Index</td>
                             <td colspan="4">
-                                {!! Form::text('bath_0', null, ['class' => 'form-control', 'placeholder' => '', 'style' => 'width: 100%;']) !!}
+                                {{ $bath_0 or '-----'}}
                             </td>
                         </tr>
                         </tbody>
                     </table>
-
-
                 </div>
-
-                @endif
-
-                @if(count($patient->nonSurgical))
-                <div class="ui segment orange clearfix">
-
-                    <table class="ui celled table">
-                        <thead>
-                        <tr>
-                            <th colspan="7">
-                                Non Surgical
-                            </th>
-                        </tr>
-                        <tr>
-                            <th> Date of admission </th>
-                            <th> Date of discharge </th>
-                            <th> Indication admission </th>
-                            <th> Management </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($patient->nonSurgical as $nonSurgical)
-                        <tr>
-                            <td> {!! $nonSurgical->date_of_admission or '' !!}</td>
-                            <td> {!! $nonSurgical->date_of_discharge or '' !!}</td>
-                            <td> {!! $nonSurgical->indication_admission or '' !!}</td>
-                            <td> {!! $nonSurgical->management or '' !!}</td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-
-                </div>
-
-                @endif
-                @if(count($patient->nonSurgicalFollowup))
-                <div class="ui segment violet clearfix">
-
-                    <table class="ui celled table">
-                        <thead>
-                        <tr>
-                            <th colspan="7">
-                                Non Surgical Followup
-                            </th>
-                        </tr>
-                        <tr>
-                            <th> Date </th>
-                            <th> Complain </th>
-                            <th> Examination </th>
-                            <th> Investigation </th>
-                            <th> Management </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($patient->nonSurgicalFollowup as $nonSurgicalFollowup)
-                        <tr>
-                            <td> {!! $surgicalFollowup->date or '' !!}</td>
-                            <td> {!! $surgicalFollowup->complain or '' !!}</td>
-                            <td> {!! $surgicalFollowup->examination or '' !!}</td>
-                            <td> {!! $surgicalFollowup->investigation or '' !!}</td>
-                            <td> {!! $surgicalFollowup->management or '' !!}</td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-
-                </div>
-                @endif
-                @if(count($patient->refferal))
-                <div class="ui segment olive clearfix">
-
-                    <table class="ui celled table">
-                        <thead>
-                        <tr>
-                            <th colspan="7">
-                                Refferal
-                            </th>
-                        </tr>
-                        <tr>
-                            <th> Refferal </th>
-                            <th> Reffered to </th>
-                            <th> Report </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($patient->refferal as $refferal)
-                        <tr>
-                            <td> {!! $refferal->refferal or '' !!}</td>
-                            <td> {!! $refferal->reffered_to or '' !!}</td>
-                            <td> {!! $refferal->report or '' !!}</td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-
-                </div>
-                @endif
             </div>
         </section>
     </div>

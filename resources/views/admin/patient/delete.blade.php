@@ -2,7 +2,7 @@
 @section('content')
     <ul class="breadcrumb">
         <li>{!! link_to_route('admin.home.index', 'Home ') !!}</li>
-        <li>{!! link_to_route('patient.index', 'patients ') !!}</li>
+        <li>{!! link_to_route('patient.index', 'Patient Management') !!}</li>
         <li class="active">Delete</li>
     </ul>
     {!! Form::model($patient, ['url' => route('patient.destroy', ['patients' => $patient->id]), 'method' => 'DELETE']) !!}

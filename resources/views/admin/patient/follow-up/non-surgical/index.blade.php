@@ -2,9 +2,9 @@
 @section('content')
     <ul class="breadcrumb">
         <li>{!! link_to_route('admin.home.index', 'Home') !!}</li>
-        <li>{!! link_to_route('patient.index', 'patients') !!}</li>
+        <li>{!! link_to_route('patient.index', 'Patient Management') !!}</li>
         <li>{!! $patient->patient_uuid !!}</li>
-        <li class="active">Non Surgical Followup</li>
+        <li class="active">Non Surgical Followup Management</li>
     </ul>
     <section class="content" ng-controller="FollowUpController">
         <div class="ui segments">

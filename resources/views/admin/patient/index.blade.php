@@ -2,7 +2,7 @@
 @section('content')
     <ul class="breadcrumb">
         <li><a href="{{ route('admin.home.index') }}">Home</a></li>
-        <li class="active">Patients</li>
+        <li class="active">Patient Management</li>
     </ul>
 <div ng-controller="PatientController">
     <div class="panel panel-default">

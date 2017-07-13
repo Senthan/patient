@@ -22,19 +22,19 @@
     <div class="input-group">
         <div class="col-md-4">
             <div class="ui action input">
-                <input type="text" placeholder="Days...">
+                <input type="text" name="post_up_days" placeholder="Days...">
                 <button class="ui button">Days</button>
             </div>
         </div>
         <div class="col-md-4">
             <div class="ui action input">
-                <input type="text" placeholder="Weeks...">
+                <input type="text" name="post_up_weeks" placeholder="Weeks...">
                 <button class="ui button">Weeks</button>
             </div>
         </div>
         <div class="col-md-4">
             <div class="ui action input">
-                <input type="text" placeholder="Month...">
+                <input type="text" name="post_up_months" placeholder="Month...">
                 <button class="ui button">Months</button>
             </div>
         </div>

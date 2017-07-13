@@ -18,7 +18,7 @@
                 {!! Form::model($nonSurgical, ['url' => route('non.surgical.destroy', ['patient' => $patient->id, 'nonSurgical' => $nonSurgical]), 'role' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'DELETE']) !!}
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a class="ui button" href="{{ route('non.surgical.index', ['patient' => $patient->id]) }}">Non Surgical Followup?</a>
+                        <a class="ui small button" href="{{ route('non.surgical.index', ['patient' => $patient->id]) }}">Back</a>
                     </div>
                     <div class="panel-body">
                         <p>Do you really want to delete this ({{ $nonSurgical->date_of_admission }}) Non Surgical?</p>

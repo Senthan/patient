@@ -12,6 +12,7 @@
                 <a href="{{ route('non.surgical.followup.create', ['patient' => $patient]) }}" class="ui small green labeled icon button"><i class="plus icon"></i> Create</a>
                 <a data-ng-show="selected" ng-href="@{{ edit_url }}" class="ui small primary labeled icon button"><i class="write icon"></i> Edit</a>
                 <a data-ng-show="selected" ng-href="@{{ delete_url }}" class="ui small red labeled icon button"><i class="minus icon"></i> Delete</a>
+                <a class="ui small button pull-right" href="{{ route('patient.index') }}">Back</a>
             </div>
             <div class="ui black segment">
                 <table class="ui compact celled definition table">

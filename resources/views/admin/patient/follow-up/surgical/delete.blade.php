@@ -19,7 +19,7 @@
                 {!! Form::model($surgicalFollowup, ['url' => route('surgical.followup.destroy', ['patient' => $patient, 'surgicalFollowup' => $surgicalFollowup]), 'role' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'DELETE']) !!}
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a class="ui button" href="{{ route('surgical.followup.index', ['patient' => $patient]) }}">SurgicalFollowup?</a>
+                        <a class="ui small button" href="{{ route('surgical.followup.index', ['patient' => $patient->id]) }}">Back</a>
                     </div>
                     <div class="panel-body">
                         <p>Do you really want to delete this ({{ $surgicalFollowup->date }}) {!! $patient->patient_uuid !!} SurgicalFollowup?</p>

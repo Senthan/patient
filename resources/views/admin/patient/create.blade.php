@@ -12,7 +12,7 @@
             <div class="ui segment clearfix">
                 <h2 class="pull-left">New patient</h2>
                 <div class="pull-right">
-                    <a class="ui small button" href="{{ route('patient.index') }}">Cancel</a>
+                    <a class="ui small button" href="{{ route('patient.index') }}">Back</a>
                 </div>
             </div>
             <div class="ui green segment"  style="background-color: rgba(0, 0, 0, 0.22); !important;">

@@ -12,7 +12,7 @@
         <div class="panel-heading clearfix">
             <span class="pull-left"><h4>First clinic visit</h4></span>
             <span class="pull-right">
-                @include('admin.patient.back-btn', ['text' => 'Back'])
+                <a class="ui small button" href="{{ route('patient.index') }}">Back</a>
             </span>
         </div>
         <div class="panel-body">

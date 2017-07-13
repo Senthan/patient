@@ -13,7 +13,7 @@
         <div class="panel-heading clearfix">
             <span class="pull-left"><h4>Add {!! $patient->patient_uuid !!} Non Surgical</h4></span>
             <span class="pull-right">
-                @include('admin.patient.back-btn', ['text' => 'Back'])
+                <a class="ui small button" href="{{ route('non.surgical.index', ['patient' => $patient->id]) }}">Back</a>
             </span>
         </div>
         <div class="panel-body">

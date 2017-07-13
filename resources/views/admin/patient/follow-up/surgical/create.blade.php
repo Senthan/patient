@@ -15,7 +15,7 @@
                 <div class="ui segment clearfix">
                     <h2 class="pull-left">Create {!! $patient->patient_uuid !!} Surgical Followup</h2>
                     <div class="pull-right">
-                        <a class="ui small button" href="{{ route('surgical.followup.index', ['patient' => $patient]) }}">followup</a>
+                        <a class="ui small button" href="{{ route('surgical.followup.index', ['patient' => $patient->id]) }}">Back</a>
                     </div>
                 </div>
                 <div class="ui green segment">

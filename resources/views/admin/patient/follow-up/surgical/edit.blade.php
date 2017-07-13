@@ -11,7 +11,7 @@
 
 
     <section class="content">
-        {!! Form::model($surgicalFollowup, ['url' => route('surgical.followup.update', ['patient' => $patient, 'surgicalFollowup' => $surgicalFollowup]), 'role' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'PATCH']) !!}
+        {!! Form::model($surgicalFollowup, ['urlFollowup' => route('surgical.followup.update', ['patient' => $patient, 'surgicalFollowup' => $surgicalFollowup]), 'role' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'PATCH']) !!}
 
             <div class="ui segments">
                 <div class="ui segment clearfix">
@@ -43,6 +43,30 @@
 
         });
 
+
+        var  urlFollowup = "{{ route('patient.examination.followup.update', ['patient' => $patient->id, 'surgicalFollowup' => $surgicalFollowup->id]) }}";
+
+        function keyupFunction() {
+            var bath0 = document.getElementById("bath_0");
+            var examination = {};
+            examination.row = 10;
+            examination.col = 1;
+            examination.type = 'activities_examination_followup';
+            examination.value = document.getElementById("bath_0").value;
+            updateFollowup(examination, urlFollowup);
+        }
+
+        function updateFollowup(examination, urlFollowup) {
+            console.log('urlFollowup', urlFollowup, examination)
+            $.ajax({
+
+                type: "POST",
+                url: urlFollowup,
+                data: {data :examination,  _token: "{{ csrf_token() }}", type: 'create'},
+            });
+        }
+
+
         $(".celled.table.pain-scale tr").on("click", "td", function (event) {
             var col = $(this).parent().children().index($(this));
             var row = $(this).parent().parent().children().index($(this).parent());
@@ -61,7 +85,7 @@
                 examination.type = 'pain_scale_followup';
                 examination.value = 1;
             }
-            updateExamination(examination, url);
+            updateFollowup(examination, urlFollowup);
         });
 
         $(".celled.table.sensory-impairment tr").on("click", "td", function (event) {
@@ -84,7 +108,7 @@
                 examination.type = 'sensory_impairment_followup';
                 examination.value = 1;
             }
-            updateExamination(examination, url);
+            updateFollowup(examination, urlFollowup);
         });
 
         $(".celled.table.root-examination tr").on("click", "td", function (event) {
@@ -107,7 +131,7 @@
                 examination.type = 'root_examination_followup';
                 examination.value = 1;
             }
-            updateExamination(examination, url);
+            updateFollowup(examination, urlFollowup);
         });
 
 
@@ -131,7 +155,7 @@
                 examination.type = 'reflexes_examination_followup';
                 examination.value = 1;
             }
-            updateExamination(examination, url);
+            updateFollowup(examination, urlFollowup);
         });
 
 
@@ -155,7 +179,7 @@
                 examination.type = 'activities_examination_followup';
                 examination.value = 1;
             }
-            updateExamination(examination, url);
+            updateFollowup(examination, urlFollowup);
         });
 
         $( "#bath_0" ).keydown(function() {
@@ -164,7 +188,7 @@
             examination.col = 1;
             examination.type = 'activities_examination_followup';
             examination.value = $( "#bath_0" ).val();
-            updateExamination(examination, url);
+            updateFollowup(examination, urlFollowup);
         });
 
     </script>

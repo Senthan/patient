@@ -52,10 +52,50 @@ use League\Fractal\Serializer\DataArraySerializer;
 use Barryvdh\DomPDF\Facade as PDF;
 class PatientController extends Controller
 {
+    public $motorExamination = [[]];
+    public $painScaleExamination = [[]];
+    public $sensoryImpairmentExamination = [[]];
+    public $reflexesExamination = [[]];
     public function __construct(Request $request, ResponseFactory $response)
     {
         $this->request =  $request;
         $this->response =  $response;
+
+        $this->motorExamination =  [
+            [0, 0, 'C5 Elbow extensors Grade0 R', 'C5 Elbow extensors Grade0 L', 'C5 Elbow extensors Grade1 R', 'C5 Elbow extensors Grade1 L', 'C5 Elbow extensors Grade2 R', 'C5 Elbow extensors Grade2 L', 'C5 Elbow extensors Grade3 R', 'C5 Elbow extensors Grade3 L', 'C5 Elbow extensors Grade4 R', 'C5 Elbow extensors Grade4 L', 'C5 Elbow extensors Grade5 R', 'C5 Elbow extensors Grade5 L'],
+            [0, 0, 'C6 Wrist extensors Grade0 R', 'C6 Wrist extensors Grade0 L', 'C6 Wrist extensors Grade1 R', 'C6 Wrist extensors Grade1 L', 'C6 Wrist extensors Grade2 R', 'C6 Wrist extensors Grade2 L', 'C6 Wrist extensors Grade3 R', 'C6 Wrist extensors Grade3 L', 'C6 Wrist extensors Grade4 R', 'C6 Wrist extensors Grade4 L', 'C6 Wrist extensors Grade5 R', 'C6 Wrist extensors Grade5 L'],
+            [0, 0, 'C8 Finger flexors Grade0 R', 'C8 Finger flexors Grade0 L', 'C8 Finger flexors Grade1 R', 'C8 Finger flexors Grade1 L', 'C8 Finger flexors Grade2 R', 'C8 Finger flexors Grade2 L', 'C8 Finger flexors Grade3 R', 'C8 Finger flexors Grade3 L', 'C8 Finger flexors Grade4 R', 'C8 Finger flexors Grade4 L', 'C8 Finger flexors Grade5 R', 'C8 Finger flexors Grade5 L'],
+            [0, 0, 'L2 Hip flexors Grade0 R', 'L2 Hip flexors Grade0 L', 'L2 Hip flexors Grade1 R', 'L2 Hip flexors Grade1 L', 'L2 Hip flexors Grade2 R', 'L2 Hip flexors Grade2 L', 'L2 Hip flexors Grade3 R', 'L2 Hip flexors Grade3 L', 'L2 Hip flexors Grade4 R', 'L2 Hip flexors Grade4 L', 'L2 Hip flexors Grade5 R', 'L2 Hip flexors Grade5 L'],
+            [0, 0, 'L3 Knee extensors Grade0 R', 'L3 Knee extensors Grade0 L', 'L3 Knee extensors Grade1 R', 'L3 Knee extensors Grade1 L', 'L3 Knee extensors Grade2 R', 'L3 Knee extensors Grade2 L', 'L3 Knee extensors Grade3 R', 'L3 Knee extensors Grade3 L', 'L3 Knee extensors Grade4 R', 'L3 Knee extensors Grade4 L', 'L3 Knee extensors Grade5 R', 'L3 Knee extensors Grade5 L'],
+            [0, 0, 'L4 Ankle dorsiflexors Grade0 R', 'L4 Ankle dorsiflexors Grade0 L', 'L4 Ankle dorsiflexors Grade1 R', 'L4 Ankle dorsiflexors Grade1 L', 'L4 Ankle dorsiflexors Grade2 R', 'L4 Ankle dorsiflexors Grade2 L', 'L4 Ankle dorsiflexors Grade3 R', 'L4 Ankle dorsiflexors Grade3 L', 'L4 Ankle dorsiflexors Grade4 R', 'L4 Ankle dorsiflexors Grade4 L', 'L4 Ankle dorsiflexors Grade5 R', 'L4 Ankle dorsiflexors Grade5 L'],
+            [0, 0, 'L5 Long toe extensors Grade0 R', 'L5 Long toe extensors Grade0 L', 'L5 Long toe extensors Grade1 R', 'L5 Long toe extensors Grade1 L', 'L5 Long toe extensors Grade2 R', 'L5 Long toe extensors Grade2 L', 'L5 Long toe extensors Grade3 R', 'L5 Long toe extensors Grade3 L', 'L5 Long toe extensors Grade4 R', 'L5 Long toe extensors Grade4 L', 'L5 Long toe extensors Grade5 R', 'L5 Long toe extensors Grade5 L'],
+            [0, 0, 'S1 Ankle plantar flexors Grade0 R', 'S1 Ankle plantar flexors Grade0 L', 'S1 Ankle plantar flexors Grade1 R', 'S1 Ankle plantar flexors Grade1 L', 'S1 Ankle plantar flexors Grade2 R', 'S1 Ankle plantar flexors Grade2 L', 'S1 Ankle plantar flexors Grade3 R', 'S1 Ankle plantar flexors Grade3 L', 'S1 Ankle plantar flexors Grade4 R', 'S1 Ankle plantar flexors Grade4 L', 'S1 Ankle plantar flexors Grade5 R', 'S1 Ankle plantar flexors Grade5 L']
+        ];
+
+        $this->reflexesExamination =  [
+            [0, 0],
+            [0, 0, 'Biceps C5 Grade 0', 'Biceps C5 Grade 1', 'Biceps C5 Grade 2', 'Biceps C5 Grade 3', 'Biceps C5 Grade 4' ],
+            [0, 0, 'Brachioradialis C6 Grade 0', 'Brachioradialis C6 Grade 1', 'Brachioradialis C6 Grade 2', 'Brachioradialis C6 Grade 3', 'Brachioradialis C6 Grade 4' ],
+            [0, 0, 'Triceps C7 Grade 0', 'Triceps C7 Grade 1', 'Triceps C7 Grade 2', 'Triceps C7 Grade 3', 'Triceps C7 Grade 4' ],
+            [0, 0, 'Fingers C8 Grade 0', 'Fingers C8 Grade 1', 'Fingers C8 Grade 2', 'Fingers C8 Grade 3', 'Fingers C8 Grade 4' ],
+            [0, 0, 'Hoffman sign Grade 0', 'Hoffman sign Grade 1', 'Hoffman sign Grade 2', 'Hoffman sign Grade 3', 'Hoffman sign Grade 4' ],
+            [0, 0, 'Knee L4 Grade 0', 'Knee L4 Grade 1', 'Knee L4 Grade 2', 'Knee L4 Grade 3', 'Knee L4 Grade 4' ],
+            [0, 0, 'Ankle S1 Grade 0', 'Ankle S1 Grade 1', 'Ankle S1 Grade 2', 'Ankle S1 Grade 3', 'Ankle S1 Grade 4' ]
+        ];
+
+        $this->sensoryImpairmentExamination =  [
+            [0, 'Cerrvical C1', 'Cerrvical C2', 'Cerrvical C3', 'Cerrvical C4', 'Cerrvical C5', 'Cerrvical C6', 'Cerrvical C7', 'Cerrvical C8'],
+            [0, 'Thoracic T1', 'Thoracic T2', 'Thoracic T3', 'Thoracic T4', 'Thoracic T5', 'Thoracic T6', 'Thoracic T7', 'Thoracic T8', 'Thoracic T9', 'Thoracic T10', 'Thoracic T11', 'Thoracic T12'],
+            [0, 'Lumbar L1', 'Lumbar L2', 'Lumbar L3', 'Lumbar L4', 'Lumbar L5'],
+            [0, 'Sacral S1', 'Sacral S2', 'Sacral S3', 'Sacral S4', 'Sacral S5'],
+            [0, 'Caccxygeal Cx']
+        ];
+
+        $this->painScaleExamination =  [
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        ];
+
+
         parent::__construct();
     }
 
@@ -124,7 +164,12 @@ class PatientController extends Controller
 
         $bath0 = $patient->examination()->where('row', 10)->where('col', 1)->where('type', 'activities_examination')->first();
         $bath_0 = $bath0 ? $bath0->value : '-----';
-        return view('admin.patient.show', compact('patient', 'examination', 'bath_0'));
+        $motorExamination = $this->motorExamination;
+        $painScaleExamination = $this->painScaleExamination;
+        $sensoryImpairmentExamination = $this->sensoryImpairmentExamination;
+        $reflexesExamination = $this->reflexesExamination;
+        return view('admin.patient.show', compact('patient', 'examination', 'bath_0',
+            'motorExamination', 'painScaleExamination', 'sensoryImpairmentExamination', 'reflexesExamination'));
     }
 
     public function addDiagnosis(Patient $patient)

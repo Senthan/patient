@@ -19,6 +19,7 @@ class CreateExaminationsTable extends Migration
             $table->string('col')->nullable()->default(null);
             $table->string('value')->nullable()->default(null);
             $table->unsignedInteger('patient_id');
+            $table->unsignedInteger('surgical_followup_id')->nullable()->default(null);
             $table->timestamps();
         });
     }

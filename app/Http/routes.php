@@ -58,6 +58,9 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
             $router->patch('{surgicalFollowup}', ['uses' => 'SurgicalFollowupController@update', 'as' => 'surgical.followup.update']);
             $router->get('{surgicalFollowup}/delete', ['uses' => 'SurgicalFollowupController@delete', 'as' => 'surgical.followup.delete']);
             $router->delete('{surgicalFollowup}', ['uses' => 'SurgicalFollowupController@destroy', 'as' => 'surgical.followup.destroy']);
+
+            $router->post('/{surgicalFollowup}/examination/followup', ['uses' => 'SurgicalFollowupController@followup', 'as' => 'patient.examination.followup.update']);
+
         });
 
 

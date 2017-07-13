@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Examination;
 use App\Patient;
 use App\SurgicalFollowup;
 use Illuminate\Http\Request;
@@ -48,16 +49,9 @@ class SurgicalFollowupController extends Controller
         $surgicalFollowup = new SurgicalFollowup();
         $surgicalFollowup->patient_id = $patient->id;
         $surgicalFollowup->date = $request->date;
-        $surgicalFollowup->complain = $request->complain;
-        $surgicalFollowup->examination = $request->examination;
-        $surgicalFollowup->investigation = $request->investigation;
-        $surgicalFollowup->management = $request->management;
-        $surgicalFollowup->post_up_days = $request->post_up_days;
-        $surgicalFollowup->post_up_weeks = $request->post_up_weeks;
-        $surgicalFollowup->post_up_months = $request->post_up_months;
         $surgicalFollowup->save();
 
-        return redirect()->route('surgical.followup.index', ['patient' => $patient]);
+        return redirect()->route('surgical.followup.edit', ['patient' => $patient, 'surgicalFollowup' => $surgicalFollowup->id]);
     }
 
     /**
@@ -79,7 +73,11 @@ class SurgicalFollowupController extends Controller
      */
     public function edit(Patient $patient, SurgicalFollowup $surgicalFollowup)
     {
-        $examination = $patient->examination;
+        $examination = $surgicalFollowup->examinationFollowup;
+
+        $bath0 = $surgicalFollowup->examinationFollowup()->where('row', 10)->where('col', 1)->where('type', 'activities_examination_followup')->first();
+        $surgicalFollowup->bath_0 = $bath0 ? $bath0->value : '-----';
+
         return view('admin.patient.follow-up.surgical.edit', compact('patient', 'surgicalFollowup', 'examination'));
     }
 
@@ -121,5 +119,26 @@ class SurgicalFollowupController extends Controller
     {
         $surgicalFollowup->delete();
         return redirect()->route('surgical.followup.index', ['patient' => $patient])->with('message', 'Surgical was successfully deleted!');
+    }
+
+    public function followup(Patient $patient, SurgicalFollowup $surgicalFollowup)
+    {
+        $data = request()->all();
+        $createExamination = $surgicalFollowup->examinationFollowup()->where('type', $data['data']['type'])->where('row', $data['data']['row'])->where('col', $data['data']['col'])->first();
+        if (isset($data['data'])) {
+            if ($createExamination) {
+                $createExamination->value = $data['data']['value'];
+                $createExamination->save();
+            } else {
+                $examination = new Examination();
+                $examination->patient_id = $patient->id;
+                $examination->surgical_followup_id = $surgicalFollowup->id;
+                $examination->row = $data['data']['row'];
+                $examination->col = $data['data']['col'];
+                $examination->value = $data['data']['value'];
+                $examination->type = $data['data']['type'];
+                $examination->save();
+            }
+        }
     }
 }

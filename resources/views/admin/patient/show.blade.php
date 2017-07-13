@@ -3,7 +3,7 @@
     <ul class="breadcrumb">
         <li>{!! link_to_route('admin.home.index', 'Home ') !!}</li>
         <li>{!! link_to_route('patient.index', 'Patient Management') !!}</li>
-        <li class="active">Full Details</li>
+        <li class="active">Summary</li>
     </ul>
     <div class="container-fluid">
         <section class="content">

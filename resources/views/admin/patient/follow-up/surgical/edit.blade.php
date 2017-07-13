@@ -11,7 +11,7 @@
 
 
     <section class="content">
-        {!! Form::model($surgicalFollowup, ['urlFollowup' => route('surgical.followup.update', ['patient' => $patient, 'surgicalFollowup' => $surgicalFollowup]), 'role' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'PATCH']) !!}
+        {!! Form::model($surgicalFollowup, ['url' => route('surgical.followup.update', ['patient' => $patient, 'surgicalFollowup' => $surgicalFollowup]), 'role' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'PATCH']) !!}
 
             <div class="ui segments">
                 <div class="ui segment clearfix">

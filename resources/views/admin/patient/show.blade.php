@@ -826,7 +826,7 @@
                         <th>Investigation</th>
                         @foreach($patient->surgicalFollowup as $surgicalFollowup)
                         <td>
-                            {!! $surgicalFollowup->investigation or '' !!}
+                            {!! $surgicalFollowup->investigation or '-----' !!}
                         </td>
                         @endforeach
                     </tr>
@@ -834,7 +834,7 @@
                         <th>Management</th>
                         @foreach($patient->surgicalFollowup as $surgicalFollowup)
                         <td>
-                            {!! $surgicalFollowup->management or '' !!}
+                            {!! $surgicalFollowup->management or '-----' !!}
                         </td>
                         @endforeach
                     </tr>

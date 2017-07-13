@@ -11,7 +11,7 @@
     {!! Form::model($nonSurgical, ['url' => route('non.surgical.update', ['patient' => $patient->id, 'nonSurgical' => $nonSurgical->id]),  'role' => 'form', 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
-            <span class="pull-left"><h4>Update {!! $patient->patient_uuid !!} Non Surgical</h4></span>
+            <span class="pull-left"><h4>Edit {!! $patient->patient_uuid !!} Non Surgical</h4></span>
             <span class="pull-right">
                 <a class="ui small button" href="{{ route('non.surgical.index', ['patient' => $patient->id]) }}">Back</a>
             </span>
@@ -20,7 +20,7 @@
             @include('admin.patient.non-surgical.form')
         </div>
         <div class="panel-footer text-right">
-            @include('admin.patient.submit-btn', ['text' => 'Update Non Surgical', 'class' => 'blue'])
+            @include('admin.patient.submit-btn', ['text' => 'Update', 'class' => 'blue'])
         </div>
     </div>
     {!! Form::close() !!}

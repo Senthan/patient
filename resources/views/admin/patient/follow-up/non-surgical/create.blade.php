@@ -22,7 +22,7 @@
                     @include('admin.patient.follow-up.non-surgical.form')
                 </div>
                 <div class="ui segment">
-                    <button class="ui small button green" type="submit">Create</button>
+                    <button class="ui small button green" type="submit">Save</button>
                     <a class="ui small button" href="{{ route('non.surgical.followup.index', ['patient' => $patient]) }}">Cancel</a>
                 </div>
             </div>

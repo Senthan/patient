@@ -11,7 +11,7 @@
     {!! Form::model($refferal, ['url' => route('refferal.update', ['patient' => $patient->id, 'refferal' => $refferal->id]),  'role' => 'form', 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
-            <span class="pull-left"><h4>Update Reffercal</h4></span>
+            <span class="pull-left"><h4>Edit Reffercal</h4></span>
             <span class="pull-right">
                 <a class="ui small button" href="{{ route('refferal.index', ['patient' => $patient->id]) }}">Back</a>
             </span>
@@ -20,7 +20,7 @@
             @include('admin.patient.refferal.form')
         </div>
         <div class="panel-footer text-right">
-            @include('admin.patient.submit-btn', ['text' => 'Update Reffercal', 'class' => 'blue'])
+            @include('admin.patient.submit-btn', ['text' => 'Update', 'class' => 'blue'])
         </div>
     </div>
     {!! Form::close() !!}

@@ -19,7 +19,7 @@
                 @include('admin.patient.form')
             </div>
             <div class="ui segment">
-                <button class="ui small button green" type="submit">Create</button>
+                <button class="ui small button green" type="submit">Save</button>
                 <a class="ui small button" href="{{ route('patient.index') }}">Cancel</a>
             </div>
         </div>

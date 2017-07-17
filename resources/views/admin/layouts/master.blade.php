@@ -57,7 +57,7 @@
         var TimePicker;
         var formSubmissionHandled = false;
 
-        var app = angular.module('app', ['ngTouch', 'ui.grid', 'ui.grid.selection', 'ui.grid.pagination', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.grid.edit', 'angularFileUpload', 'ui.grid.exporter', 'ui.grid.resizeColumns', 'ui.grid.moveColumns']);
+        var app = angular.module('app', ['ngTouch', 'ui.grid', 'ui.grid.grouping', 'ui.grid.selection', 'ui.grid.pagination', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.grid.edit', 'angularFileUpload', 'ui.grid.exporter', 'ui.grid.resizeColumns', 'ui.grid.moveColumns']);
         app.run(['$http', function ($http) {
             $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
             $http.defaults.cache = false;

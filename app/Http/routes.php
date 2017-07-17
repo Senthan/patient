@@ -45,6 +45,8 @@ $router->group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => '']
             $router->post('{patient}/refferal', ['uses' => 'PatientController@saveRefferal', 'as' => 'patient.reffercal.store']);
 
 
+            $router->get('{patient}/pdf', ['uses' => 'PatientController@pdf', 'as' => 'patient.pdf']);
+            $router->get('{patient}/test', ['uses' => 'PatientController@updatePatientFollowup', 'as' => 'patient.test']);
 
         });
 

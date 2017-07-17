@@ -107,13 +107,19 @@ class PatientController extends Controller
 //            'Tendon Repair'
 //        ]);
         $diagnosisTypes = SurgeryType::all()->lists('name', 'id');
-        if (request()->ajax()) {
-            $patient = Patient::with('diagnosis')->get();
-            $resource = new Collection($patient, new PatientTransformer());
-            $manager = new Manager();
-            $manager->setSerializer(new DataArraySerializer());
+//        if (request()->ajax()) {
+//            $patient = Patient::with('diagnosis')->get();
+//            $resource = new Collection($patient, new PatientTransformer());
+//            $manager = new Manager();
+//            $manager->setSerializer(new DataArraySerializer());
+//
+//            return $manager->createData($resource)->toArray();
+//        }
 
-            return $manager->createData($resource)->toArray();
+
+        if (request()->ajax()) {
+            $patient = Patient::with('diagnosis', 'examinations')->get()->values();
+            return response()->json($patient);
         }
 
         return view('admin.patient.index', compact('diagnosisTypes'));
@@ -283,14 +289,16 @@ class PatientController extends Controller
 
         $diagnosis->save();
 
+        $this->updatePatientFollowup($patient);
+
         return redirect()->route('patient.index');
     }
 
 
     public function pdf(Patient $patient) {
-        $diagnosis = Diagnosis::find($patient->diagnosis_id);
-
-        $pdf = PDF::loadView('admin.pdf.patient-history', compact('patient', 'diagnosis'));
+        $data['name'] = $patient->name;
+        $data['age'] = $patient->age;
+        $pdf = PDF::loadView('admin.pdf.patient-history', compact('data'));
         return $pdf->download('patient.pdf');
     }
 
@@ -363,6 +371,9 @@ class PatientController extends Controller
 
         $patient->diagnosis = 'active';
         $patient->save();
+
+
+        $this->updatePatientFollowup($patient);
 
         return redirect()->route('patient.index');
     }
@@ -492,6 +503,45 @@ class PatientController extends Controller
                 $examination->save();
             }
         }
+    }
+
+    private function updatePatientFollowup(Patient $patient)
+    {
+        $examinations = $patient->examinations()->where('value', 1)->get();
+        $rootExaminationFollowups = $examinations->where('type', 'root_examination');
+        $rootExaminationFollowups = $rootExaminationFollowups->map(function ($item) {
+            $item->motor_examination = isset($this->motorExamination[$item->row][$item->col]) ? $this->motorExamination[$item->row][$item->col] : '';
+            return $item;
+        })->pluck('motor_examination')->toArray();
+
+        $rootExaminationFollowups = implode(" ", $rootExaminationFollowups);
+        $patient->motor_examination = $rootExaminationFollowups;
+
+        $sensory = $examinations->where('type', 'sensory_impairment');
+        $sensory = $sensory->map(function ($item) {
+            $item->sensory = isset($this->sensoryImpairmentExamination[$item->row][$item->col]) ? $this->sensoryImpairmentExamination[$item->row][$item->col] : '';
+            return $item;
+        })->pluck('sensory')->toArray();
+
+        $sensory = implode(" ", $sensory);
+        $patient->sensory = $sensory;
+
+        $pain = $examinations->where('type', 'pain_scale');
+        $pain = $pain->map(function ($item) {
+            $item->pain = isset($this->painScaleExamination[$item->row][$item->col]) ? $this->painScaleExamination[$item->row][$item->col] : '';
+            return $item;
+        })->pluck('pain')->toArray();
+
+        $pain = implode(" ", $pain);
+        $patient->pain = $pain;
+
+
+        $bath0 = $patient->examination()->where('row', 10)->where('col', 1)->where('type', 'activities_examination')->first();
+        $bath_0 = $bath0 ? $bath0->value : '-----';
+        $patient->activities_of_daily_living = $bath_0;
+
+        $patient->save();
+
     }
 
 }

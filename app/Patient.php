@@ -23,6 +23,11 @@ class Patient extends Model
         return $this->hasOne(Examination::class);
     }
 
+    public function examinations()
+    {
+        return $this->hasMany(Examination::class);
+    }
+
     public function surgical()
     {
         return $this->hasMany(Surgical::class);

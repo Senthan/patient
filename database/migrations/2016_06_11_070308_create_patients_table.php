@@ -32,6 +32,10 @@ class CreatePatientsTable extends Migration
             $table->integer('anaesthetic_id');
             $table->integer('examination_id');
             $table->integer('profile_id');
+            $table->text('motor_examination')->nullable();
+            $table->text('sensory')->nullable();
+            $table->text('activities_of_daily_living')->nullable();
+            $table->text('pain')->nullable();
             $table->timestamps();
         });
     }

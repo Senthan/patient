@@ -19,7 +19,7 @@ class NonSurgicalFollowupController extends Controller
      */
     public function index(Patient $patient)
     {
-        $nonSurgicalFollowup = NonSurgicalFollowup::get()->values();
+        $nonSurgicalFollowup = $patient->nonSurgicalFollowup;
         if (request()->ajax()) {
             return response()->json($nonSurgicalFollowup);
         }

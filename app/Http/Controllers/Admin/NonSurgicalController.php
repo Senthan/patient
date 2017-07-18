@@ -20,7 +20,7 @@ class NonSurgicalController extends Controller
     public function index(Patient $patient)
     {
         if (request()->ajax()) {
-            $nonSurgical = NonSurgical::get()->values();
+            $nonSurgical = $patient->nonSurgical;
             return response()->json($nonSurgical);
         }
 

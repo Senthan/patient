@@ -15,6 +15,7 @@ class CreateNonSurgicalFollowupsTable extends Migration
         Schema::create('non_surgical_followups', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_id');
+            $table->string('type')->nullable()->default(null);
             $table->text('complain')->nullable()->default(null);
             $table->text('examination')->nullable()->default(null);
             $table->text('investigation')->nullable()->default(null);

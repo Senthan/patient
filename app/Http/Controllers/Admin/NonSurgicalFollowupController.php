@@ -52,6 +52,7 @@ class NonSurgicalFollowupController extends Controller
         $nonSurgicalFollowup->examination = $request->examination;
         $nonSurgicalFollowup->investigation = $request->investigation;
         $nonSurgicalFollowup->management = $request->management;
+        $nonSurgicalFollowup->type = 'NonSurgicalFollowup';
         $nonSurgicalFollowup->save();
 
         return redirect()->route('non.surgical.followup.index', ['patient' => $patient]);
@@ -94,6 +95,7 @@ class NonSurgicalFollowupController extends Controller
         $nonSurgicalFollowup->examination = $request->examination;
         $nonSurgicalFollowup->investigation = $request->investigation;
         $nonSurgicalFollowup->management = $request->management;
+        $nonSurgicalFollowup->type = 'NonSurgicalFollowup';
         $nonSurgicalFollowup->save();
 
         return redirect()->route('non.surgical.followup.index', ['patient' => $patient]);

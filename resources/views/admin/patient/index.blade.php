@@ -117,8 +117,10 @@
             $http.get($scope.moduleUrl + '?ajax=true').success(function (data) {
                 for(i = 0; i < data.length; i++){
                     var followup = data[i].surgical_followup.length > 0 ? true : false;
-                    data[i].subGridOptions = {
+                    var followupData = data[i].surgical_followup.concat(data[i].non_surgical_followup);
+                        data[i].subGridOptions = {
                         columnDefs: [
+                            { name: "Type", field:"type"},
                             { name: "Date", field:"date"},
                             { name: "Complain", field:"complain"},
                             { name: "Examination", field:"examination"},
@@ -129,7 +131,7 @@
                             { name: 'Investigation', field: 'investigation'},
                             { name: 'Management', field: 'management'}
                         ],
-                        data: data[i].surgical_followup,
+                        data: followupData,
                         disableRowExpandable : followup,
                         enableColumnResizing : true
                     }

@@ -118,7 +118,7 @@ class PatientController extends Controller
 
 
         if (request()->ajax()) {
-            $patient = Patient::with('diagnosis', 'examinations', 'surgicalFollowup')->get()->values();
+            $patient = Patient::with('diagnosis', 'examinations', 'surgicalFollowup', 'nonSurgicalFollowup')->get()->values();
             return response()->json($patient);
         }
 

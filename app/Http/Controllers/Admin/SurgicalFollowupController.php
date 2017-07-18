@@ -95,6 +95,7 @@ class SurgicalFollowupController extends Controller
         $surgicalFollowup = new SurgicalFollowup();
         $surgicalFollowup->patient_id = $patient->id;
         $surgicalFollowup->date = $request->date;
+        $surgicalFollowup->type = 'SurgicalFollowup';
         $surgicalFollowup->save();
 
         $this->updatePatientFollowup($surgicalFollowup);
@@ -147,6 +148,7 @@ class SurgicalFollowupController extends Controller
         $surgicalFollowup->post_up_days = $request->post_up_days;
         $surgicalFollowup->post_up_weeks = $request->post_up_weeks;
         $surgicalFollowup->post_up_months = $request->post_up_months;
+        $surgicalFollowup->type = 'SurgicalFollowup';
         $surgicalFollowup->save();
 
         $this->updatePatientFollowup($surgicalFollowup);

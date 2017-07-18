@@ -273,7 +273,11 @@ class PatientController extends Controller
         $diagnosis->presenting_complain = $request->presenting_complain;
         $diagnosis->past_surgical_history = $request->past_surgical_history;
         $diagnosis->allergic_history = $request->allergic_history;
+        $diagnosis->diagnosis = $request->diagnosis;
         $diagnosis->management_plan = $request->management_plan;
+        $diagnosis->surgical_management = $request->surgical_management;
+        $diagnosis->non_surgical_management = $request->non_surgical_management;
+        $diagnosis->drugs_given = $request->drugs_given;
         $diagnosis->x_ray = $request->x_ray;
         $diagnosis->ct_scan = $request->ct_scan;
         $diagnosis->miri_scan = $request->miri_scan;
@@ -365,6 +369,12 @@ class PatientController extends Controller
         $diagnosis->ct_scan = $request->ct_scan;
         $diagnosis->miri_scan = $request->miri_scan;
         $diagnosis->other_imaging = $request->other_imaging;
+
+        $diagnosis->diagnosis = $request->diagnosis;
+        $diagnosis->drugs_given = $request->drugs_given;
+        $diagnosis->surgical_management = $request->surgical_management;
+        $diagnosis->non_surgical_management = $request->non_surgical_management;
+
         $diagnosis->en_treatment_template = $request->en_treatment_template;
         $diagnosis->ta_treatment_template = $request->ta_treatment_template;
         $diagnosis->si_treatment_template = $request->si_treatment_template;

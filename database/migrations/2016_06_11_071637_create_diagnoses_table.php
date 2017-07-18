@@ -35,6 +35,10 @@ class CreateDiagnosesTable extends Migration
             $table->text('en_treatment_template')->nullable()->default(null);
             $table->text('ta_treatment_template')->nullable()->default(null);
             $table->text('si_treatment_template')->nullable()->default(null);
+            $table->text('diagnosis')->nullable()->default(null);
+            $table->text('drugs_given')->nullable()->default(null);
+            $table->text('surgical_management')->nullable()->default(null);
+            $table->text('non_surgical_management')->nullable()->default(null);
             $table->timestamps();
         });
     }

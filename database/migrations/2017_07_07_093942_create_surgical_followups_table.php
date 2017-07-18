@@ -23,6 +23,10 @@ class CreateSurgicalFollowupsTable extends Migration
             $table->string('post_up_weeks')->nullable()->default(null);
             $table->string('post_up_months')->nullable()->default(null);
             $table->date('date')->nullable()->default(null);
+            $table->text('motor_examination')->nullable();
+            $table->text('sensory')->nullable();
+            $table->text('activities_of_daily_living')->nullable();
+            $table->text('pain')->nullable();
             $table->timestamps();
         });
     }

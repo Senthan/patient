@@ -119,9 +119,13 @@
                     var followup = data[i].surgical_followup.length > 0 ? true : false;
                     data[i].subGridOptions = {
                         columnDefs: [
-                            {name:"Date", field:"date", minWidth: 100, width: 100},
-                            {name:"Examination", field:"examination", minWidth: 100, width: 100}
-                            ],
+                            {name:"Date", field:"date"},
+                            {name:"Examination", field:"examination"},
+                            { displayName: 'Motor examination', field: 'motor_examination'},
+                            { displayName: 'Sensory', field: 'sensory'},
+                            { displayName: 'Activities of daily living', field: 'activities_of_daily_living'},
+                            { displayName: 'Pain Scale', field: 'pain'}
+                        ],
                         data: data[i].surgical_followup,
                         disableRowExpandable : followup,
                         enableColumnResizing : true

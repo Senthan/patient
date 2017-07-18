@@ -41,9 +41,10 @@
             </a>
 
         </div>
-        <div class="panel-body">
-            <div ui-grid="gridOptions" ui-grid-grouping ui-grid-exporter ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid-move-columns class="grid"></div>
+        <div>
+            <div ui-grid="gridOptions" ui-grid-expandable ui-grid-grouping ui-grid-exporter ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid-move-columns  class="grid"></div>
         </div>
+
     </div>
 </div>
 @endsection
@@ -54,19 +55,11 @@
                 .dropdown();
         });
 
-        app.controller('PatientController', ['$scope', '$http', function ($scope, $http) {
+        app.controller('PatientController', ['$scope', '$http', '$log', function ($scope, $http, $log) {
             $scope.moduleUrl = "{{ route('patient.index') }}/"
-            var surgeryTypes = [];
-            var diagnosisTypes = {!! $diagnosisTypes !!};
 
-            for(var i =0; i < diagnosisTypes.length; i++) {
-                surgeryTypes.push({'id': diagnosisTypes[i], 'surgeryType': diagnosisTypes[i]});
-
-            }
-
-            $scope.patients = [];
             var columnDefs = [
-                { displayName: 'OSC No', field: 'patient_uuid', enableCellEdit: false, minWidth: 100, width: 130},
+                { displayName: 'OSC No', field: 'patient_uuid', enableCellEdit: false, minWidth: 100, width: 130, pinnedLeft:true},
                 { displayName: 'Name', field: 'name', minWidth: 150, width: 150},
                 { displayName: 'Age', field: 'age', minWidth: 60, width: 60},
                 { displayName: 'Sex', field: 'sex', editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -85,8 +78,13 @@
                     cellTemplate:'<div ng-repeat="(key, item) in row.entity.diagnosis track by $index">@{{item.miri_scan}}</div>',minWidth: 190, width: 190, enableCellEdit: false},
                 { displayName: 'Management', field: 'diagnosis',
                     cellTemplate:'<div ng-repeat="(key, item) in row.entity.diagnosis track by $index">@{{item.management_plan}}</div>',minWidth: 190, width: 190, enableCellEdit: false},
+                { displayName: 'Follow up', field: 'diagnosis',
+                    cellTemplate:'<div ng-repeat="(key, item) in row.entity.diagnosis track by $index">@{{item.date}}</div>',minWidth: 190, width: 190, enableCellEdit: false},
             ];
-//            gridOptions.rowHeight = 50;
+
+            gridOptions.enableRowSelection = true;
+            gridOptions.expandableRowTemplate = 'expandableRowTemplate.html';
+            gridOptions.expandableRowHeight = 150;
             gridOptions.columnDefs = columnDefs;
             gridOptions.enableGridMenu = true;
             gridOptions.enableColumnResizing = true;
@@ -95,11 +93,11 @@
 
             gridOptions.onRegisterApi = function (gridApi) {
                 $scope.gridApi = gridApi;
-                gridApi.selection.on.rowSelectionChanged($scope,function(rows){
+                gridApi.selection.on.rowSelectionChanged($scope, function (rows) {
                     $scope.setSelection(gridApi);
                 });
 
-                gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
+                gridApi.edit.on.afterCellEdit($scope, function (rowEntity, colDef, newValue, oldValue) {
                     var data = {};
                     data.id = rowEntity.id;
                     data.field_name = colDef.name;
@@ -110,16 +108,28 @@
                     });
                 });
 
-                gridApi.selection.on.rowSelectionChangedBatch($scope,function(rows){
+                gridApi.selection.on.rowSelectionChangedBatch($scope, function (rows) {
                     $scope.setSelection(gridApi);
                 });
-            };
+            }
 
             $scope.gridOptions = gridOptions;
-            $http.get($scope.moduleUrl + '?ajax=true').success(function (items) {
-                $scope.patients = items;
-                $scope.gridOptions.data =  $scope.patients;
+            $http.get($scope.moduleUrl + '?ajax=true').success(function (data) {
+                for(i = 0; i < data.length; i++){
+                    var followup = data[i].surgical_followup.length > 0 ? true : false;
+                    data[i].subGridOptions = {
+                        columnDefs: [
+                            {name:"Date", field:"date", minWidth: 100, width: 100},
+                            {name:"Examination", field:"examination", minWidth: 100, width: 100}
+                            ],
+                        data: data[i].surgical_followup,
+                        disableRowExpandable : followup,
+                        enableColumnResizing : true
+                    }
+                }
+                $scope.gridOptions.data =  data;
             });
+
             $scope.setSelection = function(gridApi) {
                 $scope.mySelections = gridApi.selection.getSelectedRows();
 
@@ -143,9 +153,8 @@
                 }
             };
 
-            $scope.filterFunction = function(element) {
-                return (element.type == 'activities_examination' && element.row == 10 && element.col == 1) ? true : false;
-            };
+
         }]);
+
     </script>
 @endsection

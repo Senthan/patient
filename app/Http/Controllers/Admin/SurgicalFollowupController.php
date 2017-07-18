@@ -66,7 +66,7 @@ class SurgicalFollowupController extends Controller
      */
     public function index(Patient $patient)
     {
-        $surgicalFollowup = SurgicalFollowup::get()->values();
+        $surgicalFollowup = $patient->surgicalFollowup;
         if (request()->ajax()) {
             return response()->json($surgicalFollowup);
         }
@@ -123,7 +123,7 @@ class SurgicalFollowupController extends Controller
     {
         $examination = $surgicalFollowup->examinationFollowup;
 
-        $bath0 = $surgicalFollowup->examinationFollowup()->where('row', 10)->where('col', 1)->where('type', 'activities_examination_followup')->first();
+        $bath0 = $surgicalFollowup->examinationFollowups()->where('row', 10)->where('col', 1)->where('type', 'activities_examination_followup')->first();
         $surgicalFollowup->bath_0 = $bath0 ? $bath0->value : '-----';
 
         return view('admin.patient.follow-up.surgical.edit', compact('patient', 'surgicalFollowup', 'examination'));

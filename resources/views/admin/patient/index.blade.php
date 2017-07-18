@@ -77,9 +77,7 @@
                 { displayName: 'MRI', field: 'diagnosis',
                     cellTemplate:'<div ng-repeat="(key, item) in row.entity.diagnosis track by $index">@{{item.miri_scan}}</div>',minWidth: 190, width: 190, enableCellEdit: false},
                 { displayName: 'Management', field: 'diagnosis',
-                    cellTemplate:'<div ng-repeat="(key, item) in row.entity.diagnosis track by $index">@{{item.management_plan}}</div>',minWidth: 190, width: 190, enableCellEdit: false},
-                { displayName: 'Follow up', field: 'diagnosis',
-                    cellTemplate:'<div ng-repeat="(key, item) in row.entity.diagnosis track by $index">@{{item.date}}</div>',minWidth: 190, width: 190, enableCellEdit: false},
+                    cellTemplate:'<div ng-repeat="(key, item) in row.entity.diagnosis track by $index">@{{item.management_plan}}</div>',minWidth: 190, width: 190, enableCellEdit: false}
             ];
 
             gridOptions.enableRowSelection = true;

@@ -45,6 +45,7 @@ class NonSurgicalController extends Controller
         $nonSurgical->date_of_admission = $request->date_of_admission;
         $nonSurgical->date_of_discharge = $request->date_of_discharge;
         $nonSurgical->indication_admission = $request->indication_admission;
+        $nonSurgical->investigation = $request->investigation;
         $nonSurgical->management = $request->management;
         $nonSurgical->save();
 
@@ -94,6 +95,7 @@ class NonSurgicalController extends Controller
         $nonSurgical->date_of_admission = $request->date_of_admission;
         $nonSurgical->date_of_discharge = $request->date_of_discharge;
         $nonSurgical->indication_admission = $request->indication_admission;
+        $nonSurgical->investigation = $request->investigation;
         $nonSurgical->management = $request->management;
         $nonSurgical->save();
 

@@ -20,7 +20,7 @@ class RefferalController extends Controller
     public function index(Patient $patient)
     {
         if (request()->ajax()) {
-            $refferal = Refferal::get()->values();
+            $refferal = $patient->refferal;
             return response()->json($refferal);
         }
 

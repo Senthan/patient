@@ -45,6 +45,7 @@ class SurgicalController extends Controller
         $surgical->date_of_admission = $request->date_of_admission;
         $surgical->date_of_surgery = $request->date_of_surgery;
         $surgical->date_of_discharge = $request->date_of_discharge;
+        $surgical->operative_notes = $request->operative_notes;
         $surgical->traneximic = $request->traneximic;
         $surgical->methlene = $request->methlene;
         $surgical->surgery = $request->surgery;
@@ -91,6 +92,7 @@ class SurgicalController extends Controller
         $surgical->date_of_admission = $request->date_of_admission;
         $surgical->date_of_surgery = $request->date_of_surgery;
         $surgical->date_of_discharge = $request->date_of_discharge;
+        $surgical->operative_notes = $request->operative_notes;
         $surgical->traneximic = $request->traneximic;
         $surgical->methlene = $request->methlene;
         $surgical->surgery = $request->surgery;

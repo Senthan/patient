@@ -16,6 +16,7 @@ class CreateNonSurgicalsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('patient_id');
             $table->string('indication_admission')->nullable()->default(null);
+            $table->string('investigation')->nullable()->default(null);
             $table->string('management')->nullable()->default(null);
             $table->date('date_of_admission')->nullable()->default(null);
             $table->date('date_of_discharge')->nullable()->default(null);

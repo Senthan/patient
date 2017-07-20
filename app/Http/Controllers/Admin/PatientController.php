@@ -74,13 +74,14 @@ class PatientController extends Controller
 
         $this->reflexesExamination =  [
             [0, 0],
-            [0, 0, 'Biceps C5 Grade 0', 'Biceps C5 Grade 1', 'Biceps C5 Grade 2', 'Biceps C5 Grade 3', 'Biceps C5 Grade 4' ],
-            [0, 0, 'Brachioradialis C6 Grade 0', 'Brachioradialis C6 Grade 1', 'Brachioradialis C6 Grade 2', 'Brachioradialis C6 Grade 3', 'Brachioradialis C6 Grade 4' ],
-            [0, 0, 'Triceps C7 Grade 0', 'Triceps C7 Grade 1', 'Triceps C7 Grade 2', 'Triceps C7 Grade 3', 'Triceps C7 Grade 4' ],
-            [0, 0, 'Fingers C8 Grade 0', 'Fingers C8 Grade 1', 'Fingers C8 Grade 2', 'Fingers C8 Grade 3', 'Fingers C8 Grade 4' ],
-            [0, 0, 'Hoffman sign Grade 0', 'Hoffman sign Grade 1', 'Hoffman sign Grade 2', 'Hoffman sign Grade 3', 'Hoffman sign Grade 4' ],
-            [0, 0, 'Knee L4 Grade 0', 'Knee L4 Grade 1', 'Knee L4 Grade 2', 'Knee L4 Grade 3', 'Knee L4 Grade 4' ],
-            [0, 0, 'Ankle S1 Grade 0', 'Ankle S1 Grade 1', 'Ankle S1 Grade 2', 'Ankle S1 Grade 3', 'Ankle S1 Grade 4' ]
+            [0, 0],
+            [0, 0, 'Biceps C5 Grade 0 R', 'Biceps C5 Grade 0 L', 'Biceps C5 Grade 1 R', 'Biceps C5 Grade 1 L', 'Biceps C5 Grade 2 R', 'Biceps C5 Grade 2 L', 'Biceps C5 Grade 3 R','Biceps C5 Grade 3 L', 'Biceps C5 Grade 4 R', 'Biceps C5 Grade 4 L' ],
+            [0, 0, 'Brachioradialis C6 Grade 0 R', 'Brachioradialis C6 Grade 0 L', 'Brachioradialis C6 Grade 1 R', 'Brachioradialis C6 Grade 1 L', 'Brachioradialis C6 Grade 2 R','Brachioradialis C6 Grade 2 L', 'Brachioradialis C6 Grade 3 R','Brachioradialis C6 Grade 3 L', 'Brachioradialis C6 Grade 4 R', 'Brachioradialis C6 Grade 4 L' ],
+            [0, 0, 'Triceps C7 Grade 0 R','Triceps C7 Grade 0 L', 'Triceps C7 Grade 1 R','Triceps C7 Grade 1 L', 'Triceps C7 Grade 2 R','Triceps C7 Grade 2 L', 'Triceps C7 Grade 3 R','Triceps C7 Grade 3 L', 'Triceps C7 Grade 4 R', 'Triceps C7 Grade 4 L' ],
+            [0, 0, 'Fingers C8 Grade 0 R','Fingers C8 Grade 0 L', 'Fingers C8 Grade 1 R','Fingers C8 Grade 1 L', 'Fingers C8 Grade 2 R', 'Fingers C8 Grade 2 L', 'Fingers C8 Grade 3 R', 'Fingers C8 Grade 3 L', 'Fingers C8 Grade 4 R', 'Fingers C8 Grade 4 L' ],
+            [0, 0, 'Hoffman sign Grade 0 R','Hoffman sign Grade 0 L', 'Hoffman sign Grade 1 R','Hoffman sign Grade 1 L', 'Hoffman sign Grade 2 R','Hoffman sign Grade 2 L', 'Hoffman sign Grade 3 R','Hoffman sign Grade 3 L', 'Hoffman sign Grade 4 R', 'Hoffman sign Grade 4 L' ],
+            [0, 0, 'Knee L4 Grade 0 R', 'Knee L4 Grade 0 L', 'Knee L4 Grade 1 R','Knee L4 Grade 1 L', 'Knee L4 Grade 2 R','Knee L4 Grade 2 L', 'Knee L4 Grade 3 R','Knee L4 Grade 3 L', 'Knee L4 Grade 4 R', 'Knee L4 Grade 4 L' ],
+            [0, 0, 'Ankle S1 Grade 0 R','Ankle S1 Grade 0 L', 'Ankle S1 Grade 1 R','Ankle S1 Grade 1 L', 'Ankle S1 Grade 2 R','Ankle S1 Grade 2 L', 'Ankle S1 Grade 3 R','Ankle S1 Grade 3 L', 'Ankle S1 Grade 4 R', 'Ankle S1 Grade 4 L' ]
         ];
 
         $this->sensoryImpairmentExamination =  [

@@ -295,7 +295,7 @@
                         <thead>
                             <tr><th colspan="1"></th>
                                 <th colspan="1"></th>
-                                <th colspan="5">Grading</th>
+                                <th colspan="10">Grading</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -304,74 +304,123 @@
                                 <div class="ui ribbon label">Reflexes</div>
                             </td>
                             <td></td>
-                            <td>Grade 0</td>
-                            <td>Grade 1</td>
-                            <td>Grade 2</td>
-                            <td>Grade 3</td>
-                            <td>Grade 4</td>
+                            <td colspan="2">Grade 0</td>
+                            <td colspan="2">Grade 1</td>
+                            <td colspan="2">Grade 2</td>
+                            <td colspan="2">Grade 3</td>
+                            <td colspan="2">Grade 4</td>
+                        </tr>
+                        <tr>
+                            <th class="header">  </th>
+                            <th class="header">  </th>
+                            <th class="header"> R </th>
+                            <th class="header"> L </th>
+                            <th class="header"> R </th>
+                            <th class="header"> L </th>
+                            <th class="header"> R </th>
+                            <th class="header"> L </th>
+                            <th class="header"> R </th>
+                            <th class="header"> L </th>
+                            <th class="header"> R </th>
+                            <th class="header"> L </th>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Biceps C5</td>
-                            <td class="{!! $patient->examinations()->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! $patient->examinations()->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! $patient->examinations()->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! $patient->examinations()->where('row', 1)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! $patient->examinations()->where('row', 1)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>Brachioradialis C6</td>
                             <td class="{!! $patient->examinations()->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 2)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 2)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 2)->where('col', 7)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 2)->where('col', 8)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 2)->where('col', 9)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 2)->where('col', 10)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 2)->where('col', 11)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Triceps C7</td>
+                            <td>Brachioradialis C6</td>
                             <td class="{!! $patient->examinations()->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 3)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 3)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 3)->where('col', 7)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 3)->where('col', 8)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 3)->where('col', 9)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 3)->where('col', 10)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 3)->where('col', 11)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Fingers C8</td>
+                            <td>Triceps C7</td>
                             <td class="{!! $patient->examinations()->where('row', 4)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 4)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 4)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 4)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 4)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 4)->where('col', 7)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 4)->where('col', 8)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 4)->where('col', 9)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 4)->where('col', 10)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 4)->where('col', 11)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Hoffman sign</td>
+                            <td>Fingers C8</td>
                             <td class="{!! $patient->examinations()->where('row', 5)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 5)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 5)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 5)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 5)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 5)->where('col', 7)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 5)->where('col', 8)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 5)->where('col', 9)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 5)->where('col', 10)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 5)->where('col', 11)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Knee L4</td>
+                            <td>Hoffman sign</td>
                             <td class="{!! $patient->examinations()->where('row', 6)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 6)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 6)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 6)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 6)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 6)->where('col', 7)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 6)->where('col', 8)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 6)->where('col', 9)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 6)->where('col', 10)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 6)->where('col', 11)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Ankle S1</td>
+                            <td>Knee L4</td>
                             <td class="{!! $patient->examinations()->where('row', 7)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 7)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 7)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 7)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                             <td class="{!! $patient->examinations()->where('row', 7)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 7)->where('col', 7)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 7)->where('col', 8)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 7)->where('col', 9)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 7)->where('col', 10)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 7)->where('col', 11)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Ankle S1</td>
+                            <td class="{!! $patient->examinations()->where('row', 8)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 8)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 8)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 8)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 8)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 8)->where('col', 7)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 8)->where('col', 8)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 8)->where('col', 9)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 8)->where('col', 10)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $patient->examinations()->where('row', 8)->where('col', 11)->where('value', 1)->where('type', 'reflexes_examination')->first() ? 'active' : '' !!}"></td>
                         </tr>
                         </tbody>
                     </table>

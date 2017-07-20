@@ -20,9 +20,9 @@ class CreateSurgicalFollowupsTable extends Migration
             $table->text('investigation')->nullable()->default(null);
             $table->text('management')->nullable()->default(null);
             $table->string('type')->nullable()->default(null);
-            $table->string('post_up_days')->nullable()->default(null);
-            $table->string('post_up_weeks')->nullable()->default(null);
-            $table->string('post_up_months')->nullable()->default(null);
+            $table->double('post_up_days')->default(0);
+            $table->double('post_up_weeks')->default(0);
+            $table->double('post_up_months')->default(0);
             $table->date('date')->nullable()->default(null);
             $table->text('motor_examination')->nullable();
             $table->text('sensory')->nullable();

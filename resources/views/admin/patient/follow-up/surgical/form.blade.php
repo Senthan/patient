@@ -12,7 +12,7 @@
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             {!! Form::text('date', null, ['class' => 'form-control', 'placeholder' => 'Date']) !!}
         </div>
-        <p class="help-block">{{ ($errors->has('date') ? $errors->first('date') : '') }}</p>
+        <p class="help-block">{{ ($errors->has('date') ? $errors->count('date') : '') }}</p>
     </div>
 </div>
 
@@ -44,13 +44,13 @@
 <div class="field">
     <label>Complain</label>
     {!! Form::textarea('complain', null, ['rows' => '3']) !!}
-    <p class="help-block">{!! ($errors->has('complain') ? $errors->first('complain') : '') !!}</p>
+    <p class="help-block">{!! ($errors->has('complain') ? $errors->count('complain') : '') !!}</p>
 </div>
 
 <div class="field">
     <label>Examination</label>
     {!! Form::textarea('examination', null, ['rows' => '3']) !!}
-    <p class="help-block">{!! ($errors->has('examination') ? $errors->first('examination') : '') !!}</p>
+    <p class="help-block">{!! ($errors->has('examination') ? $errors->count('examination') : '') !!}</p>
 </div>
 
 <div class="form-group {{ ($errors->has('history')) ? 'has-error' : '' }} required">
@@ -95,137 +95,137 @@
                         <tr class="item1">
                             <td>C5</td>
                             <td>Elbow extensors</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
 
                         <tr class="item1">
                             <td>C6</td>
                             <td>Wrist extensors</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
 
                         <tr class="item1">
                             <td>C8</td>
                             <td>Finger flexors</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 22)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 22)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
 
                         <tr class="item1">
                             <td>T1</td>
                             <td>Small Finger Abductors</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
 
                         <tr class="item1">
                             <td>L2</td>
                             <td>Hip flexors</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
 
                         <tr class="item1">
                             <td>L3</td>
                             <td>Knee extensors</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
 
                         <tr class="item1">
                             <td>L4</td>
                             <td>Ankle dorsiflexors</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
 
                         <tr class="item1">
                             <td>L5</td>
                             <td>Long toe extensors</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
 
 
@@ -233,18 +233,18 @@
                             <td>S1</td>
                             <td>Ankle plantar flexors</td>
                             <td></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 2)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 3)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 4)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 5)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 6)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 7)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 8)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 9)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 10)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 11)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 12)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 13)->where('value', 1)->where('type', 'root_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -272,65 +272,65 @@
                         <tr>
                             <td></td>
                             <td>Biceps C5</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Brachioradialis C6</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Triceps C7</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Fingers C8</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Hoffman sign</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Knee L4</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Ankle S1</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 2)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 3)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 4)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 5)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 6)->where('value', 1)->where('type', 'reflexes_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -359,14 +359,14 @@
                         <tbody>
                         <tr>
                             <td>Cerrvical</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 1)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">C1</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 2)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">C2</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 3)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">C3</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 4)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">C4</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 5)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">C5</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 6)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">C6</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 7)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">C7</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 8)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">C8</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 1)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">C1</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 2)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">C2</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 3)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">C3</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 4)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">C4</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 5)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">C5</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 6)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">C6</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 7)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">C7</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 8)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">C8</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -374,26 +374,26 @@
                         </tr>
                         <tr>
                             <td>Thoracic</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 1)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T1</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T2</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T3</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T4</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 5)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T5</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 6)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T6</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 7)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T7</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 8)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T8</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 9)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T9</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 10)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T10</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 11)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T11</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 12)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">T12</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 1)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T1</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T2</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T3</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T4</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 5)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T5</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 6)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T6</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 7)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T7</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 8)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T8</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 9)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T9</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 10)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T10</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 11)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T11</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 12)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">T12</td>
                         </tr>
                         <tr>
                             <td>Lumbar</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 1)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">L1</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">L2</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">L3</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">L4</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 5)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">L5</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 1)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">L1</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">L2</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">L3</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">L4</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 5)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">L5</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -404,11 +404,11 @@
                         </tr>
                         <tr>
                             <td>Sacral</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 1)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">S1</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">S2</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">S3</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">S4</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 5)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">S5</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 1)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">S1</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">S2</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">S3</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">S4</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 5)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">S5</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -419,7 +419,7 @@
                         </tr>
                         <tr>
                             <td>Caccxygeal</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 1)->where('value', 1)->where('type', 'sensory_impairment_followup')->first() ? 'active' : '' !!}">Cx</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 1)->where('value', 1)->where('type', 'sensory_impairment_followup')->count() ? 'active' : '' !!}">Cx</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -452,16 +452,16 @@
                     <table class="ui celled table pain-scale">
                         <thead>
                         <tr>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 0)->where('value', 1)->where('type', 'pain_scale_followup')->first() ? 'active' : '' !!}">1</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 1)->where('value', 1)->where('type', 'pain_scale_followup')->first() ? 'active' : '' !!}">2</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 2)->where('value', 1)->where('type', 'pain_scale_followup')->first() ? 'active' : '' !!}">3</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 3)->where('value', 1)->where('type', 'pain_scale_followup')->first() ? 'active' : '' !!}">4</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 4)->where('value', 1)->where('type', 'pain_scale_followup')->first() ? 'active' : '' !!}">5</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 5)->where('value', 1)->where('type', 'pain_scale_followup')->first() ? 'active' : '' !!}">6</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 6)->where('value', 1)->where('type', 'pain_scale_followup')->first() ? 'active' : '' !!}">7</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 7)->where('value', 1)->where('type', 'pain_scale_followup')->first() ? 'active' : '' !!}">8</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 8)->where('value', 1)->where('type', 'pain_scale_followup')->first() ? 'active' : '' !!}">9</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 9)->where('value', 1)->where('type', 'pain_scale_followup')->first() ? 'active' : '' !!}">10</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 0)->where('value', 1)->where('type', 'pain_scale_followup')->count() ? 'active' : '' !!}">1</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 1)->where('value', 1)->where('type', 'pain_scale_followup')->count() ? 'active' : '' !!}">2</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 2)->where('value', 1)->where('type', 'pain_scale_followup')->count() ? 'active' : '' !!}">3</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 3)->where('value', 1)->where('type', 'pain_scale_followup')->count() ? 'active' : '' !!}">4</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 4)->where('value', 1)->where('type', 'pain_scale_followup')->count() ? 'active' : '' !!}">5</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 5)->where('value', 1)->where('type', 'pain_scale_followup')->count() ? 'active' : '' !!}">6</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 6)->where('value', 1)->where('type', 'pain_scale_followup')->count() ? 'active' : '' !!}">7</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 7)->where('value', 1)->where('type', 'pain_scale_followup')->count() ? 'active' : '' !!}">8</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 8)->where('value', 1)->where('type', 'pain_scale_followup')->count() ? 'active' : '' !!}">9</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 9)->where('value', 1)->where('type', 'pain_scale_followup')->count() ? 'active' : '' !!}">10</td>
                         </tr>
                         </thead>
                     </table>
@@ -493,73 +493,73 @@
                         <tbody>
                         <tr>
                             <td>Bowels</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Incontinent / need enema</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Occasional</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Continent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 0)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Incontinent / need enema</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Occasional</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Continent</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 0)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Bladder</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Incontinent / catheterised</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Occasional</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Continent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Incontinent / catheterised</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Occasional</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Continent</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 1)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Grooming</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Needs help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Occasional</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Needs help</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Occasional</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Independent</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 2)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Toilet use</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Dependant</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Need some help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Dependant</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Need some help</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Independent</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 3)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Feeding</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Unable</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Need help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 4)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Unable</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Need help</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Independent</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 4)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Transfer</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Unable / no sitting Balance</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Major help, can sit</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Minor help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 5)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Indep</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Unable / no sitting Balance</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Major help, can sit</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Minor help</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 5)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Indep</td>
                         </tr>
                         <tr>
                             <td>Mobility</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Immobile</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Wheel chair independent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">walks with help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 6)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Indep</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Immobile</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Wheel chair independent</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">walks with help</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 6)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Indep</td>
                         </tr>
                         <tr>
                             <td>Dressing</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Dependent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Needs help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independentp</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 7)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Dependent</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Needs help</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Independentp</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 7)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Stairs</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Unable</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Needs help</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independentp</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 8)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Unable</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Needs help</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Independentp</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 8)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Bathing</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Dependent</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}">Independentp</td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
-                            <td class="{!! isset($examination) && $examination->where('row', 9)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->first() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 9)->where('col', 1)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Dependent</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 9)->where('col', 2)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}">Independentp</td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 9)->where('col', 3)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}"></td>
+                            <td class="{!! $surgicalFollowup->examinationFollowups()->where('patient_id', $patient->id)->where('row', 9)->where('col', 4)->where('value', 1)->where('type', 'activities_examination_followup')->count() ? 'active' : '' !!}"></td>
                         </tr>
                         <tr>
                             <td>Bathal Index</td>
@@ -578,13 +578,13 @@
 <div class="field">
     <label>Investigation</label>
     {!! Form::textarea('investigation', null, ['rows' => '3']) !!}
-    <p class="help-block">{!! ($errors->has('investigation') ? $errors->first('investigation') : '') !!}</p>
+    <p class="help-block">{!! ($errors->has('investigation') ? $errors->count('investigation') : '') !!}</p>
 </div>
 
 
 <div class="field">
     <label>Management</label>
     {!! Form::textarea('management', null, ['rows' => '3']) !!}
-    <p class="help-block">{!! ($errors->has('management') ? $errors->first('management') : '') !!}</p>
+    <p class="help-block">{!! ($errors->has('management') ? $errors->count('management') : '') !!}</p>
 </div>
 

@@ -340,7 +340,7 @@ class PatientController extends Controller
         $diagnosisTypeNames = SurgeryType::all();
         $diagnosisTypes = SurgeryType::with('treatmentTemplate')->get();
 
-        $examination = $patient->examination;
+        $examination = $patient->examinations()->whereIn('surgical_followup_id', [0, null]);
         $bath0 = $patient->examination()->where('row', 10)->where('col', 1)->where('type', 'activities_examination')->first();
         $diagnosis->bath_0 = $bath0 ? $bath0->value : '-----';
 

@@ -61,7 +61,6 @@ class StaffController extends Controller
         $user->email = $staff->email;
         $user->name = $staff->first_name;
         $user->save();
-        event(new UserWasCreated($user));
         $image = $request->file('profile_image');
         if ($image) {
             $imageName = $staff->id . '.' . $image->getClientOriginalExtension();

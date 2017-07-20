@@ -81,7 +81,9 @@
                 { displayName: 'Surgical Management', field: 'diagnosis',
                     cellTemplate:'<div ng-repeat="(key, item) in row.entity.diagnosis track by $index">@{{item.surgical_management}}</div>',minWidth: 190, width: 190, enableCellEdit: false},
                  { displayName: 'Non Surgical Management', field: 'diagnosis',
-                    cellTemplate:'<div ng-repeat="(key, item) in row.entity.diagnosis track by $index">@{{item.non_surgical_management}}</div>',minWidth: 190, width: 190, enableCellEdit: false}
+                    cellTemplate:'<div ng-repeat="(key, item) in row.entity.diagnosis track by $index">@{{item.non_surgical_management}}</div>',minWidth: 190, width: 190, enableCellEdit: false},
+                { displayName: 'Drugs given', field: 'diagnosis',
+                    cellTemplate:'<div ng-repeat="(key, item) in row.entity.diagnosis track by $index">@{{item.drugs_given}}</div>',minWidth: 190, width: 190, enableCellEdit: false}
             ];
 
             gridOptions.enableRowSelection = true;
